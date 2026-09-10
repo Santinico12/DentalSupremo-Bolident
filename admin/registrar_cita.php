@@ -93,12 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <style>
         :root {
-            --primary-color: #6B1D49;
-            --secondary-color: #C47D9F;
+            --primary-color: #003B73;
+            --secondary-color: #2998EC;
         }
         
         body {
-            background-color: #FDF8FA;
+            background-color: #F4F9FD;
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
         

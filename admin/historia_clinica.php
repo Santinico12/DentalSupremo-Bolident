@@ -85,8 +85,8 @@ require_once '../templates/header_general.php';
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
 <style>
-    :root { --primary: #6B1D49; --primary-dark: #531438; --accent: #C47D9F; }
-    body { background: linear-gradient(135deg, #fdf8fa 0%, #f3e6ed 100%); }
+    :root { --primary: #003B73; --primary-dark: #062846; --accent: #2998EC; }
+    body { background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%); }
     .page-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
     
     /* Header del paciente */
@@ -516,7 +516,7 @@ require_once '../templates/header_general.php';
     .firma-card-body { display: flex; gap: 25px; align-items: center; flex-wrap: wrap; }
     .firma-preview-container { border: 2px dashed #b892a7; border-radius: 12px; padding: 15px; background: #faf5f8; text-align: center; min-width: 250px; min-height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .firma-preview-img { max-height: 110px; max-width: 230px; object-fit: contain; }
-    .signature-pad-canvas { border: 2px dashed #6B1D49; border-radius: 8px; background: #ffffff; cursor: crosshair; touch-action: none; width: 100%; height: 210px; }
+    .signature-pad-canvas { border: 2px dashed #003B73; border-radius: 8px; background: #ffffff; cursor: crosshair; touch-action: none; width: 100%; height: 210px; }
 </style>
 
 <div class="page-container">
@@ -933,7 +933,7 @@ require_once '../templates/header_general.php';
                     <h3 class="card-title"><i class="fas fa-file-signature text-primary"></i> 6. Declaración Jurada y Firma Digital del Paciente</h3>
                 </div>
                 
-                <div style="background: #fdf8fa; border: 1px solid #ead3e1; border-radius: 10px; padding: 15px; margin-bottom: 20px; font-size: 0.88rem; line-height: 1.5; color: #4a2839;">
+                <div style="background: #F4F9FD; border: 1px solid #ead3e1; border-radius: 10px; padding: 15px; margin-bottom: 20px; font-size: 0.88rem; line-height: 1.5; color: #4a2839;">
                     <i class="fas fa-balance-scale me-1 text-primary"></i>
                     <strong>Declaración Legal:</strong> Declaro bajo juramento que los datos personales y antecedentes de salud consignados en la presente historia clínica son verídicos y fidedignos, no habiendo omitido información relevante sobre mi estado de salud o tratamientos en curso. Asimismo, autorizo al profesional odontólogo tratante a realizar los exámenes clínicos, radiológicos y procedimientos odontológicos pertinentes a mi diagnóstico y tratamiento.
                 </div>
@@ -979,7 +979,7 @@ require_once '../templates/header_general.php';
 
             <!-- Botón Guardar Historia Clínica -->
             <div style="text-align: center; margin: 30px 0 20px 0;">
-                <button type="submit" class="btn btn-primary" style="padding: 14px 40px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(107,29,73,0.35);">
+                <button type="submit" class="btn btn-primary" style="padding: 14px 40px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0, 59, 115,0.35);">
                     <i class="fas fa-save me-2"></i> Guardar Ficha Médica Completa
                 </button>
             </div>
@@ -1606,7 +1606,7 @@ function copiarEnlaceFirma() {
             <button class="modal-close" onclick="cerrarModalFirmaDoctor()">&times;</button>
         </div>
         <div>
-            <div style="background: #fdf8fa; border: 1px solid #ebd3e0; border-radius: 8px; padding: 10px 15px; margin-bottom: 15px; font-size: 0.88rem; color: #555;">
+            <div style="background: #F4F9FD; border: 1px solid #ebd3e0; border-radius: 8px; padding: 10px 15px; margin-bottom: 15px; font-size: 0.88rem; color: #555;">
                 <strong>Paciente:</strong> <?php echo htmlspecialchars($cliente['nombre']); ?> | 
                 <strong>Teléfono:</strong> <?php echo htmlspecialchars($cliente['telefono']); ?>
             </div>
@@ -1668,7 +1668,7 @@ function copiarEnlaceFirma() {
             if (strlen($telefonoLimpio) === 8 && !str_starts_with($telefonoLimpio, '591')) {
                 $telefonoLimpio = '591' . $telefonoLimpio;
             }
-            $mensajeWs = "Hola " . $cliente['nombre'] . ", le saludamos de Bolident Dra. Tatiana Ruiz. Por favor ingrese al siguiente enlace para verificar sus datos y registrar su firma en su Ficha Odontológica Oficial: " . $linkFirma;
+            $mensajeWs = "Hola " . $cliente['nombre'] . ", le saludamos de la Clínica Dentality. Por favor ingrese al siguiente enlace para verificar sus datos y registrar su firma en su Ficha Odontológica Oficial: " . $linkFirma;
             $urlWhatsapp = "https://api.whatsapp.com/send?phone=" . $telefonoLimpio . "&text=" . urlencode($mensajeWs);
             ?>
 

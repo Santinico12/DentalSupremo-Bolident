@@ -1,7 +1,7 @@
 <?php
 /**
  * Portal del Paciente: Verificación y Firma Digital de Historia Clínica Odontológica
- * Dra. Tatiana Ruiz - Cochabamba, Bolivia
+ * Dentality - Cochabamba, Bolivia
  */
 date_default_timezone_set('America/La_Paz');
 session_start();
@@ -100,9 +100,9 @@ $nombresPatologias = [
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #6B1D49;
-            --primary-dark: #531438;
-            --accent: #C47D9F;
+            --primary: #003B73;
+            --primary-dark: #062846;
+            --accent: #2998EC;
             --accent-gold: #D4AF37;
             --bg: #F8FAFC;
             --card-bg: #FFFFFF;
@@ -144,7 +144,7 @@ $nombresPatologias = [
             border-radius: 16px;
             padding: 22px 20px;
             text-align: center;
-            box-shadow: 0 10px 25px -5px rgba(107, 29, 73, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(0, 59, 115, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -308,7 +308,7 @@ $nombresPatologias = [
             border: 2px solid var(--accent);
             border-radius: 16px;
             padding: 20px 16px;
-            box-shadow: 0 10px 25px -5px rgba(107, 29, 73, 0.15);
+            box-shadow: 0 10px 25px -5px rgba(0, 59, 115, 0.15);
             text-align: center;
         }
 
@@ -403,7 +403,7 @@ $nombresPatologias = [
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             flex: 1;
-            box-shadow: 0 4px 12px rgba(107, 29, 73, 0.35);
+            box-shadow: 0 4px 12px rgba(0, 59, 115, 0.35);
         }
         .btn-submit:hover { opacity: 0.95; transform: translateY(-1px); }
         .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
@@ -451,7 +451,7 @@ $nombresPatologias = [
         <div class="clinic-icon">
             <i class="fas fa-tooth"></i>
         </div>
-        <h1 class="clinic-title">Clínica Dra. Tatiana Ruiz</h1>
+        <h1 class="clinic-title">Clínica Dentality</h1>
         <p class="clinic-sub">Historia Clínica Odontológica & Verificación de Datos</p>
     </div>
 
@@ -694,7 +694,7 @@ $nombresPatologias = [
     </div>
 
     <div class="footer-note">
-        Clínica Dental Dra. Tatiana Ruiz &copy; <?php echo date('Y'); ?> — Cochabamba, Bolivia
+        Clínica Dentality &copy; <?php echo date('Y'); ?> — Cochabamba, Bolivia
     </div>
 
 </div>

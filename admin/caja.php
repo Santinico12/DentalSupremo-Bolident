@@ -33,14 +33,14 @@ require_once '../templates/header_general.php';
 
 <style>
     :root { 
-        --primary: #6B1D49; 
-        --primary-dark: #531438; 
-        --accent: #C47D9F;
+        --primary: #003B73; 
+        --primary-dark: #062846; 
+        --accent: #2998EC;
         --success: #28a745;
         --danger: #dc3545;
         --info: #17a2b8;
     }
-    body { background: linear-gradient(135deg, #fdf8fa 0%, #f3e6ed 100%); }
+    body { background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%); }
     .page-container { width: 100%; margin: 0; padding: 0; }
     
     .page-header {

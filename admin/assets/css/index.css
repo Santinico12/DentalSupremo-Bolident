@@ -6,11 +6,11 @@
         }
 
         :root {
-            --primary-gold: #6B1D49;
-            --secondary-gold: #8C2B63;
-            --light-gold: #E2BED0;
-            --cream: #FAF2F6;
-            --dark-gold: #531438;
+            --primary-gold: #003B73;
+            --secondary-gold: #062846;
+            --light-gold: #2998EC;
+            --cream: #F4F9FD;
+            --dark-gold: #062846;
             --white: #FFFFFF;
         }
 
@@ -73,7 +73,7 @@
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(107, 29, 73, 0.35);
+            box-shadow: 0 5px 15px rgba(0, 59, 115, 0.35);
         }
 
         .menu-toggle {

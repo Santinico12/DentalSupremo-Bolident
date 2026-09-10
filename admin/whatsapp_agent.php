@@ -47,7 +47,7 @@ if (isset($_GET['ajax']) && $_GET['ajax'] === 'get_doctor_agenda') {
     
     $msg = "📋 *AGENDA DE PACIENTES - {$doc['nombre']}* 🩺\n";
     $msg .= "📅 *Fecha:* {$fechaTexto}\n";
-    $msg .= "🏥 *Dra. Tatiana Ruiz - Gestión Odontológica*\n\n";
+    $msg .= "🏥 *Dentality - Gestión Odontológica*\n\n";
     
     if (empty($citas)) {
         $msg .= "✨ _No tienes pacientes agendados para esta fecha._";
@@ -100,23 +100,23 @@ require_once '../templates/header_general.php';
 
 <style>
     :root {
-        --primary: #6B1D49;
-        --primary-dark: #531438;
-        --primary-gradient: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%);
-        --accent-teal: #C47D9F;
+        --primary: #003B73;
+        --primary-dark: #062846;
+        --primary-gradient: linear-gradient(135deg, #003B73 0%, #2998EC 100%);
+        --accent-teal: #2998EC;
         --accent-green: #10B981;
         --whatsapp-green: #25D366;
         --whatsapp-dark: #128C7E;
         --danger: #EF4444;
         --warning: #F59E0B;
-        --bg-main: #FDF8FA;
+        --bg-main: #F4F9FD;
         --border-color: #E2E8F0;
         --text-dark: #0F172A;
         --text-muted: #64748B;
         --radius-lg: 14px;
         --radius-md: 10px;
-        --shadow-md: 0 4px 12px rgba(107, 29, 73, 0.08);
-        --shadow-lg: 0 10px 25px rgba(107, 29, 73, 0.12);
+        --shadow-md: 0 4px 12px rgba(0, 59, 115, 0.08);
+        --shadow-lg: 0 10px 25px rgba(0, 59, 115, 0.12);
     }
 
     .main-container {
@@ -609,7 +609,7 @@ require_once '../templates/header_general.php';
             </div>
             <div class="header-title-box">
                 <h2>Centro de WhatsApp & Agente Inteligente</h2>
-                <p>Atención automatizada 24/7 y herramientas de comunicación clínica para Dra. Tatiana Ruiz</p>
+                <p>Atención automatizada 24/7 y herramientas de comunicación clínica para Dentality</p>
             </div>
         </div>
         <div class="header-actions-wrap">
@@ -673,7 +673,7 @@ require_once '../templates/header_general.php';
         <!-- CARD 1: Conexión WhatsApp & QR -->
         <div class="dashboard-card">
             <div class="card-title-box">
-                <h3><i class="fab fa-whatsapp" style="color: var(--whatsapp-green);"></i> Conexión WhatsApp Dra. Tatiana Ruiz</h3>
+                <h3><i class="fab fa-whatsapp" style="color: var(--whatsapp-green);"></i> Conexión WhatsApp Dentality</h3>
                 <button type="button" class="btn-danger-outline" id="btnLogout" onclick="logoutBot()" style="display: none;">
                     <i class="fas fa-sign-out-alt"></i> Desconectar
                 </button>
@@ -865,12 +865,12 @@ require_once '../templates/header_general.php';
 
 <script>
 function getBotApiUrl() {
-    var custom = localStorage.getItem('tatianaruiz_bot_url') || localStorage.getItem('dra_bot_url');
+    var custom = localStorage.getItem('dentality_bot_url') || localStorage.getItem('tatianaruiz_bot_url') || localStorage.getItem('dra_bot_url');
     if (custom && custom.trim() !== '') return custom.trim().replace(/\/$/, '') + '/api';
     <?php if (!empty(getenv('BOT_API_URL'))): ?>
     return '<?php echo rtrim(getenv('BOT_API_URL'), '/'); ?>';
     <?php else: ?>
-    return 'https://dratatianaruiz-bot.onrender.com/api';
+    return 'https://dentality-bot.onrender.com/api';
     <?php endif; ?>
 }
 
@@ -1191,16 +1191,16 @@ function aplicarPlantillaClinica() {
 
     switch (selectPlantilla) {
         case 'post_extraccion':
-            textArea.value = `¡Hola *${nombre}*! 👋\n\nDesde la *Clínica Dra. Tatiana Ruiz* te compartimos las indicaciones importantes para tu recuperación:\n\n1️⃣ Mantén la gasa mordida firmemente por 30 a 45 minutos.\n2️⃣ No consumas alimentos calientes, duros ni bebas con pajilla hoy.\n3️⃣ Evita esfuerzos físicos y no te enjuagues la boca con fuerza.\n4️⃣ Toma tu medicación en el horario recetado.\n\nCualquier molestia o duda, escríbenos aquí mismo. ¡Que te recuperes pronto! 🦷✨`;
+            textArea.value = `¡Hola *${nombre}*! 👋\n\nDesde la *Clínica Dentality* te compartimos las indicaciones importantes para tu recuperación:\n\n1️⃣ Mantén la gasa mordida firmemente por 30 a 45 minutos.\n2️⃣ No consumas alimentos calientes, duros ni bebas con pajilla hoy.\n3️⃣ Evita esfuerzos físicos y no te enjuagues la boca con fuerza.\n4️⃣ Toma tu medicación en el horario recetado.\n\nCualquier molestia o duda, escríbenos aquí mismo. ¡Que te recuperes pronto! 🦷✨`;
             break;
         case 'control_post':
-            textArea.value = `¡Hola *${nombre}*! 👋\n\nEsperamos que te encuentres muy bien tras tu atención con la *Dra. Tatiana Ruiz*. 🦷\n\n¿Cómo sientes tu mordida o la zona tratada? Recuerda mantener una buena higiene y cepillado suave. Si tienes alguna duda o molestia, déjanos saber. ¡Cuidamos de tu sonrisa! ✨`;
+            textArea.value = `¡Hola *${nombre}*! 👋\n\nEsperamos que te encuentres muy bien tras tu atención en *Dentality*. 🦷\n\n¿Cómo sientes tu mordida o la zona tratada? Recuerda mantener una buena higiene y cepillado suave. Si tienes alguna duda o molestia, déjanos saber. ¡Cuidamos de tu sonrisa! ✨`;
             break;
         case 'presupuesto_pendiente':
-            textArea.value = `¡Hola *${nombre}*! 👋\n\nTe saludamos cordialmente del consultorio de la *Dra. Tatiana Ruiz*. Queremos recordarte que tienes pendiente continuar con tu plan dental para cuidar de tu salud bucal.\n\n¿Te gustaría que te agendemos un horario disponible esta semana para continuar tu tratamiento? 🦷✨`;
+            textArea.value = `¡Hola *${nombre}*! 👋\n\nTe saludamos cordialmente de la *Clínica Dentality*. Queremos recordarte que tienes pendiente continuar con tu plan dental para cuidar de tu salud bucal.\n\n¿Te gustaría que te agendemos un horario disponible esta semana para continuar tu tratamiento? 🦷✨`;
             break;
         case 'aviso_turno':
-            textArea.value = `¡Hola *${nombre}*! 👋\n\nTe avisamos que la *Dra. Tatiana Ruiz* ya se encuentra lista para recibirte. Te esperamos con gusto en la clínica. 🦷✨`;
+            textArea.value = `¡Hola *${nombre}*! 👋\n\nTe avisamos que tu doctor en *Dentality* ya se encuentra listo para recibirte. Te esperamos con gusto en la clínica. 🦷✨`;
             break;
         case 'personalizado':
             textArea.value = `¡Hola *${nombre}*! 👋\n\n`;

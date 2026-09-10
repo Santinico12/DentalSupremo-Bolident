@@ -30,16 +30,16 @@ require_once '../templates/header_general.php';
 
 <style>
     :root {
-        --primary: #6B1D49;
-        --primary-gradient: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%);
-        --primary-dark: #531438;
-        --accent-teal: #C47D9F;
+        --primary: #003B73;
+        --primary-gradient: linear-gradient(135deg, #003B73 0%, #2998EC 100%);
+        --primary-dark: #062846;
+        --accent-teal: #2998EC;
         --accent-green: #10B981;
         --accent-purple: #8B5CF6;
         --accent-blue: #0284C7;
         --danger: #EF4444;
         --warning: #F59E0B;
-        --bg-main: #FDF8FA;
+        --bg-main: #F4F9FD;
         --card-bg: #FFFFFF;
         --text-dark: #0F172A;
         --text-muted: #64748B;
@@ -307,8 +307,8 @@ require_once '../templates/header_general.php';
     .btn-export.excel:hover { background: #10B981; color: white; }
     .btn-export.pdf { border-color: #EF4444; color: #B91C1C; background: #FEF2F2; }
     .btn-export.pdf:hover { background: #EF4444; color: white; }
-    .btn-export.csv { border-color: #C47D9F; color: #6B1D49; background: #FDF8FA; }
-    .btn-export.csv:hover { background: #6B1D49; color: white; }
+    .btn-export.csv { border-color: #2998EC; color: #003B73; background: #F4F9FD; }
+    .btn-export.csv:hover { background: #003B73; color: white; }
     .btn-export.print { border-color: #64748B; color: #334155; background: #F8FAFC; }
     .btn-export.print:hover { background: #64748B; color: white; }
 
@@ -1242,7 +1242,7 @@ function renderHistorialCards(filter) {
         var estadoLabel = cita.estado ? (cita.estado.charAt(0).toUpperCase() + cita.estado.slice(1)) : 'Activo';
         
         var timeBadge = cita._isProxima
-            ? '<span class="badge me-1" style="background: rgba(107, 29, 73, 0.12); color: #6B1D49; font-size: 0.72rem; font-weight: 700;"><i class="fas fa-arrow-up me-1"></i> Próxima</span>'
+            ? '<span class="badge me-1" style="background: rgba(0, 59, 115, 0.12); color: #003B73; font-size: 0.72rem; font-weight: 700;"><i class="fas fa-arrow-up me-1"></i> Próxima</span>'
             : '<span class="badge me-1" style="background: rgba(100, 116, 139, 0.12); color: #64748B; font-size: 0.72rem; font-weight: 700;"><i class="fas fa-history me-1"></i> Pasada</span>';
 
         html += '<div class="historial-item ' + estadoClass + '">';
@@ -1499,7 +1499,7 @@ $(document).ready(function() {
                 text: '<i class="fas fa-file-excel me-1"></i><span class="btn-text">Excel</span>',
                 className: 'btn-export excel',
                 exportOptions: { columns: [0, 1] },
-                title: 'Lista de Clientes - Dra. Tatiana Ruiz - <?php echo date("d-m-Y"); ?>'
+                title: 'Lista de Clientes - Dentality - <?php echo date("d-m-Y"); ?>'
             },
             {
                 text: '<i class="fas fa-file-pdf me-1"></i><span class="btn-text">PDF</span>',
@@ -1515,13 +1515,13 @@ $(document).ready(function() {
                 text: '<i class="fas fa-file-csv me-1"></i><span class="btn-text">CSV</span>',
                 className: 'btn-export csv',
                 exportOptions: { columns: [0, 1] },
-                title: 'Lista de Clientes - Dra. Tatiana Ruiz'
+                title: 'Lista de Clientes - Dentality'
             },
             {
                 text: '<i class="fas fa-print me-1"></i><span class="btn-text">Imprimir</span>',
                 className: 'btn-export print',
                 exportOptions: { columns: [0, 1] },
-                title: 'Lista de Clientes - Dra. Tatiana Ruiz',
+                title: 'Lista de Clientes - Dentality',
                 messageTop: '<h3>Fecha: <?php echo date("d/m/Y"); ?></h3>'
             }
         ],

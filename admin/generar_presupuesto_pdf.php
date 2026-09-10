@@ -22,9 +22,9 @@ if (!$presupuesto) {
 
 // Configuración de la clínica
 $clinica = [
-    'nombre' => 'Dra. Tatiana Ruiz',
-    'direccion' => 'Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19, Cochabamba, Bolivia',
-    'telefono' => '+591 70309222',
+    'nombre' => 'Dentality',
+    'direccion' => 'Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia',
+    'telefono' => '76969699',
     'email' => '',
     'nit' => ''
 ];
@@ -53,12 +53,12 @@ $clinica = [
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            border-bottom: 3px solid #6B1D49;
+            border-bottom: 3px solid #003B73;
             padding-bottom: 20px;
             margin-bottom: 25px;
         }
         .logo-section h1 { 
-            color: #6B1D49; 
+            color: #003B73; 
             font-size: 28px; 
             font-weight: 700;
             margin-bottom: 5px;
@@ -66,7 +66,7 @@ $clinica = [
         .logo-section p { color: #666; font-size: 11px; margin: 2px 0; }
         .doc-info { text-align: right; min-width: 160px; }
         .doc-number { 
-            background: linear-gradient(135deg, #6B1D49, #C47D9F); 
+            background: linear-gradient(135deg, #003B73, #2998EC); 
             color: white; 
             padding: 12px 20px; 
             border-radius: 10px;
@@ -84,7 +84,7 @@ $clinica = [
         .section-title { 
             font-size: 13px; 
             font-weight: 700; 
-            color: #6B1D49;
+            color: #003B73;
             border-bottom: 1px solid #eee;
             padding-bottom: 8px;
             margin-bottom: 12px;
@@ -93,14 +93,14 @@ $clinica = [
         /* Info Grid */
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .info-box { background: #f8f9fa; border-radius: 8px; padding: 15px; }
-        .info-box h4 { color: #6B1D49; font-size: 11px; margin-bottom: 8px; text-transform: uppercase; }
+        .info-box h4 { color: #003B73; font-size: 11px; margin-bottom: 8px; text-transform: uppercase; }
         .info-box p { margin: 3px 0; }
         .info-box strong { color: #333; }
         
         /* Tabla de items */
         .items-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .items-table th { 
-            background: #6B1D49; 
+            background: #003B73; 
             color: white; 
             padding: 12px 10px; 
             text-align: left;
@@ -134,12 +134,12 @@ $clinica = [
             font-size: 12px;
         }
         .total-row.final { 
-            border-top: 2px solid #6B1D49; 
+            border-top: 2px solid #003B73; 
             margin-top: 10px; 
             padding-top: 12px;
             font-size: 16px;
             font-weight: 700;
-            color: #6B1D49;
+            color: #003B73;
         }
         
         /* Notas */
@@ -195,8 +195,8 @@ $clinica = [
             transition: all 0.2s;
         }
         .action-btn:hover { transform: translateY(-2px); }
-        .btn-print { background: #6B1D49; color: white; }
-        .btn-print:hover { background: #C47D9F; }
+        .btn-print { background: #003B73; color: white; }
+        .btn-print:hover { background: #2998EC; }
         .btn-pdf { background: #dc3545; color: white; }
         .btn-pdf:hover { background: #c82333; }
         .btn-back { background: #6c757d; color: white; text-decoration: none; }
@@ -278,7 +278,7 @@ $clinica = [
         <!-- Header -->
         <div class="header">
             <div class="logo-section">
-                <img src="assets/images/logo_DraTatianaRuiz.png" alt="Dra. Tatiana Ruiz" style="height: 55px; margin-bottom: 8px; border-radius: 5px;" onerror="this.style.display='none'">
+                <img src="assets/images/logo_Dentality.png" alt="Dentality" style="height: 55px; margin-bottom: 8px; border-radius: 5px;" onerror="this.style.display='none'">
                 <h1><?php echo $clinica['nombre']; ?></h1>
                 <p><?php echo $clinica['direccion']; ?></p>
                 <p>Tel: <?php echo $clinica['telefono']; ?><?php echo !empty($clinica['email']) ? ' | '.$clinica['email'] : ''; ?></p>

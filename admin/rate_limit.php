@@ -31,7 +31,7 @@ $waitTime = isset($_SESSION['rate_limit']['blocked_until']) ?
 		.countdown {
 			font-size: 2rem;
 			font-weight: bold;
-			color: #6B1D49;
+			color: #003B73;
 			margin: 1rem 0;
 		}
 		.message {
@@ -46,7 +46,7 @@ $waitTime = isset($_SESSION['rate_limit']['blocked_until']) ?
 		<p class="message">Por favor, espere antes de realizar más peticiones.</p>
 		<div class="countdown" id="countdown"><?php echo $waitTime; ?></div>
 		<p>segundos restantes</p>
-		<button class="btn btn-primary" onclick="checkAndRedirect()" style="background-color: #6B1D49; border: none;">
+		<button class="btn btn-primary" onclick="checkAndRedirect()" style="background-color: #003B73; border: none;">
 			Intentar de nuevo
 		</button>
 	</div>

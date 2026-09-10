@@ -101,25 +101,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#6B1D49">
-    <meta name="description" content="Iniciar sesión en Dra. Tatiana Ruiz">
-    <title>Iniciar Sesión - Dra. Tatiana Ruiz</title>
+    <meta name="theme-color" content="#003B73">
+    <meta name="description" content="Iniciar sesión en Dentality - Odontología por Especialidades">
+    <title>Iniciar Sesión - Dentality</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" type="image/png" href="assets/images/logo_DraTatianaRuiz.png">
+    <link rel="icon" type="image/png" href="assets/images/logo_Dentality.png">
     
     <style>
         :root {
-            --primary: #6B1D49;
-            --primary-dark: #531438;
-            --primary-light: #C47D9F;
+            --primary: #003B73;
+            --primary-dark: #062846;
+            --primary-light: #2998EC;
             --white: #ffffff;
-            --gray-light: #FDF8FA;
-            --shadow: 0 10px 30px rgba(107, 29, 73, 0.12);
+            --gray-light: #F4F9FD;
+            --shadow: 0 10px 30px rgba(0, 59, 115, 0.12);
         }
 
         * {
@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #fdf8fa 0%, #f3e6ed 100%);
+            background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%);
             position: relative;
             overflow: hidden;
         }
@@ -231,7 +231,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
             overflow: hidden;
             background: #ffffff;
             border: 2.5px solid rgba(196, 125, 159, 0.35);
-            box-shadow: 0 10px 25px rgba(107, 29, 73, 0.16), 0 4px 10px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 10px 25px rgba(0, 59, 115, 0.16), 0 4px 10px rgba(0, 0, 0, 0.04);
             padding: 4px;
             animation: pulse 2.5s ease-in-out infinite;
         }
@@ -239,11 +239,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
         @keyframes pulse {
             0%, 100% {
                 transform: scale(1);
-                box-shadow: 0 10px 25px rgba(107, 29, 73, 0.16), 0 4px 10px rgba(0, 0, 0, 0.04);
+                box-shadow: 0 10px 25px rgba(0, 59, 115, 0.16), 0 4px 10px rgba(0, 0, 0, 0.04);
             }
             50% {
                 transform: scale(1.03);
-                box-shadow: 0 14px 32px rgba(107, 29, 73, 0.26), 0 6px 14px rgba(0, 0, 0, 0.06);
+                box-shadow: 0 14px 32px rgba(0, 59, 115, 0.26), 0 6px 14px rgba(0, 0, 0, 0.06);
             }
         }
 
@@ -286,7 +286,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
         }
 
         .timeout-message {
-            background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%);
+            background: linear-gradient(135deg, #003B73 0%, #2998EC 100%);
             color: white;
             padding: 14px 18px;
             border-radius: 12px;
@@ -298,7 +298,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 4px 12px rgba(107, 29, 73, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 59, 115, 0.2);
         }
 
         @keyframes shake {
@@ -493,12 +493,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
         <div class="login-card">
             <div class="logo-container">
                 <div class="logo-wrapper">
-                    <img src="assets/images/logo_DraTatianaRuiz.png" alt="Dra. Tatiana Ruiz Logo" class="logo">
+                    <img src="assets/images/logo_Dentality.png" alt="Dentality Logo" class="logo">
                 </div>
             </div>
             
-            <h1>Dra. Tatiana Ruiz</h1>
-            <p class="subtitle">Rehabilitación & Estética Dental</p>
+            <h1>Dentality</h1>
+            <p class="subtitle">Odontología por Especialidades</p>
             
             <?php if (isset($_GET['timeout'])): ?>
                 <div class="timeout-message" role="alert">
@@ -560,12 +560,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
 
                 <div class="security-badge">
                     <i class="fas fa-shield-alt"></i>
-                    <span>Sistema Monitoreado por <strong>Dra. Tatiana Ruiz</strong></span>
+                    <span>Sistema Monitoreado por <strong>Dentality</strong></span>
                 </div>
             </form>
 
             <div class="footer-info">
-                <p>&copy; 2026 <span class="brand">Dra. Tatiana Ruiz</span></p>
+                <p>&copy; 2026 <span class="brand">Dentality</span></p>
             </div>
         </div>
     </div>

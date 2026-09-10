@@ -8,24 +8,24 @@ require_once __DIR__ . '/../admin/check_auth.php';
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#6B1D49">
-    <meta name="description" content="Sistema de Gestión Dental - Dra. Tatiana Ruiz">
+    <meta name="theme-color" content="#003B73">
+    <meta name="description" content="Sistema de Gestión Dental - Dentality">
     
     <!-- Anti-caché para iOS Safari (previene páginas estancadas) -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     
-    <title>Dra. Tatiana Ruiz - Panel Administrativo</title>
+    <title>Dentality - Panel Administrativo</title>
     
     <!-- PWA Meta Tags -->
     <link rel="manifest" href="/admin/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Dra. Tatiana Ruiz">
+    <meta name="apple-mobile-web-app-title" content="Dentality">
     
     <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/png" href="/admin/assets/images/logo_DraTatianaRuiz.png">
+    <link rel="icon" type="image/png" href="/admin/assets/images/logo_Dentality.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/admin/assets/icons/icon-192x192.png">
     <link rel="apple-touch-icon" href="/admin/assets/icons/icon-192x192.png">
     
@@ -45,16 +45,16 @@ require_once __DIR__ . '/../admin/check_auth.php';
 
     <style>
         :root {
-            --primary: #6B1D49;
-            --primary-dark: #531438;
-            --accent: #C47D9F;
-            --accent-hover: #D8A2BF;
-            --secondary: #6E6E6E;
-            --background: #FDF8FA;
+            --primary: #003B73;
+            --primary-dark: #062846;
+            --accent: #2998EC;
+            --accent-hover: #4CB0F9;
+            --secondary: #64748B;
+            --background: #F4F9FD;
             --white: #FFFFFF;
             --sidebar-width: 260px;
-            --shadow: 0 4px 12px rgba(107, 29, 73, 0.08);
-            --shadow-hover: 0 6px 18px rgba(107, 29, 73, 0.15);
+            --shadow: 0 4px 12px rgba(0, 59, 115, 0.08);
+            --shadow-hover: 0 6px 18px rgba(0, 59, 115, 0.15);
         }
 
         * {
@@ -388,9 +388,9 @@ require_once __DIR__ . '/../admin/check_auth.php';
 
         .nav-item.active {
             color: var(--white);
-            background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%);
+            background: linear-gradient(135deg, #003B73 0%, #2998EC 100%);
             font-weight: 600;
-            box-shadow: 0 4px 14px rgba(107, 29, 73, 0.35);
+            box-shadow: 0 4px 14px rgba(0, 59, 115, 0.35);
         }
 
         .nav-item.active .nav-icon {
@@ -474,8 +474,8 @@ require_once __DIR__ . '/../admin/check_auth.php';
                 <i class="fas fa-bars"></i>
             </button>
             <a href="dashboard.php" class="mobile-brand">
-                <img src="assets/images/logo_DraTatianaRuiz.png" alt="Dra. Tatiana Ruiz Logo" class="mobile-logo">
-                <span class="mobile-brand-name">Dra. Tatiana Ruiz</span>
+                <img src="assets/images/logo_Dentality.png" alt="Dentality Logo" class="mobile-logo">
+                <span class="mobile-brand-name">Dentality</span>
             </a>
         </div>
         <?php if (isset($_SESSION['user'])): ?>
@@ -494,11 +494,11 @@ require_once __DIR__ . '/../admin/check_auth.php';
         <div class="sidebar-header">
             <a href="dashboard.php" class="sidebar-brand">
                 <div class="brand-logo-container">
-                    <img src="assets/images/logo_DraTatianaRuiz.png" alt="Dra. Tatiana Ruiz Logo" class="brand-logo">
+                    <img src="assets/images/logo_Dentality.png" alt="Dentality Logo" class="brand-logo">
                 </div>
                 <div class="brand-text">
-                    <h1 class="brand-name">Dra. Tatiana Ruiz</h1>
-                    <p class="brand-tagline">Rehabilitación & Estética</p>
+                    <h1 class="brand-name">Dentality</h1>
+                    <p class="brand-tagline">Odontología por Especialidades</p>
                 </div>
             </a>
             <button class="sidebar-close-btn d-lg-none" id="sidebarClose" aria-label="Cerrar Menú">

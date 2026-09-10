@@ -1,8 +1,8 @@
-const CACHE_NAME = 'tatianaruiz-v2';
+const CACHE_NAME = 'dentality-v1';
 const urlsToCache = [
     '/admin/login.php',
     '/admin/manifest.json',
-    '/admin/assets/images/logo_DraTatianaRuiz.png',
+    '/admin/assets/images/logo_Dentality.png',
     '/admin/assets/icons/icon-192x192.png',
     '/admin/assets/icons/icon-512x512.png',
     'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',

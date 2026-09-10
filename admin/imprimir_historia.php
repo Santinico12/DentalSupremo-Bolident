@@ -2,7 +2,7 @@
 /**
  * Impresión / PDF Oficial de Historia Clínica Odontológica
  * Reproducción de alta fidelidad del formulario oficial de Bolivia
- * Dra. Tatiana Ruiz - Cochabamba, Bolivia
+ * Dentality - Cochabamba, Bolivia
  */
 date_default_timezone_set('America/La_Paz');
 session_start();
@@ -345,8 +345,8 @@ if (count($partesNombre) >= 3) {
             <td style="width: 50px; text-align: right;">
                 <!-- Emblema Odontológico -->
                 <svg width="45" height="45" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="44" fill="none" stroke="#6B1D49" stroke-width="4"/>
-                    <path d="M30,35 Q30,70 50,85 Q70,70 70,35 Q50,45 30,35 Z" fill="#6B1D49"/>
+                    <circle cx="50" cy="50" r="44" fill="none" stroke="#003B73" stroke-width="4"/>
+                    <path d="M30,35 Q30,70 50,85 Q70,70 70,35 Q50,45 30,35 Z" fill="#003B73"/>
                     <line x1="50" y1="20" x2="50" y2="80" stroke="#fff" stroke-width="4"/>
                 </svg>
             </td>

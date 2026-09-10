@@ -92,23 +92,23 @@ require_once '../templates/header_general.php';
 
 <style>
     :root {
-        --primary: #6B1D49;
-        --primary-dark: #531438;
-        --primary-light: #C47D9F;
+        --primary: #003B73;
+        --primary-dark: #062846;
+        --primary-light: #2998EC;
         --success: #28a745;
         --warning: #ffc107;
         --danger: #dc3545;
         --info: #17a2b8;
-        --light: #FDF8FA;
+        --light: #F4F9FD;
         --dark: #343a40;
         --whatsapp: #25D366;
-        --shadow: 0 2px 8px rgba(107, 29, 73, 0.08);
-        --shadow-hover: 0 4px 16px rgba(107, 29, 73, 0.2);
-        --shadow-lg: 0 8px 32px rgba(107, 29, 73, 0.12);
+        --shadow: 0 2px 8px rgba(0, 59, 115, 0.08);
+        --shadow-hover: 0 4px 16px rgba(0, 59, 115, 0.2);
+        --shadow-lg: 0 8px 32px rgba(0, 59, 115, 0.12);
     }
 
     body {
-        background: linear-gradient(135deg, #fdf8fa 0%, #f3e6ed 100%);
+        background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%);
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
@@ -1274,8 +1274,8 @@ require_once '../templates/header_general.php';
                 $hora_cita = date('H:i', strtotime($cita['fecha']));
                 $fecha_cita = date('d/m/Y', strtotime($cita['fecha']));
                 
-                $mensaje_whatsapp = "Hola *{$nombre_cliente}* \n\n";
-                $mensaje_whatsapp .= "Te hablamos del consultorio de la *Dra. Tatiana Ruiz*. Te recordamos que tienes una cita programada:\n\n";
+                $mensaje_whatsapp = "Hola *" . $cita['cliente_nombre'] . "*,\n\n";
+                $mensaje_whatsapp .= "Te hablamos de la clínica *Dentality*. Te recordamos que tienes una cita programada:\n\n";
                 if ($fecha_cita === date('d/m/Y')) {
                     $mensaje_whatsapp .= "Fecha: hoy\n";
                 } elseif ($fecha_cita === date('d/m/Y', strtotime('+1 day'))) {
@@ -1501,8 +1501,8 @@ require_once '../templates/header_general.php';
             $estaEnviado = !empty($rec['recordatorio_enviado']);
             $fechaEnvioStr = !empty($rec['fecha_recordatorio']) ? date('d/m/Y H:i', strtotime($rec['fecha_recordatorio'])) : '';
             
-            $msg_rec = "Hola *{$nombre_rec}* \n\n";
-            $msg_rec .= "Te hablamos del consultorio de la *Dra. Tatiana Ruiz*. Te recordamos que tienes una cita programada para *mañana*:\n\n";
+            $msg_rec = "Hola *" . $rec['cliente_nombre'] . "*,\n\n";
+            $msg_rec .= "Te hablamos de la clínica *Dentality*. Te recordamos que tienes una cita programada para *mañana*:\n\n";
             $msg_rec .= "Hora: {$hora_rec}\n";
             $msg_rec .= "Consultorio: {$cons_rec}\n";
             $msg_rec .= "¿Me confirmas tu asistencia por favor?\n\n";
@@ -1579,8 +1579,8 @@ require_once '../templates/header_general.php';
             $estaEnviado = !empty($rec['recordatorio_enviado']);
             $fechaEnvioStr = !empty($rec['fecha_recordatorio']) ? date('d/m/Y H:i', strtotime($rec['fecha_recordatorio'])) : '';
             
-            $msg_rec = "Hola *{$nombre_rec}* \n\n";
-            $msg_rec .= "Te hablamos del consultorio de la *Dra. Tatiana Ruiz*. Te recordamos que tienes una cita programada para *HOY*:\n\n";
+            $msg_rec = "Hola *" . $rec['cliente_nombre'] . "*,\n\n";
+            $msg_rec .= "Te hablamos de la clínica *Dentality*. Te recordamos que tienes una cita programada para *HOY*:\n\n";
             $msg_rec .= "Hora: {$hora_rec}\n";
             $msg_rec .= "Consultorio: {$cons_rec}\n";
             $msg_rec .= "¿Me confirmas tu asistencia por favor?\n\n";
@@ -1738,10 +1738,10 @@ require_once '../templates/header_general.php';
 // Recordatorios Drawer & Bot Functions
 // ============================================
 function getBotApiUrl() {
-    var custom = localStorage.getItem('tatianaruiz_bot_url');
+    var custom = localStorage.getItem('dentality_bot_url') || localStorage.getItem('tatianaruiz_bot_url');
     if (custom && custom.trim() !== '') return custom.trim().replace(/\/$/, '') + '/api';
     if (window.location.protocol === 'https:') {
-        return 'https://dratatianaruiz-bot.onrender.com/api';
+        return 'https://dentality-bot.onrender.com/api';
     }
     return 'http://localhost:3001/api';
 }
@@ -1905,14 +1905,14 @@ async function enviarRecordatorioIndividualBot(citaId, telefono, pacienteNombre,
     btnElement.disabled = true;
     btnElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Enviando...</span>';
     
-    var mensaje = '🦷 *RECORDATORIO DE CITA ODONTOLÓGICA - Dra. Tatiana Ruiz* ✨\n\n' +
+    var mensaje = '🦷 *RECORDATORIO DE CITA ODONTOLÓGICA - Dentality* ✨\n\n' +
                   '¡Hola *' + pacienteNombre + '*! 👋\n' +
                   'Te recordamos cordialmente que tienes una cita programada para el día *' + fechaLabel.toUpperCase() + '*:\n\n' +
                   '⏰ *Hora:* ' + hora + '\n' +
                   '🏥 *Consultorio:* ' + consultorio + '\n' +
                   '🩺 *Doctor/a:* ' + doctor + '\n' +
                   '📝 *Motivo / Tratamiento:* ' + motivo + '\n' +
-                  '📍 *Ubicación:* Consultorio Dra. Tatiana Ruiz Calle Fidel Anze, Entre Av. Pando y Av. Melchor Urquidi. Parque Fidel Anze Clinica NUR Primer Piso oficina 19.\n\n' +
+                  '📍 *Ubicación:* Clínica Dentality, Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia.\n\n' +
                   'Por favor, ayúdanos respondiendo a este mensaje:\n' +
                   '👉 Escribe *"Confirmo"* para confirmar tu asistencia.\n' +
                   '👉 O avísanos si necesitas *"Reprogramar"* tu horario.\n\n' +

@@ -95,13 +95,13 @@ $html = '
 <meta charset="UTF-8">
 <style>
     body { font-family: sans-serif; font-size: 9.5pt; color: #222; }
-    .header-table { width: 100%; border-bottom: 2.5px solid #6B1D49; padding-bottom: 10px; margin-bottom: 12px; }
-    .clinic-title { color: #6B1D49; font-size: 16pt; font-weight: bold; text-transform: uppercase; margin: 0; }
-    .clinic-sub { color: #C47D9F; font-size: 8.5pt; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
+    .header-table { width: 100%; border-bottom: 2.5px solid #003B73; padding-bottom: 10px; margin-bottom: 12px; }
+    .clinic-title { color: #003B73; font-size: 16pt; font-weight: bold; text-transform: uppercase; margin: 0; }
+    .clinic-sub { color: #2998EC; font-size: 8.5pt; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
     .clinic-info { color: #555; font-size: 8pt; line-height: 1.3; }
     
     .receipt-badge {
-        background-color: #6B1D49;
+        background-color: #003B73;
         color: #ffffff;
         padding: 6px 12px;
         border-radius: 6px;
@@ -118,7 +118,7 @@ $html = '
         font-size: 8.5pt;
     }
     .card-title {
-        color: #6B1D49;
+        color: #003B73;
         font-weight: bold;
         font-size: 8.5pt;
         text-transform: uppercase;
@@ -131,7 +131,7 @@ $html = '
     .val { color: #111; }
 
     .section-title {
-        background-color: #6B1D49;
+        background-color: #003B73;
         color: #ffffff;
         font-weight: bold;
         font-size: 9pt;
@@ -148,7 +148,7 @@ $html = '
     }
     .table-items th {
         background-color: #f7eff3;
-        color: #6B1D49;
+        color: #003B73;
         font-size: 8pt;
         text-transform: uppercase;
         padding: 6px;
@@ -157,8 +157,8 @@ $html = '
     .table-items td { border-bottom: 1px solid #f2e9ee; }
 
     .literal-box {
-        background-color: #fdf8fa;
-        border-left: 3px solid #6B1D49;
+        background-color: #F4F9FD;
+        border-left: 3px solid #003B73;
         padding: 6px 10px;
         margin: 10px 0;
         font-size: 9pt;
@@ -167,18 +167,18 @@ $html = '
     .totals-table { width: 100%; margin-top: 5px; }
     .totals-box {
         background-color: #fcf8fa;
-        border: 1.5px solid #6B1D49;
+        border: 1.5px solid #003B73;
         border-radius: 6px;
         padding: 8px 10px;
         font-size: 8.5pt;
     }
     .highlight-monto {
-        border-top: 1.5px solid #6B1D49;
+        border-top: 1.5px solid #003B73;
         margin-top: 4px;
         padding-top: 4px;
         font-size: 11pt;
         font-weight: bold;
-        color: #6B1D49;
+        color: #003B73;
     }
 
     .sig-table { width: 100%; margin-top: 40px; }
@@ -201,11 +201,11 @@ $html = '
     <table class="header-table">
         <tr>
             <td style="width: 65%;">
-                <div class="clinic-title">Dra. Tatiana Ruiz</div>
-                <div class="clinic-sub">Cirujano Dentista &bull; Odontología Especializada</div>
+                <div class="clinic-title">Dentality</div>
+                <div class="clinic-sub">Odontología por Especialidades</div>
                 <div class="clinic-info">
-                    Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19 &bull; Cochabamba, Bolivia<br>
-                    Teléfono / WhatsApp: +591 70309222
+                    Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia<br>
+                    Teléfono / WhatsApp: 76969699
                 </div>
             </td>
             <td style="width: 35%; text-align: right; vertical-align: top;">
@@ -237,7 +237,7 @@ $html = '
             <td style="width: 50%; vertical-align: top; padding-left: 5px;">
                 <div class="info-card">
                     <div class="card-title">Detalles de la Transacción</div>
-                    <div class="row-item"><span class="lbl">Presupuesto N°:</span> <span class="val" style="color: #6B1D49; font-weight: bold;">' . htmlspecialchars($pago['presupuesto_numero']) . '</span></div>
+                    <div class="row-item"><span class="lbl">Presupuesto N°:</span> <span class="val" style="color: #003B73; font-weight: bold;">' . htmlspecialchars($pago['presupuesto_numero']) . '</span></div>
                     <div class="row-item"><span class="lbl">Método de Pago:</span> <span class="val">' . $metodoTexto . '</span></div>' .
                     (!empty($pago['referencia']) ? '<div class="row-item"><span class="lbl">N° Transacción:</span> <span class="val">' . htmlspecialchars($pago['referencia']) . '</span></div>' : '') .
                     '<div class="row-item"><span class="lbl">Registrado por:</span> <span class="val">' . htmlspecialchars($pago['registrado_por'] ?? 'Administración') . '</span></div>
@@ -291,8 +291,8 @@ $html = '
                             <td style="text-align: right;">Bs ' . number_format($abonosAnteriores, 2) . '</td>
                         </tr>
                         <tr class="highlight-monto">
-                            <td style="color: #6B1D49; font-weight: bold; padding-top: 5px;">ESTE PAGO:</td>
-                            <td style="text-align: right; color: #6B1D49; font-weight: bold; padding-top: 5px; font-size: 11pt;">Bs ' . number_format($pago['monto'], 2) . '</td>
+                            <td style="color: #003B73; font-weight: bold; padding-top: 5px;">ESTE PAGO:</td>
+                            <td style="text-align: right; color: #003B73; font-weight: bold; padding-top: 5px; font-size: 11pt;">Bs ' . number_format($pago['monto'], 2) . '</td>
                         </tr>
                         <tr>
                             <td style="color: #dc3545; font-weight: bold; padding-top: 4px;">Saldo Restante:</td>
@@ -314,13 +314,13 @@ $html = '
             <td style="width: 50%; text-align: center; vertical-align: bottom;">
                 <div class="sig-line"></div>
                 <div class="sig-title">Recibí Conforme</div>
-                <div class="sig-sub">Dra. Tatiana Ruiz &bull; Bolident</div>
+                <div class="sig-sub">Clínica Dentality</div>
             </td>
         </tr>
     </table>
 
     <div class="footer">
-        Dra. Tatiana Ruiz &bull; Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19 &bull; Tel: +591 70309222 &bull; Cochabamba, Bolivia
+        Dentality &bull; Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia &bull; Tel: 76969699
     </div>
 
 </body>

@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#6B1D49">
-    <meta name="description" content="Sistema de Gestión de Citas Odontológicas - Dra. Tatiana Ruiz">
-    <title>Dra. Tatiana Ruiz - Sistema de Citas</title>
+    <meta name="theme-color" content="#003B73">
+    <meta name="description" content="Sistema de Gestión de Citas Odontológicas - Dentality">
+    <title>Dentality - Sistema de Citas</title>
     
     <!-- PWA Meta Tags -->
     <link rel="manifest" href="/admin/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Dra. Tatiana Ruiz">
+    <meta name="apple-mobile-web-app-title" content="Dentality">
     
     <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/png" href="/admin/assets/images/logo_DraTatianaRuiz.png">
+    <link rel="icon" type="image/png" href="/admin/assets/images/logo_Dentality.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/admin/assets/icons/icon-192x192.png">
     <link rel="apple-touch-icon" href="/admin/assets/icons/icon-192x192.png">
     
@@ -29,7 +29,7 @@
 
     <style>
         header {
-            background: linear-gradient(135deg, #6B1D49 0%, #531438 100%);
+            background: linear-gradient(135deg, #003B73 0%, #062846 100%);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -62,7 +62,7 @@
             gap: 15px;
         }
         nav a {
-            color: #FDF8FA;
+            color: #F4F9FD;
             text-decoration: none;
             font-size: 1.05em;
             transition: all 0.3s ease;
@@ -79,8 +79,8 @@
     <header>
         <div class="logo">
             <a href="dashboard.php" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
-                <img src="assets/images/logo_DraTatianaRuiz.png" alt="Logo Dra. Tatiana Ruiz">
-                <h1>Dra. Tatiana Ruiz</h1>
+                <img src="assets/images/logo_Dentality.png" alt="Logo Dentality">
+                <h1>Dentality</h1>
             </a>
         </div>
         <nav>

@@ -57,13 +57,13 @@ $tabla_html = '';
 if (!empty($movimientos)) {
     $tabla_html = '<table class="movimientos-table" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
         <thead>
-            <tr style="background-color: #6B1D49;">
-                <th style="background-color: #6B1D49; color: #ffffff !important; padding: 8px 10px; text-align: left; border: 1px solid #531438; font-size: 10px; width: 15%;">Fecha</th>
-                <th style="background-color: #6B1D49; color: #ffffff !important; padding: 8px 10px; text-align: left; border: 1px solid #531438; font-size: 10px; width: 15%;">Tipo</th>
-                <th style="background-color: #6B1D49; color: #ffffff !important; padding: 8px 10px; text-align: left; border: 1px solid #531438; font-size: 10px; width: 32%;">Concepto</th>
-                <th style="background-color: #6B1D49; color: #ffffff !important; padding: 8px 10px; text-align: center; border: 1px solid #531438; font-size: 10px; width: 13%;">Método</th>
-                <th style="background-color: #6B1D49; color: #ffffff !important; padding: 8px 10px; text-align: left; border: 1px solid #531438; font-size: 10px; width: 13%;">Responsable</th>
-                <th style="background-color: #6B1D49; color: #ffffff !important; padding: 8px 10px; text-align: right; border: 1px solid #531438; font-size: 10px; width: 12%;">Monto</th>
+            <tr style="background-color: #003B73;">
+                <th style="background-color: #003B73; color: #ffffff !important; padding: 8px 10px; text-align: left; border: 1px solid #062846; font-size: 10px; width: 15%;">Fecha</th>
+                <th style="background-color: #003B73; color: #ffffff !important; padding: 8px 10px; text-align: left; border: 1px solid #062846; font-size: 10px; width: 15%;">Tipo</th>
+                <th style="background-color: #003B73; color: #ffffff !important; padding: 8px 10px; text-align: left; border: 1px solid #062846; font-size: 10px; width: 32%;">Concepto</th>
+                <th style="background-color: #003B73; color: #ffffff !important; padding: 8px 10px; text-align: center; border: 1px solid #062846; font-size: 10px; width: 13%;">Método</th>
+                <th style="background-color: #003B73; color: #ffffff !important; padding: 8px 10px; text-align: left; border: 1px solid #062846; font-size: 10px; width: 13%;">Responsable</th>
+                <th style="background-color: #003B73; color: #ffffff !important; padding: 8px 10px; text-align: right; border: 1px solid #062846; font-size: 10px; width: 12%;">Monto</th>
             </tr>
         </thead>
         <tbody>';
@@ -99,11 +99,11 @@ $html = '<!DOCTYPE html>
     <meta charset="UTF-8">
     <style>
         body { font-family: "Segoe UI", Arial, sans-serif; color: #333; margin: 0; padding: 0; }
-        .header { border-bottom: 3px solid #6B1D49; padding-bottom: 15px; margin-bottom: 20px; }
+        .header { border-bottom: 3px solid #003B73; padding-bottom: 15px; margin-bottom: 20px; }
         .header-logo { float: left; width: 60px; height: 60px; margin-right: 15px; }
         .header-text h1 { margin: 0; color: #343a40; font-size: 20px; }
         .header-text p { margin: 5px 0 0 0; color: #666; font-size: 11px; }
-        .info-box { background-color: #f8f9fa; border-left: 4px solid #6B1D49; padding: 12px; margin-bottom: 20px; border-radius: 3px; }
+        .info-box { background-color: #f8f9fa; border-left: 4px solid #003B73; padding: 12px; margin-bottom: 20px; border-radius: 3px; }
         .info-box-table { width: 100%; border-collapse: collapse; border: none; }
         .info-box-table td { padding: 4px 0; border: none; font-size: 10px; }
         .info-box-label { font-weight: bold; color: #343a40; }
@@ -112,20 +112,20 @@ $html = '<!DOCTYPE html>
         .stats-table th { background-color: #f8f9fa; color: #555; font-size: 10px; padding: 8px; border: 1px solid #ddd; text-align: center; }
         .stats-table td { padding: 10px; border: 1px solid #ddd; text-align: center; font-size: 12px; font-weight: bold; }
         .movimientos-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .movimientos-table th { background-color: #6B1D49 !important; color: #ffffff !important; font-size: 10px; font-weight: bold; border: 1px solid #531438; }
-        .section-title { background-color: #6B1D49; color: white; padding: 8px 12px; margin-top: 20px; margin-bottom: 10px; font-weight: bold; font-size: 11px; border-radius: 3px; text-transform: uppercase; }
+        .movimientos-table th { background-color: #003B73 !important; color: #ffffff !important; font-size: 10px; font-weight: bold; border: 1px solid #062846; }
+        .section-title { background-color: #003B73; color: white; padding: 8px 12px; margin-top: 20px; margin-bottom: 10px; font-weight: bold; font-size: 11px; border-radius: 3px; text-transform: uppercase; }
         .empty-state { text-align: center; padding: 30px; color: #999; font-size: 11px; }
-        .footer-line { border-top: 1px solid #6B1D49; margin-top: 30px; padding-top: 15px; text-align: center; font-size: 9px; color: #999; }
+        .footer-line { border-top: 1px solid #003B73; margin-top: 30px; padding-top: 15px; text-align: center; font-size: 9px; color: #999; }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="header-logo">
-            <img src="assets/images/logo_DraTatianaRuiz.png" alt="Logo Dra. Tatiana Ruiz" style="width: 100%; height: 100%; object-fit: contain;">
+            <img src="assets/images/logo_Dentality.png" alt="Dentality" style="width: 100%; height: 100%; object-fit: contain;">
         </div>
         <div class="header-text">
             <h1>REPORTE DE CAJA Y FINANZAS</h1>
-            <p>Dra. Tatiana Ruiz - ' . date('d/m/Y H:i') . '</p>
+            <p>Dentality - ' . date('d/m/Y H:i') . '</p>
         </div>
         <div style="clear: both;"></div>
     </div>
@@ -173,7 +173,7 @@ if (!empty($movimientos)) {
     $html .= '<div class="empty-state">No se registraron movimientos en el período seleccionado.</div>';
 }
 
-$html .= '<div class="footer-line">Reporte financiero generado automáticamente - Dra. Tatiana Ruiz</div>
+$html .= '<div class="footer-line">Reporte financiero generado automáticamente - Dentality</div>
 </body>
 </html>';
 

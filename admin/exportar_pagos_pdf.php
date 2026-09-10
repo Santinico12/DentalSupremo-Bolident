@@ -119,18 +119,18 @@ if (!empty($pagos)) {
             <td style=\"text-align: center; color: #777; padding: 6px;\">$idx</td>
             <td style=\"padding: 6px;\"><strong>$fecha</strong> <span style=\"font-size: 7.5pt; color: #777;\">$hora</span></td>
             <td style=\"padding: 6px;\"><strong>$cliente</strong></td>
-            <td style=\"padding: 6px; color: #6B1D49; font-weight: bold;\">$preNumero</td>
+            <td style=\"padding: 6px; color: #003B73; font-weight: bold;\">$preNumero</td>
             <td style=\"padding: 6px;\">$motivoHtml</td>
             <td style=\"text-align: center; padding: 6px; text-transform: uppercase;\">$metodoTxt</td>
-            <td style=\"text-align: right; padding: 6px; font-weight: bold; color: #6B1D49;\">Bs $montoFmt</td>
+            <td style=\"text-align: right; padding: 6px; font-weight: bold; color: #003B73;\">Bs $montoFmt</td>
         </tr>";
         $idx++;
     }
 
     $filasPagos .= "
     <tr style=\"background-color: #f8eff4; font-weight: bold;\">
-        <td colspan=\"6\" style=\"text-align: right; padding: 8px; font-weight: bold; color: #6B1D49; text-transform: uppercase;\">TOTAL RECAUDADO ($cantidadPagos pagos):</td>
-        <td style=\"text-align: right; padding: 8px; font-weight: bold; color: #6B1D49; font-size: 10.5pt;\">Bs " . number_format($totalMonto, 2) . "</td>
+        <td colspan=\"6\" style=\"text-align: right; padding: 8px; font-weight: bold; color: #003B73; text-transform: uppercase;\">TOTAL RECAUDADO ($cantidadPagos pagos):</td>
+        <td style=\"text-align: right; padding: 8px; font-weight: bold; color: #003B73; font-size: 10.5pt;\">Bs " . number_format($totalMonto, 2) . "</td>
     </tr>";
 } else {
     $filasPagos = '<tr><td colspan="7" style="text-align: center; padding: 25px; color: #777;">No se registraron pagos con los filtros seleccionados.</td></tr>';
@@ -143,9 +143,9 @@ $html = '
 <meta charset="UTF-8">
 <style>
     body { font-family: sans-serif; font-size: 8.5pt; color: #222; }
-    .header-table { width: 100%; border-bottom: 2px solid #6B1D49; padding-bottom: 8px; margin-bottom: 12px; }
-    .clinic-title { color: #6B1D49; font-size: 15pt; font-weight: bold; text-transform: uppercase; margin: 0; }
-    .clinic-sub { color: #C47D9F; font-size: 8.5pt; font-weight: bold; text-transform: uppercase; }
+    .header-table { width: 100%; border-bottom: 2px solid #003B73; padding-bottom: 8px; margin-bottom: 12px; }
+    .clinic-title { color: #003B73; font-size: 15pt; font-weight: bold; text-transform: uppercase; margin: 0; }
+    .clinic-sub { color: #2998EC; font-size: 8.5pt; font-weight: bold; text-transform: uppercase; }
     .clinic-info { color: #555; font-size: 8pt; }
     
     .stats-table { width: 100%; margin-bottom: 12px; border-collapse: separate; }
@@ -157,7 +157,7 @@ $html = '
         text-align: center;
         width: 20%;
     }
-    .stat-val { font-size: 11pt; font-weight: bold; color: #6B1D49; }
+    .stat-val { font-size: 11pt; font-weight: bold; color: #003B73; }
     .stat-lbl { font-size: 7.5pt; font-weight: bold; color: #666; text-transform: uppercase; }
 
     .payments-table {
@@ -167,7 +167,7 @@ $html = '
         border: 1px solid #ebdbe4;
     }
     .payments-table th {
-        background-color: #6B1D49;
+        background-color: #003B73;
         color: #ffffff;
         font-size: 7.5pt;
         text-transform: uppercase;
@@ -191,12 +191,12 @@ $html = '
     <table class="header-table">
         <tr>
             <td style="width: 65%;">
-                <div class="clinic-title">Dra. Tatiana Ruiz</div>
-                <div class="clinic-sub">Cirujano Dentista &bull; Clínica Dental Bolident</div>
-                <div class="clinic-info">Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19 &bull; Tel: +591 70309222</div>
+                <div class="clinic-title">Dentality</div>
+                <div class="clinic-sub">Odontología por Especialidades</div>
+                <div class="clinic-info">Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia &bull; Tel: 76969699</div>
             </td>
             <td style="width: 35%; text-align: right; vertical-align: middle;">
-                <div style="font-size: 12pt; font-weight: bold; color: #6B1D49; text-transform: uppercase;">Reporte de Pagos</div>
+                <div style="font-size: 12pt; font-weight: bold; color: #003B73; text-transform: uppercase;">Reporte de Pagos</div>
                 <div style="font-size: 7.5pt; color: #555; margin-top: 2px;">
                     <strong>Período:</strong> ' . htmlspecialchars($textoPeriodo) . '<br>
                     <strong>Método:</strong> ' . ($metodo ? ucfirst($metodo) : 'Todos') . '<br>
@@ -249,7 +249,7 @@ $html = '
     </table>
 
     <div class="footer">
-        Dra. Tatiana Ruiz &bull; Clínica Dental Bolident &bull; Cochabamba, Bolivia &bull; Documento de Reporte Contable Oficial
+        Dentality &bull; Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia &bull; Documento de Reporte Contable Oficial
     </div>
 
 </body>

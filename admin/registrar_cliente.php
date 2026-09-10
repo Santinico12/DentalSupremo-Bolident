@@ -27,18 +27,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $clienteId = $clientModel->create($nombre, $telefono_completo);
 
-    // Enviar mensaje de bienvenida Dra. Tatiana Ruiz vía Bot si hay teléfono
+    // Enviar mensaje de bienvenida Dentality vía Bot si hay teléfono
     if (!empty($telefono_completo) && $clienteId) {
         try {
-            $welcomeMsg = "🦷 *¡Bienvenido/a a la Clínica Dra. Tatiana Ruiz!* ✨\n\n"
+            $welcomeMsg = "🦷 *¡Bienvenido/a a la Clínica Dentality!* ✨\n\n"
                         . "¡Hola *{$nombre}*! 👋 Te saludamos cordialmente.\n\n"
                         . "Queremos darte la bienvenida y recordarte que en esta línea de WhatsApp dispones de nuestro *Asistente Virtual Inteligente 24/7* para:\n"
                         . "📅 *Consultar y confirmar tus citas odontológicas.*\n"
                         . "⏰ *Conocer horarios de atención y consultorios.*\n"
-                        . "🩺 *Informarte sobre tratamientos de Rehabilitación, Estética y Ortodoncia.*\n\n"
+                        . "🩺 *Informarte sobre tratamientos de Odontología por Especialidades.*\n\n"
                         . "¡Estamos a tu servicio para cuidar de tu sonrisa! Si necesitas algo, sólo responde a este mensaje. 😊🦷✨";
 
-            $botApiUrl = getenv('BOT_API_URL') ? rtrim(getenv('BOT_API_URL'), '/') . '/send-welcome' : 'https://dratatianaruiz-bot.onrender.com/api/send-welcome';
+            $botApiUrl = getenv('BOT_API_URL') ? rtrim(getenv('BOT_API_URL'), '/') . '/send-welcome' : 'https://dentality-bot.onrender.com/api/send-welcome';
             $postData = json_encode([
                 'clienteId' => $clienteId,
                 'telefono' => $telefono_completo,
@@ -74,19 +74,19 @@ require_once '../templates/header_general.php';
 
 <style>
     :root {
-        --primary: #6B1D49;
-        --primary-dark: #531438;
-        --accent: #C47D9F;
+        --primary: #003B73;
+        --primary-dark: #062846;
+        --accent: #2998EC;
         --success: #28a745;
         --danger: #dc3545;
-        --light: #FDF8FA;
+        --light: #F4F9FD;
         --dark: #343a40;
-        --shadow: 0 2px 8px rgba(107, 29, 73, 0.08);
-        --shadow-hover: 0 4px 16px rgba(107, 29, 73, 0.2);
+        --shadow: 0 2px 8px rgba(0, 59, 115, 0.08);
+        --shadow-hover: 0 4px 16px rgba(0, 59, 115, 0.2);
     }
 
     body {
-        background: linear-gradient(135deg, #fdf8fa 0%, #f3e6ed 100%);
+        background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 

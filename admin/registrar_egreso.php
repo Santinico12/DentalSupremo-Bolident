@@ -125,8 +125,8 @@ require_once '../templates/header_general.php';
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
 <style>
-    :root { --primary: #6B1D49; --primary-dark: #531438; --accent: #C47D9F; }
-    body { background: linear-gradient(135deg, #fdf8fa 0%, #f3e6ed 100%); }
+    :root { --primary: #003B73; --primary-dark: #062846; --accent: #2998EC; }
+    body { background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%); }
     .page-container { max-width: 800px; margin: 0 auto; padding: 20px; }
     
     .page-header {

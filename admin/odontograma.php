@@ -1,6 +1,6 @@
 <?php
 /**
- * Odontograma Digital Anatómico Interactivo - Dra. Tatiana Ruiz
+ * Odontograma Digital Anatómico Interactivo - Dentality
  */
 date_default_timezone_set('America/La_Paz');
 session_start();
@@ -49,15 +49,15 @@ require_once '../templates/header_general.php';
 
 <style>
     :root {
-        --primary: #6B1D49;
-        --primary-gradient: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%);
-        --accent-teal: #C47D9F;
+        --primary: #003B73;
+        --primary-gradient: linear-gradient(135deg, #003B73 0%, #2998EC 100%);
+        --accent-teal: #2998EC;
         --accent-blue: #2563EB;
         --accent-red: #EF4444;
         --accent-gold: #F59E0B;
         --accent-purple: #8B5CF6;
         --accent-green: #10B981;
-        --bg-main: #FDF8FA;
+        --bg-main: #F4F9FD;
         --card-bg: #FFFFFF;
         --text-dark: #0F172A;
         --text-muted: #64748B;

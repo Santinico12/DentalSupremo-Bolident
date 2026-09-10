@@ -50,13 +50,13 @@ require_once '../templates/header_general.php';
 
 <style>
     :root { 
-        --primary: #6B1D49; 
-        --primary-dark: #531438; 
-        --accent: #C47D9F; 
-        --light-bg: #fdf8fa;
+        --primary: #003B73; 
+        --primary-dark: #062846; 
+        --accent: #2998EC; 
+        --light-bg: #F4F9FD;
         --border-color: #f0e2ea;
     }
-    body { background: linear-gradient(135deg, #fdf8fa 0%, #f3e6ed 100%); min-height: 100vh; }
+    body { background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%); min-height: 100vh; }
     .page-container { max-width: 950px; margin: 0 auto; padding: 20px 15px 40px; }
     
     .page-header {
@@ -70,7 +70,7 @@ require_once '../templates/header_general.php';
         align-items: center;
         flex-wrap: wrap;
         gap: 15px;
-        box-shadow: 0 4px 15px rgba(107, 29, 73, 0.25);
+        box-shadow: 0 4px 15px rgba(0, 59, 115, 0.25);
     }
     .page-header h1 { margin: 0; font-weight: 700; font-size: 1.45rem; display: flex; align-items: center; gap: 10px; }
     .header-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
@@ -120,7 +120,7 @@ require_once '../templates/header_general.php';
     }
     
     .monto-banner {
-        background: linear-gradient(135deg, rgba(107, 29, 73, 0.05), rgba(196, 125, 159, 0.1));
+        background: linear-gradient(135deg, rgba(0, 59, 115, 0.05), rgba(196, 125, 159, 0.1));
         border: 2px dashed var(--accent);
         border-radius: 14px;
         padding: 20px;
@@ -376,7 +376,7 @@ require_once '../templates/header_general.php';
             </div>
             <div class="info-item">
                 <span class="info-title">Doctor / Especialista</span>
-                <span class="info-val"><?php echo htmlspecialchars($presupuesto['doctor_nombre'] ?? 'Dra. Tatiana Ruiz'); ?></span>
+                <span class="info-val"><?php echo htmlspecialchars($presupuesto['doctor_nombre'] ?? 'Dentality'); ?></span>
             </div>
             <div class="info-item">
                 <span class="info-title">Tratamientos Contratados</span>

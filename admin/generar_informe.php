@@ -69,7 +69,7 @@ $tabla_html = '';
 if (!empty($citas)) {
     $tabla_html = '<table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
         <thead>
-            <tr style="background-color: #6B1D49; color: white; font-weight: bold;">
+            <tr style="background-color: #003B73; color: white; font-weight: bold;">
                 <th style="padding: 12px; text-align: left; border: 1px solid #ddd; font-size: 11px;">Cliente</th>
                 <th style="padding: 12px; text-align: left; border: 1px solid #ddd; font-size: 11px;">Doctor</th>
                 <th style="padding: 12px; text-align: left; border: 1px solid #ddd; font-size: 11px;">Fecha</th>
@@ -129,7 +129,7 @@ $html = '<!DOCTYPE html>
             display: flex;
             align-items: center;
             padding: 20px;
-            border-bottom: 3px solid #6B1D49;
+            border-bottom: 3px solid #003B73;
             margin-bottom: 20px;
         }
         .header-logo {
@@ -149,7 +149,7 @@ $html = '<!DOCTYPE html>
         }
         .info-box {
             background-color: #f8f9fa;
-            border-left: 4px solid #6B1D49;
+            border-left: 4px solid #003B73;
             padding: 15px;
             margin-bottom: 15px;
             border-radius: 3px;
@@ -168,7 +168,7 @@ $html = '<!DOCTYPE html>
             color: #666;
         }
         .section-title {
-            background-color: #6B1D49;
+            background-color: #003B73;
             color: white;
             padding: 10px 15px;
             margin-top: 20px;
@@ -184,7 +184,7 @@ $html = '<!DOCTYPE html>
             font-size: 12px;
         }
         .footer-line {
-            border-top: 1px solid #6B1D49;
+            border-top: 1px solid #003B73;
             margin-top: 30px;
             padding-top: 15px;
             text-align: center;
@@ -197,12 +197,12 @@ $html = '<!DOCTYPE html>
             font-size: 9px;
         }
         th {
-            background-color: #6B1D49;
+            background-color: #003B73;
             color: white;
             padding: 10px;
             text-align: left;
             font-weight: bold;
-            border: 1px solid #6B1D49;
+            border: 1px solid #003B73;
         }
         td {
             padding: 8px 10px;
@@ -216,11 +216,11 @@ $html = '<!DOCTYPE html>
 <body>
     <div class="header">
         <div class="header-logo">
-            <img src="assets/images/logo_DraTatianaRuiz.png" alt="Logo Dra. Tatiana Ruiz" style="width: 100%; height: 100%; object-fit: contain;">
+            <img src="assets/images/logo_Dentality.png" alt="Dentality" style="width: 100%; height: 100%; object-fit: contain;">
         </div>
         <div class="header-text">
             <h1>INFORME DE CITAS</h1>
-            <p>Dra. Tatiana Ruiz - ' . date('d/m/Y H:i') . '</p>
+            <p>Dentality - ' . date('d/m/Y H:i') . '</p>
         </div>
     </div>
 
@@ -254,7 +254,7 @@ if (!empty($eventos)) {
     $tabla_eventos_html = '<div class="section-title">DETALLE DE EVENTOS</div>';
     $tabla_eventos_html .= '<table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
         <thead>
-            <tr style="background-color: #6B1D49; color: white; font-weight: bold;">
+            <tr style="background-color: #003B73; color: white; font-weight: bold;">
                 <th style="padding: 12px; text-align: left; border: 1px solid #ddd; font-size: 11px;">Nombre del Evento</th>
                 <th style="padding: 12px; text-align: left; border: 1px solid #ddd; font-size: 11px;">Fecha</th>
                 <th style="padding: 12px; text-align: center; border: 1px solid #ddd; font-size: 11px;">Inicio</th>
@@ -292,7 +292,7 @@ if (!empty($eventos)) {
     $html .= $tabla_eventos_html;
 }
 
-$html .= '<div class="footer-line">Reporte generado automáticamente - Dra. Tatiana Ruiz</div>
+$html .= '<div class="footer-line">Reporte generado automáticamente - Dentality</div>
 </body>
 </html>';
 

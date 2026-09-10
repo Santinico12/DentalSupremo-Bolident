@@ -44,21 +44,21 @@ $doctores = $doctorModel->getActivos();
 
 <style>
     :root {
-        --primary-color: #6B1D49;
-        --secondary-color: #C47D9F;
+        --primary-color: #003B73;
+        --secondary-color: #2998EC;
     }
 
     body {
-        background-color: #FDF8FA;
+        background-color: #F4F9FD;
     }
 
     /* Header del calendario más compacto */
     .calendario-header {
-        background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%);
+        background: linear-gradient(135deg, #003B73 0%, #2998EC 100%);
         border-radius: 15px;
         padding: 15px;
         margin-bottom: 15px;
-        box-shadow: 0 4px 12px rgba(107, 29, 73, 0.2);
+        box-shadow: 0 4px 12px rgba(0, 59, 115, 0.2);
     }
 
     .calendario-header h2 {
@@ -146,7 +146,7 @@ $doctores = $doctorModel->getActivos();
     .fc th a,
     .fc-col-header-cell-cushion,
     .fc-col-header-cell a {
-        color: var(--primary-color, #6B1D49) !important;
+        color: var(--primary-color, #003B73) !important;
         font-weight: 700 !important;
         text-decoration: none !important;
         text-transform: capitalize !important;
@@ -159,7 +159,7 @@ $doctores = $doctorModel->getActivos();
     }
 
     .fc .fc-more-link {
-        color: var(--primary-color, #6B1D49) !important;
+        color: var(--primary-color, #003B73) !important;
         font-weight: 600 !important;
     }
 
@@ -171,7 +171,7 @@ $doctores = $doctorModel->getActivos();
     }
 
     .modal-header {
-        background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%);
+        background: linear-gradient(135deg, #003B73 0%, #2998EC 100%);
         color: white;
         border-radius: 15px 15px 0 0;
         padding: 20px;
@@ -475,7 +475,7 @@ $doctores = $doctorModel->getActivos();
 <div class="modal fade" id="cronogramaModal" tabindex="-1" aria-labelledby="cronogramaModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="modal-header" style="background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%); color: white;">
+            <div class="modal-header" style="background: linear-gradient(135deg, #003B73 0%, #2998EC 100%); color: white;">
                 <div>
                     <h5 class="modal-title" id="cronogramaModalLabel">
                         <i class="fas fa-calendar-week me-2"></i>
@@ -1116,11 +1116,11 @@ function enhanceModalForEvent(event) {
     var panelHistoria = tipo === 'cita' ? `
         <div class="row mt-3">
             <div class="col-12">
-                <div class="card border-0 shadow-sm" style="border-left: 4px solid #6B1D49 !important; border-radius: 12px; overflow: hidden; background: #ffffff;">
+                <div class="card border-0 shadow-sm" style="border-left: 4px solid #003B73 !important; border-radius: 12px; overflow: hidden; background: #ffffff;">
                     <div class="card-header bg-light d-flex justify-content-between align-items-center py-2 px-3" style="cursor: pointer;" onclick="toggleHistoriaPanel()">
-                        <span class="fw-bold text-dark"><i class="fas fa-notes-medical me-2" style="color: #6B1D49;"></i>Historia Clínica del Paciente</span>
+                        <span class="fw-bold text-dark"><i class="fas fa-notes-medical me-2" style="color: #003B73;"></i>Historia Clínica del Paciente</span>
                         <div>
-                            <a href="#" id="btn-historia-completa" class="btn btn-sm btn-outline-primary me-2" style="border-radius: 6px; border-color: #6B1D49; color: #6B1D49;">
+                            <a href="#" id="btn-historia-completa" class="btn btn-sm btn-outline-primary me-2" style="border-radius: 6px; border-color: #003B73; color: #003B73;">
                                 <i class="fas fa-file-medical me-1"></i>Ver Completa
                             </a>
                             <i class="fas fa-chevron-down text-muted" id="historia-chevron"></i>
@@ -1128,7 +1128,7 @@ function enhanceModalForEvent(event) {
                     </div>
                     <div class="card-body" id="historia-panel-body" style="display: none; padding: 15px;">
                         <div id="historia-loading" class="text-center py-3">
-                            <i class="fas fa-spinner fa-spin me-1" style="color: #6B1D49;"></i> Cargando expedientes...
+                            <i class="fas fa-spinner fa-spin me-1" style="color: #003B73;"></i> Cargando expedientes...
                         </div>
                         <div id="historia-content" style="display: none;">
                             <div id="historia-alertas"></div>
@@ -1147,18 +1147,18 @@ function enhanceModalForEvent(event) {
                 <div class="col-md-6">
                     <div class="p-3 rounded-3" style="background-color: #f8fafc; border: 1px solid #e2e8f0;">
                         <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: rgba(107, 29, 73, 0.1); color: #6B1D49; flex-shrink: 0;">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: rgba(0, 59, 115, 0.1); color: #003B73; flex-shrink: 0;">
                                 <i class="fas fa-calendar-alt"></i>
                             </div>
                             <div>
                                 <span class="text-muted d-block" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700;">Fecha y Horario</span>
                                 <strong class="text-dark d-block" style="font-size: 0.92rem;">${fechaTxt}</strong>
-                                <span class="badge mt-1" style="background-color: #6B1D49; font-size: 0.78rem; font-weight: 600;">${horaTxt}</span>
+                                <span class="badge mt-1" style="background-color: #003B73; font-size: 0.78rem; font-weight: 600;">${horaTxt}</span>
                             </div>
                         </div>
 
                         <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: rgba(196, 125, 159, 0.15); color: #6B1D49; flex-shrink: 0;">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: rgba(196, 125, 159, 0.15); color: #003B73; flex-shrink: 0;">
                                 <i class="fas fa-clinic-medical"></i>
                             </div>
                             <div>
@@ -1169,7 +1169,7 @@ function enhanceModalForEvent(event) {
 
                         ${tipo === 'cita' ? `
                         <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: rgba(107, 29, 73, 0.1); color: #6B1D49; flex-shrink: 0;">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: rgba(0, 59, 115, 0.1); color: #003B73; flex-shrink: 0;">
                                 <i class="fas fa-user-md"></i>
                             </div>
                             <div>
@@ -1198,7 +1198,7 @@ function enhanceModalForEvent(event) {
                 <div class="col-md-6">
                     <div class="card h-100 border-0" style="background: #f8fafc; border: 1px solid #e2e8f0 !important; border-radius: 12px;">
                         <div class="card-header bg-transparent border-bottom-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
-                            <span class="fw-bold text-dark" style="font-size: 0.88rem;"><i class="fas fa-notes-medical me-2" style="color: #6B1D49;"></i>Notas del Tratamiento</span>
+                            <span class="fw-bold text-dark" style="font-size: 0.88rem;"><i class="fas fa-notes-medical me-2" style="color: #003B73;"></i>Notas del Tratamiento</span>
                         </div>
                         <div class="card-body pt-2">
                             <p id="modal-description" class="text-secondary mb-0" style="white-space: pre-line; line-height: 1.5; font-size: 0.92rem; min-height: 80px;"></p>
@@ -1242,7 +1242,7 @@ function enhanceModalForEvent(event) {
             </a>`;
         
         var botonEditar = tipo === 'evento' ? '' : `
-            <button type="button" class="btn btn-primary btn-sm px-3 d-inline-flex align-items-center gap-1" id="btn-reprogramar-cal" style="background: #6B1D49; border: none; border-radius: 8px; font-weight: 600;">
+            <button type="button" class="btn btn-primary btn-sm px-3 d-inline-flex align-items-center gap-1" id="btn-reprogramar-cal" style="background: #003B73; border: none; border-radius: 8px; font-weight: 600;">
                 <i class="fas fa-edit"></i> Editar / Reprogramar
             </button>`;
         
@@ -1313,7 +1313,7 @@ function enhanceModalForEvent(event) {
                 var consultorioNombre = event.extendedProps.consultorio_nombre || 'nuestro consultorio';
                 
                 var mensaje = 'Hola *' + nombreCliente + '* \n\n';
-                mensaje += 'Te hablamos del consultorio de la *Dra. Tatiana Ruiz*. Te recordamos que tienes una cita programada:\n\n';
+                mensaje += 'Te hablamos de la clínica *Dentality*. Te recordamos que tienes una cita programada:\n\n';
                 // Si la cita es hoy, usar "hoy" y si la cita es mañana, usar "mañana"
                 if (event.start.toDateString() === new Date().toDateString()) {
                     mensaje += 'Fecha: Hoy\n';
@@ -1561,7 +1561,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     evoHtml += '<div style="max-height: 200px; overflow-y: auto;">';
                     data.evoluciones.forEach(function(e) {
                         var fecha = new Date(e.fecha_atencion).toLocaleDateString('es-ES');
-                        evoHtml += '<div style="background: #f8f9fa; padding: 10px; border-radius: 6px; margin-bottom: 8px; border-left: 3px solid #6B1D49;">';
+                        evoHtml += '<div style="background: #f8f9fa; padding: 10px; border-radius: 6px; margin-bottom: 8px; border-left: 3px solid #003B73;">';
                         evoHtml += '<div style="font-size: 0.75rem; color: #888;">' + fecha + (e.doctor_nombre ? ' | Dr(a) ' + e.doctor_nombre : '') + '</div>';
                         evoHtml += '<div style="font-weight: 600; font-size: 0.9rem;">' + e.motivo_consulta + '</div>';
                         evoHtml += '<div style="font-size: 0.85rem; color: #555;">' + e.tratamiento_realizado + '</div>';
@@ -1593,7 +1593,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
 <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content" style="border-radius: 16px; overflow: hidden; border: none; box-shadow: 0 15px 50px rgba(0,0,0,0.18);">
-            <div class="modal-header" style="background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%); color: white; padding: 18px 24px; border: none;">
+            <div class="modal-header" style="background: linear-gradient(135deg, #003B73 0%, #2998EC 100%); color: white; padding: 18px 24px; border: none;">
                 <h5 class="modal-title" id="modal-title" style="font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-user-circle me-1"></i> Información de la Cita
                 </h5>
@@ -1617,7 +1617,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                         <option value="pospuesto">Pospuesto</option>
                         <option value="cancelado">Cancelado</option>
                     </select>
-                    <button type="button" class="btn btn-primary btn-sm" id="btn-actualizar-estado" data-id="" style="background: #6B1D49; border-color: #6B1D49;">Actualizar estado</button>
+                    <button type="button" class="btn btn-primary btn-sm" id="btn-actualizar-estado" data-id="" style="background: #003B73; border-color: #003B73;">Actualizar estado</button>
                     <button type="button" class="btn btn-success btn-sm" id="btn-confirmar-estado" data-id="">Confirmar llegada</button>
                 </div>
                 <button type="button" class="btn btn-danger" id="delete-button" data-id="">Eliminar</button>
@@ -1631,7 +1631,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
 <div class="modal fade" id="editCitaModalCal" tabindex="-1" aria-labelledby="editCitaLabelCal" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="border-radius: 14px; overflow: hidden; border: none; box-shadow: 0 10px 40px rgba(0,0,0,0.15);">
-            <div class="modal-header" style="background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%); color: white; padding: 18px 22px;">
+            <div class="modal-header" style="background: linear-gradient(135deg, #003B73 0%, #2998EC 100%); color: white; padding: 18px 22px;">
                 <h5 class="modal-title" id="editCitaLabelCal" style="font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
                     <i class="fas fa-edit"></i>
                     Editar / Reprogramar Cita
@@ -1646,7 +1646,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     
                     <div class="mb-3">
                         <label class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                            <i class="fas fa-user me-1" style="color: #6B1D49;"></i> Paciente
+                            <i class="fas fa-user me-1" style="color: #003B73;"></i> Paciente
                         </label>
                         <input type="text" id="edit_cliente_nombre_cal" class="form-control" readonly style="background-color: #f8f9fa; font-weight: 700; color: #212529;">
                     </div>
@@ -1654,13 +1654,13 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="edit_fecha_cal" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-calendar-alt me-1" style="color: #6B1D49;"></i> Fecha de la Cita
+                                <i class="fas fa-calendar-alt me-1" style="color: #003B73;"></i> Fecha de la Cita
                             </label>
                             <input type="date" name="fecha" id="edit_fecha_cal" class="form-control" required style="border-radius: 8px;">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="edit_hora_cal" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-clock me-1" style="color: #6B1D49;"></i> Hora de Inicio
+                                <i class="fas fa-clock me-1" style="color: #003B73;"></i> Hora de Inicio
                             </label>
                             <input type="time" name="hora" id="edit_hora_cal" class="form-control" required style="border-radius: 8px;">
                         </div>
@@ -1669,7 +1669,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="edit_doctor_id_cal" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-user-md me-1" style="color: #6B1D49;"></i> Doctor Asignado
+                                <i class="fas fa-user-md me-1" style="color: #003B73;"></i> Doctor Asignado
                             </label>
                             <select name="doctor_id" id="edit_doctor_id_cal" class="form-select" style="border-radius: 8px;">
                                 <option value="0">Sin asignar</option>
@@ -1680,7 +1680,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="edit_consultorio_id_cal" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-clinic-medical me-1" style="color: #6B1D49;"></i> Consultorio
+                                <i class="fas fa-clinic-medical me-1" style="color: #003B73;"></i> Consultorio
                             </label>
                             <select name="consultorio_id" id="edit_consultorio_id_cal" class="form-select" required style="border-radius: 8px;">
                                 <?php foreach ($consultorios as $cons): ?>
@@ -1692,7 +1692,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
 
                     <div class="mb-3">
                         <label for="edit_duracion_cal" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                            <i class="fas fa-stopwatch me-1" style="color: #6B1D49;"></i> Duración Estimada
+                            <i class="fas fa-stopwatch me-1" style="color: #003B73;"></i> Duración Estimada
                         </label>
                         <select name="duracion_estimada" id="edit_duracion_cal" class="form-select" required style="border-radius: 8px;">
                             <option value="15">15 min</option>
@@ -1706,14 +1706,14 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
 
                     <div class="mb-3">
                         <label for="edit_descripcion_cal" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                            <i class="fas fa-notes-medical me-1" style="color: #6B1D49;"></i> Descripción / Notas del Tratamiento
+                            <i class="fas fa-notes-medical me-1" style="color: #003B73;"></i> Descripción / Notas del Tratamiento
                         </label>
                         <textarea name="descripcion" id="edit_descripcion_cal" class="form-control" rows="3" placeholder="Detalles de la cita..." style="border-radius: 8px;"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer" style="background: #f8f9fa; padding: 14px 22px;">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%); border: none; border-radius: 8px; padding: 8px 20px; font-weight: 600;">
+                    <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, #003B73 0%, #2998EC 100%); border: none; border-radius: 8px; padding: 8px 20px; font-weight: 600;">
                         <i class="fas fa-save me-1"></i> Guardar Cambios
                     </button>
                 </div>
@@ -1726,7 +1726,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
 <div class="modal fade" id="modalNuevaCita" tabindex="-1" aria-labelledby="modalNuevaCitaLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="border-radius: 16px; overflow: hidden; border: none; box-shadow: 0 15px 50px rgba(0,0,0,0.18);">
-            <div class="modal-header" style="background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%); color: white; padding: 18px 24px; border: none;">
+            <div class="modal-header" style="background: linear-gradient(135deg, #003B73 0%, #2998EC 100%); color: white; padding: 18px 24px; border: none;">
                 <h5 class="modal-title" id="modalNuevaCitaLabel" style="font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-calendar-plus"></i> Registrar Nueva Cita
                 </h5>
@@ -1739,7 +1739,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     <!-- Selección de Paciente -->
                     <div class="mb-3">
                         <label for="nueva_cliente_id" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                            <i class="fas fa-user me-1" style="color: #6B1D49;"></i> Paciente / Cliente <span class="text-danger">*</span>
+                            <i class="fas fa-user me-1" style="color: #003B73;"></i> Paciente / Cliente <span class="text-danger">*</span>
                         </label>
                         <select name="cliente_id" id="nueva_cliente_id" class="form-select" required style="border-radius: 8px;">
                             <option value="">-- Seleccionar Paciente --</option>
@@ -1758,13 +1758,13 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-calendar-alt me-1" style="color: #6B1D49;"></i> Fecha
+                                <i class="fas fa-calendar-alt me-1" style="color: #003B73;"></i> Fecha
                             </label>
                             <input type="date" id="nueva_fecha_display" class="form-control" disabled style="border-radius: 8px; background-color: #e9ecef; cursor: not-allowed; font-weight: 600;">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-clock me-1" style="color: #6B1D49;"></i> Hora de Inicio
+                                <i class="fas fa-clock me-1" style="color: #003B73;"></i> Hora de Inicio
                             </label>
                             <input type="time" id="nueva_hora_display" class="form-control" disabled style="border-radius: 8px; background-color: #e9ecef; cursor: not-allowed; font-weight: 600;">
                         </div>
@@ -1774,7 +1774,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label for="nueva_doctor_id" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-user-md me-1" style="color: #6B1D49;"></i> Doctor Asignado
+                                <i class="fas fa-user-md me-1" style="color: #003B73;"></i> Doctor Asignado
                             </label>
                             <select name="doctor_id" id="nueva_doctor_id" class="form-select" style="border-radius: 8px;">
                                 <option value="0">Sin asignar</option>
@@ -1785,7 +1785,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-clinic-medical me-1" style="color: #6B1D49;"></i> Consultorio
+                                <i class="fas fa-clinic-medical me-1" style="color: #003B73;"></i> Consultorio
                             </label>
                             <select id="nueva_consultorio_id_display" class="form-select" disabled style="border-radius: 8px; background-color: #e9ecef; cursor: not-allowed; font-weight: 600;">
                                 <?php foreach ($consultorios as $cons): ?>
@@ -1798,7 +1798,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     <!-- Duración -->
                     <div class="mb-3">
                         <label for="nueva_duracion" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                            <i class="fas fa-stopwatch me-1" style="color: #6B1D49;"></i> Duración Estimada
+                            <i class="fas fa-stopwatch me-1" style="color: #003B73;"></i> Duración Estimada
                         </label>
                         <select name="duracion_estimada" id="nueva_duracion" class="form-select" required style="border-radius: 8px;">
                             <option value="15">15 min</option>
@@ -1813,14 +1813,14 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     <!-- Descripción / Notas -->
                     <div class="mb-3">
                         <label for="nueva_descripcion" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                            <i class="fas fa-notes-medical me-1" style="color: #6B1D49;"></i> Notas / Tratamiento
+                            <i class="fas fa-notes-medical me-1" style="color: #003B73;"></i> Notas / Tratamiento
                         </label>
                         <textarea name="descripcion" id="nueva_descripcion" class="form-control" rows="3" placeholder="Detalles de la cita o procedimiento..." style="border-radius: 8px;"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer" style="background: #f8f9fa; padding: 14px 22px;">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
-                    <button type="submit" class="btn btn-success" style="background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%); border: none; border-radius: 8px; padding: 8px 24px; font-weight: 600;">
+                    <button type="submit" class="btn btn-success" style="background: linear-gradient(135deg, #003B73 0%, #2998EC 100%); border: none; border-radius: 8px; padding: 8px 24px; font-weight: 600;">
                         <i class="fas fa-check me-1"></i> Guardar Cita
                     </button>
                 </div>
@@ -1833,7 +1833,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
 <div class="modal fade" id="modalNuevoEvento" tabindex="-1" aria-labelledby="modalNuevoEventoLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="border-radius: 16px; overflow: hidden; border: none; box-shadow: 0 15px 50px rgba(0,0,0,0.18);">
-            <div class="modal-header" style="background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%); color: white; padding: 18px 24px; border: none;">
+            <div class="modal-header" style="background: linear-gradient(135deg, #003B73 0%, #2998EC 100%); color: white; padding: 18px 24px; border: none;">
                 <h5 class="modal-title" id="modalNuevoEventoLabel" style="font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-calendar-alt"></i> Registrar Nuevo Evento
                 </h5>
@@ -1846,7 +1846,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     <!-- Nombre del Evento -->
                     <div class="mb-3">
                         <label for="nuevo_evento_nombre" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                            <i class="fas fa-tag me-1" style="color: #6B1D49;"></i> Nombre del Evento <span class="text-danger">*</span>
+                            <i class="fas fa-tag me-1" style="color: #003B73;"></i> Nombre del Evento <span class="text-danger">*</span>
                         </label>
                         <input type="text" name="nombre" id="nuevo_evento_nombre" class="form-control" placeholder="Ej: Feriado, Cierre de consultorio, Mantenimiento, Reunión clínica" required style="border-radius: 8px;">
                     </div>
@@ -1860,13 +1860,13 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-calendar-alt me-1" style="color: #6B1D49;"></i> Fecha
+                                <i class="fas fa-calendar-alt me-1" style="color: #003B73;"></i> Fecha
                             </label>
                             <input type="date" id="nuevo_evento_fecha_display" class="form-control" disabled style="border-radius: 8px; background-color: #e9ecef; cursor: not-allowed; font-weight: 600;">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-clock me-1" style="color: #6B1D49;"></i> Hora de Inicio
+                                <i class="fas fa-clock me-1" style="color: #003B73;"></i> Hora de Inicio
                             </label>
                             <input type="time" id="nuevo_evento_hora_display" class="form-control" disabled style="border-radius: 8px; background-color: #e9ecef; cursor: not-allowed; font-weight: 600;">
                         </div>
@@ -1876,7 +1876,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     <div class="row g-3 mb-3">
                         <div class="col-md-6">
                             <label class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-clinic-medical me-1" style="color: #6B1D49;"></i> Consultorio
+                                <i class="fas fa-clinic-medical me-1" style="color: #003B73;"></i> Consultorio
                             </label>
                             <select id="nuevo_evento_consultorio_id_display" class="form-select" disabled style="border-radius: 8px; background-color: #e9ecef; cursor: not-allowed; font-weight: 600;">
                                 <?php foreach ($consultorios as $cons): ?>
@@ -1886,7 +1886,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                         </div>
                         <div class="col-md-6">
                             <label for="nuevo_evento_duracion" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                                <i class="fas fa-stopwatch me-1" style="color: #6B1D49;"></i> Duración Estimada
+                                <i class="fas fa-stopwatch me-1" style="color: #003B73;"></i> Duración Estimada
                             </label>
                             <select name="duracion_estimada" id="nuevo_evento_duracion" class="form-select" required style="border-radius: 8px;">
                                 <option value="15">15 min</option>
@@ -1907,14 +1907,14 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                     <!-- Descripción / Notas -->
                     <div class="mb-3">
                         <label for="nuevo_evento_descripcion" class="form-label" style="font-weight: 600; font-size: 0.88rem; color: #495057;">
-                            <i class="fas fa-align-left me-1" style="color: #6B1D49;"></i> Descripción o Notas (Opcional)
+                            <i class="fas fa-align-left me-1" style="color: #003B73;"></i> Descripción o Notas (Opcional)
                         </label>
                         <textarea name="descripcion" id="nuevo_evento_descripcion" class="form-control" rows="3" placeholder="Detalles sobre el evento o motivo del bloqueo..." style="border-radius: 8px;"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer" style="background: #f8f9fa; padding: 14px 22px;">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius: 8px;">Cancelar</button>
-                    <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%); border: none; border-radius: 8px; padding: 8px 24px; font-weight: 600;">
+                    <button type="submit" class="btn btn-primary" style="background: linear-gradient(135deg, #003B73 0%, #2998EC 100%); border: none; border-radius: 8px; padding: 8px 24px; font-weight: 600;">
                         <i class="fas fa-check me-1"></i> Guardar Evento
                     </button>
                 </div>
@@ -1927,7 +1927,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
 <div class="modal fade" id="registroTypeModal" tabindex="-1" aria-labelledby="registroTypeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header" style="background: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%); color: white; border: none;">
+            <div class="modal-header" style="background: linear-gradient(135deg, #003B73 0%, #2998EC 100%); color: white; border: none;">
                 <h5 class="modal-title" id="registroTypeModalLabel">
                     <i class="fas fa-calendar-alt me-2"></i>
                     ¿Qué deseas registrar?
@@ -1944,12 +1944,12 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                         min-width: 200px;
                         padding: 25px;
                         border-radius: 12px;
-                        border: 2px solid #6B1D49;
-                        background: linear-gradient(135deg, rgba(107, 29, 73, 0.05) 0%, rgba(196, 125, 159, 0.08) 100%);
+                        border: 2px solid #003B73;
+                        background: linear-gradient(135deg, rgba(0, 59, 115, 0.05) 0%, rgba(196, 125, 159, 0.08) 100%);
                         cursor: pointer;
                         transition: all 0.3s ease;
                     " id="opcion-cita-card">
-                        <div style="font-size: 3rem; margin-bottom: 15px; color: #6B1D49;">
+                        <div style="font-size: 3rem; margin-bottom: 15px; color: #003B73;">
                             <i class="fas fa-user-check"></i>
                         </div>
                         <h6 style="font-weight: 700; color: #333; margin-bottom: 10px;">Registrar Cita</h6>
@@ -1981,8 +1981,8 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
 
 <style>
     #opcion-cita-card:hover {
-        border-color: #C47D9F;
-        box-shadow: 0 8px 24px rgba(107, 29, 73, 0.25);
+        border-color: #2998EC;
+        box-shadow: 0 8px 24px rgba(0, 59, 115, 0.25);
         transform: translateY(-4px);
     }
 

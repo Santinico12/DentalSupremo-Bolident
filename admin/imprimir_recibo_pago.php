@@ -101,7 +101,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
             transition: transform 0.15s ease, box-shadow 0.15s ease;
         }
         .btn-act:hover { transform: translateY(-1px); }
-        .btn-print { background: #6B1D49; color: white; }
+        .btn-print { background: #003B73; color: white; }
         .btn-pdf { background: #dc3545; color: white; }
         .btn-close { background: #6c757d; color: white; }
 
@@ -120,12 +120,12 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
         .header-table {
             width: 100%;
             border-collapse: collapse;
-            border-bottom: 2.5px solid #6B1D49;
+            border-bottom: 2.5px solid #003B73;
             padding-bottom: 14px;
             margin-bottom: 16px;
         }
         .header-clinic h1 {
-            color: #6B1D49;
+            color: #003B73;
             font-size: 22px;
             font-weight: 800;
             letter-spacing: 0.5px;
@@ -135,7 +135,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
         .header-clinic .specialty {
             font-size: 11px;
             font-weight: 700;
-            color: #C47D9F;
+            color: #2998EC;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 4px;
@@ -151,7 +151,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
             width: 220px;
         }
         .receipt-pill {
-            background: linear-gradient(135deg, #6B1D49, #531438);
+            background: linear-gradient(135deg, #003B73, #062846);
             color: white;
             padding: 8px 14px;
             border-radius: 8px;
@@ -184,15 +184,14 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
             border: 1px solid #ebdbe4;
             border-radius: 8px;
             padding: 10px 14px;
-        }
-        .info-card-title {
-            font-size: 10px;
+               .info-card-title {
+            font-size: 11px;
             font-weight: 800;
-            color: #6B1D49;
+            color: #003B73;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 6px;
-            border-bottom: 1px dashed #ebdbe4;
+            border-bottom: 1px dashed #dbeafe;
             padding-bottom: 4px;
         }
         .info-row {
@@ -206,7 +205,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
 
         /* Sección de Motivo / Presupuesto */
         .section-header {
-            background: #6B1D49;
+            background: #003B73;
             color: white;
             padding: 6px 12px;
             border-radius: 6px 6px 0 0;
@@ -226,40 +225,40 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
             border-collapse: collapse;
             font-size: 11px;
             margin-bottom: 14px;
-            border: 1px solid #ebdbe4;
+            border: 1px solid #dbeafe;
             border-top: none;
         }
         .treatments-table th {
-            background: #f7eff3;
-            color: #6B1D49;
+            background: #eff6ff;
+            color: #003B73;
             padding: 7px 10px;
             text-align: left;
             font-weight: 700;
             font-size: 10px;
             text-transform: uppercase;
-            border-bottom: 1px solid #ebdbe4;
+            border-bottom: 1px solid #dbeafe;
         }
         .treatments-table th.text-right { text-align: right; }
         .treatments-table th.text-center { text-align: center; }
         .treatments-table td {
             padding: 7px 10px;
-            border-bottom: 1px solid #f2e9ee;
+            border-bottom: 1px solid #e2e8f0;
             color: #333;
         }
         .treatments-table td.text-right { text-align: right; font-weight: 600; }
         .treatments-table td.text-center { text-align: center; }
-        .treatments-table tr:nth-child(even) { background: #fdfafc; }
+        .treatments-table tr:nth-child(even) { background: #f8fafc; }
 
         /* Banner de Importe en Letras */
         .literal-box {
-            background: #fdf8fa;
-            border-left: 4px solid #6B1D49;
+            background: #f0f7ff;
+            border-left: 4px solid #003B73;
             border-radius: 0 6px 6px 0;
             padding: 9px 14px;
             margin-bottom: 14px;
             font-size: 11.5px;
         }
-        .literal-box strong { color: #6B1D49; }
+        .literal-box strong { color: #003B73; }
 
         /* Bloque de Totales y Saldos */
         .totals-table-wrapper {
@@ -279,8 +278,8 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
             display: table-cell;
             width: 45%;
             vertical-align: top;
-            background: #fcf8fa;
-            border: 1.5px solid #6B1D49;
+            background: #f8fafc;
+            border: 1.5px solid #003B73;
             border-radius: 8px;
             padding: 10px 14px;
         }
@@ -292,13 +291,13 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
             color: #444;
         }
         .total-item.highlight {
-            border-top: 2px solid #6B1D49;
+            border-top: 2px solid #003B73;
             margin-top: 5px;
             padding-top: 6px;
             font-size: 14px;
             font-weight: 800;
-            color: #6B1D49;
-        }
+            color: #003B73;
+        }    }
         .total-item.saldo {
             font-weight: 700;
             color: #dc3545;
@@ -381,18 +380,18 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
             <tr>
                 <td style="width: 60px; vertical-align: middle;">
                     <!-- Emblema Odontológico SVG -->
-                    <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 8C33 8 20 22 20 38C20 54 28 66 34 78C37 84 39 92 44 92C48 92 49 84 50 80C51 84 52 92 56 92C61 92 63 84 66 78C72 66 80 54 80 38C80 22 67 8 50 8Z" fill="#6B1D49"/>
+                    <svg width="46" height="46" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 8C33 8 20 22 20 38C20 54 28 66 34 78C37 84 39 92 44 92C48 92 49 84 50 80C51 84 52 92 56 92C61 92 63 84 66 78C72 66 80 54 80 38C80 22 67 8 50 8Z" fill="#003B73"/>
                         <path d="M50 18C40 18 32 26 32 36C32 46 38 56 42 66C44 71 45 76 47 78C48 76 49 71 50 67C51 71 52 76 53 78C55 76 56 71 58 66C62 56 68 46 68 36C68 26 60 18 50 18Z" fill="white" opacity="0.9"/>
-                        <circle cx="50" cy="36" r="10" fill="#C47D9F"/>
+                        <circle cx="50" cy="36" r="10" fill="#2998EC"/>
                     </svg>
                 </td>
                 <td class="header-clinic" style="vertical-align: middle; padding-left: 10px;">
-                    <h1>Dra. Tatiana Ruiz</h1>
-                    <div class="specialty">Cirujano Dentista &bull; Odontología Especializada</div>
+                    <h1>Dentality</h1>
+                    <div class="specialty">Odontología por Especialidades</div>
                     <div class="contact">
-                        Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19 &bull; Cochabamba, Bolivia<br>
-                        Teléfono / WhatsApp: +591 70309222
+                        Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia<br>
+                        Teléfono / WhatsApp: 76969699
                     </div>
                 </td>
                 <td class="header-receipt-box">
@@ -448,7 +447,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
                     <div class="info-card-title"><i class="fas fa-receipt me-1"></i> Datos del Pago</div>
                     <div class="info-row">
                         <span class="info-lbl">Presupuesto Referencia:</span>
-                        <span class="info-val" style="color: #6B1D49;"><?php echo htmlspecialchars($pago['presupuesto_numero']); ?></span>
+                        <span class="info-val" style="color: #003B73;"><?php echo htmlspecialchars($pago['presupuesto_numero']); ?></span>
                     </div>
                     <div class="info-row">
                         <span class="info-lbl">Forma de Pago:</span>
@@ -480,7 +479,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
         <div class="section-header">
             <span><i class="fas fa-file-invoice-dollar me-1"></i> Motivo del Pago: Presupuesto <?php echo htmlspecialchars($pago['presupuesto_numero']); ?></span>
             <span style="font-size: 10px; font-weight: normal; opacity: 0.9;">
-                Especialista: <?php echo htmlspecialchars($presupuesto['doctor_nombre'] ?? 'Dra. Tatiana Ruiz'); ?>
+                Especialista: <?php echo htmlspecialchars($presupuesto['doctor_nombre'] ?? 'Dentality'); ?>
             </span>
         </div>
 
@@ -577,15 +576,14 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
                 <div class="sig-line"></div>
                 <div class="sig-title">Recibí Conforme</div>
                 <div class="sig-subtitle">
-                    Dra. Tatiana Ruiz<br>
-                    Cirujano Dentista &bull; Bolident
+                    Clínica Dentality
                 </div>
             </div>
         </div>
 
         <!-- Pie de Página -->
         <div class="receipt-footer">
-            Dra. Tatiana Ruiz &bull; Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19 &bull; Tel: +591 70309222 &bull; Cochabamba, Bolivia
+            Dentality &bull; Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia &bull; Tel: 76969699
         </div>
     </div>
 

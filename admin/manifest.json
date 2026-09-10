@@ -1,12 +1,12 @@
 {
-  "name": "Dra. Tatiana Ruiz - Sistema de Gestión Dental",
-  "short_name": "Dra. Tatiana Ruiz",
-  "description": "Sistema de Gestión Odontológica Dra. Tatiana Ruiz",
+  "name": "Dentality - Sistema de Gestión Odontológica",
+  "short_name": "Dentality",
+  "description": "Sistema de Gestión Dental Dentality - Odontología por Especialidades",
   "start_url": "/admin/login.php",
   "scope": "/admin/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#6B1D49",
+  "theme_color": "#003B73",
   "orientation": "any",
   "categories": ["medical", "business"],
   "icons": [

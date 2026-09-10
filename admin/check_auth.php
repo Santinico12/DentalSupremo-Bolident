@@ -1,6 +1,6 @@
 <?php
 /**
- * BoliDent - Verificador de Autenticación y Control de Inactividad
+ * Dentality - Verificador de Autenticación y Control de Inactividad
  * Cierra automáticamente la sesión tras 15 minutos sin interacción por seguridad.
  */
 

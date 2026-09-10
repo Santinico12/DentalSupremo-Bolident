@@ -91,22 +91,22 @@ function initWhatsAppSimulator() {
                 await runSimpleFlow(
                     "¿Qué precio tienen los tratamientos de limpieza y ortodoncia?",
                     [
-                        "✨ En el consultorio de la *Dra. Tatiana Ruiz* contamos con tratamientos garantizados:\n\n🦷 *Limpieza Profunda con Ultrasonido:* Bs. 180\n🦷 *Ortodoncia (Frenillos / Alineadores):* Desde Bs. 1,800 (con facilidades de pago en cuotas)\n🦷 *Blanqueamiento Dental:* Bs. 450\n\n¿Te gustaría reservar una cita de evaluación?"
+                        "✨ En la clínica *Dentality* contamos con tratamientos garantizados:\n\n🦷 *Limpieza Profunda con Ultrasonido:* Bs. 180\n🦷 *Ortodoncia (Frenillos / Alineadores):* Desde Bs. 1,800 (con facilidades de pago en cuotas)\n🦷 *Blanqueamiento Dental:* Bs. 450\n\n¿Te gustaría reservar una cita de evaluación?"
                     ]
                 );
             } else if (scenarioKey === 'confirmar') {
                 await runSimpleFlow(
                     "Sí, confirmo mi cita médica de mañana",
                     [
-                        "✅ ¡Excelente! Tu cita para mañana a las *10:00 am* con la *Dra. Tatiana Ruiz* ha quedado *CONFIRMADA*. 🎉",
-                        "📍 Te esperamos en el consultorio de la *Dra. Tatiana Ruiz*. Te recomendamos llegar 5 minutos antes. ¡Será un gusto atenderte! 🦷✨"
+                        "✅ ¡Excelente! Tu cita para mañana a las *10:00 am* en *Dentality* ha quedado *CONFIRMADA*. 🎉",
+                        "📍 Te esperamos en la clínica *Dentality*. Te recomendamos llegar 5 minutos antes. ¡Será un gusto atenderte! 🦷✨"
                     ]
                 );
             } else if (scenarioKey === 'doctores') {
                 await runSimpleFlow(
                     "¿Qué especialidades atienden?",
                     [
-                        "🩺 Especialidades de la Dra. Tatiana Ruiz:\n\n1. *Rehabilitación Oral*\n2. *Estética Dental*\n3. *Ortodoncia*\n\n¿Deseas reservar una cita de evaluación?"
+                        "🩺 Especialidades de Dentality:\n\n1. *Rehabilitación Oral*\n2. *Estética Dental*\n3. *Ortodoncia*\n\n¿Deseas reservar una cita de evaluación?"
                     ]
                 );
             }
@@ -131,7 +131,7 @@ function initWhatsAppSimulator() {
         await wait(1200);
         typing.remove();
 
-        appendMessage('incoming', "¡Hola! 👋✨ Gracias por comunicarte con la *Dra. Tatiana Ruiz*. Con gusto te ayudo a reservar tu consulta.\n\n¿Me podrías indicar tu *nombre completo*, por favor?");
+        appendMessage('incoming', "¡Hola! 👋✨ Gracias por comunicarte con *Dentality*. Con gusto te ayudo a reservar tu consulta.\n\n¿Me podrías indicar tu *nombre completo*, por favor?");
         scrollChatToBottom();
 
         // Step 2: Patient gives their name
@@ -174,7 +174,7 @@ function initWhatsAppSimulator() {
         await wait(1000);
         typing.remove();
 
-        appendMessage('incoming', "✅ ¡Listo, *María García*! Tu cita ha sido agendada con éxito:\n\n📅 *Fecha:* Mañana, miércoles 2 de septiembre\n⏰ *Hora:* 14:30 pm\n🦷 *Tratamiento:* Limpieza Dental\n👩‍⚕️ *Doctora:* Dra. Tatiana Ruiz\n📍 *Lugar:* Consultorio Dra. Tatiana Ruiz\n\nTe enviaremos un recordatorio antes de tu cita. ¡Te esperamos con gusto! 🦷✨");
+        appendMessage('incoming', "✅ ¡Listo, *María García*! Tu cita ha sido agendada con éxito:\n\n📅 *Fecha:* Mañana, miércoles 2 de septiembre\n⏰ *Hora:* 14:30 pm\n🦷 *Tratamiento:* Limpieza Dental\n👩‍⚕️ *Especialista:* Dentality\n📍 *Lugar:* Clínica Dentality\n\nTe enviaremos un recordatorio antes de tu cita. ¡Te esperamos con gusto! 🦷✨");
         scrollChatToBottom();
 
         // Step 5: Sync with the monthly calendar!
@@ -630,7 +630,7 @@ function initModalDemo() {
             const ciudad = document.getElementById('inputCiudad')?.value || 'Bolivia';
             const plan = document.getElementById('inputPlanInteres')?.value || 'Plan Clínica Pro';
 
-            const mensajeWa = `¡Hola Dra. Tatiana Ruiz! 👋✨ Soy *${doctor}* de la clínica *${clinica}* (${ciudad}). Me gustaría agendar una demostración en vivo de su software y cotizar el *${plan}*. Celular: ${telefono}`;
+            const mensajeWa = `¡Hola Dentality! 👋✨ Soy *${doctor}* de la clínica *${clinica}* (${ciudad}). Me gustaría agendar una demostración en vivo de su software y cotizar el *${plan}*. Celular: ${telefono}`;
             const urlWa = `https://wa.me/59176969699?text=${encodeURIComponent(mensajeWa)}`;
 
             modal.classList.remove('active');

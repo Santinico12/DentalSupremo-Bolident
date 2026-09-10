@@ -31,13 +31,13 @@ h1, h2 {
 }
 
 .btn-primary {
-    background-color: #6B1D49;
+    background-color: #003B73;
     border: none;
     color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: #C47D9F;
+    background-color: #2998EC;
     color: #fff;
 }
 
@@ -53,7 +53,7 @@ h1, h2 {
 }
 
 .btn-dashboard {
-    background-color: #6B1D49;
+    background-color: #003B73;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -66,7 +66,7 @@ h1, h2 {
 }
 
 .btn-dashboard:hover {
-    background-color: #C47D9F;
+    background-color: #2998EC;
     color: #fff;
 }
 
@@ -74,16 +74,16 @@ a {
     display: block;
     text-align: center;
     margin-top: 10px;
-    color: #6B1D49;
+    color: #003B73;
     text-decoration: none;
 }
 
 a:hover {
-    color: #C47D9F;
+    color: #2998EC;
 }
 
 .table th {
-    background-color: #6B1D49;
+    background-color: #003B73;
     color: #fff;
 }
 

@@ -101,7 +101,7 @@ $queryParams = http_build_query([
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Pagos - Dra. Tatiana Ruiz</title>
+    <title>Reporte de Pagos - Dentality</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         @page {
@@ -147,7 +147,7 @@ $queryParams = http_build_query([
             transition: all 0.15s ease;
         }
         .btn-act:hover { transform: translateY(-1px); }
-        .btn-print { background: #6B1D49; color: white; }
+        .btn-print { background: #003B73; color: white; }
         .btn-pdf { background: #dc3545; color: white; }
         .btn-close { background: #6c757d; color: white; }
 
@@ -164,12 +164,12 @@ $queryParams = http_build_query([
         .header-table {
             width: 100%;
             border-collapse: collapse;
-            border-bottom: 2.5px solid #6B1D49;
+            border-bottom: 2.5px solid #003B73;
             padding-bottom: 12px;
             margin-bottom: 16px;
         }
         .clinic-title {
-            color: #6B1D49;
+            color: #003B73;
             font-size: 20px;
             font-weight: 800;
             text-transform: uppercase;
@@ -178,7 +178,7 @@ $queryParams = http_build_query([
         .clinic-sub {
             font-size: 10px;
             font-weight: 700;
-            color: #C47D9F;
+            color: #2998EC;
             text-transform: uppercase;
             letter-spacing: 0.8px;
         }
@@ -193,7 +193,7 @@ $queryParams = http_build_query([
             vertical-align: middle;
         }
         .report-title-box h2 {
-            color: #6B1D49;
+            color: #003B73;
             font-size: 15px;
             font-weight: 800;
             text-transform: uppercase;
@@ -215,7 +215,7 @@ $queryParams = http_build_query([
         .stat-card {
             display: table-cell;
             width: 20%;
-            background: #fdf8fa;
+            background: #F4F9FD;
             border: 1px solid #ebdbe4;
             border-radius: 8px;
             padding: 10px 8px;
@@ -224,7 +224,7 @@ $queryParams = http_build_query([
         .stat-card .val {
             font-size: 13px;
             font-weight: 800;
-            color: #6B1D49;
+            color: #003B73;
             margin-bottom: 2px;
         }
         .stat-card .lbl {
@@ -243,7 +243,7 @@ $queryParams = http_build_query([
             border: 1px solid #e0d0d9;
         }
         .payments-table th {
-            background: #6B1D49;
+            background: #003B73;
             color: white;
             padding: 8px 6px;
             font-weight: 700;
@@ -277,10 +277,10 @@ $queryParams = http_build_query([
 
         .total-row td {
             background: #f8eff4 !important;
-            border-top: 2px solid #6B1D49;
+            border-top: 2px solid #003B73;
             font-weight: 800;
             font-size: 11px;
-            color: #6B1D49;
+            color: #003B73;
             padding: 9px 6px;
         }
 
@@ -328,14 +328,14 @@ $queryParams = http_build_query([
             <tr>
                 <td style="width: 50px; vertical-align: middle;">
                     <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M50 8C33 8 20 22 20 38C20 54 28 66 34 78C37 84 39 92 44 92C48 92 49 84 50 80C51 84 52 92 56 92C61 92 63 84 66 78C72 66 80 54 80 38C80 22 67 8 50 8Z" fill="#6B1D49"/>
-                        <circle cx="50" cy="36" r="10" fill="#C47D9F"/>
+                        <path d="M50 8C33 8 20 22 20 38C20 54 28 66 34 78C37 84 39 92 44 92C48 92 49 84 50 80C51 84 52 92 56 92C61 92 63 84 66 78C72 66 80 54 80 38C80 22 67 8 50 8Z" fill="#003B73"/>
+                        <circle cx="50" cy="36" r="10" fill="#2998EC"/>
                     </svg>
                 </td>
                 <td style="padding-left: 10px; vertical-align: middle;">
-                    <div class="clinic-title">Dra. Tatiana Ruiz</div>
-                    <div class="clinic-sub">Cirujano Dentista &bull; Clínica Dental Bolident</div>
-                    <div class="clinic-contact">Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19 &bull; Tel: +591 70309222</div>
+                    <div class="clinic-title">Dentality</div>
+                    <div class="clinic-sub">Odontología por Especialidades</div>
+                    <div class="clinic-contact">Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia &bull; Tel: 76969699</div>
                 </td>
                 <td class="report-title-box">
                     <h2>Reporte de Pagos</h2>
@@ -401,7 +401,7 @@ $queryParams = http_build_query([
                             <?php endif; ?>
                         </td>
                         <td>
-                            <strong style="color: #6B1D49;"><?php echo htmlspecialchars($p['presupuesto_numero'] ?? 'S/N'); ?></strong>
+                            <strong style="color: #003B73;"><?php echo htmlspecialchars($p['presupuesto_numero'] ?? 'S/N'); ?></strong>
                         </td>
                         <td>
                             <?php 
@@ -418,7 +418,7 @@ $queryParams = http_build_query([
                                 <?php echo ucfirst($p['metodo_pago']); ?>
                             </span>
                         </td>
-                        <td class="text-right" style="font-weight: 700; color: #6B1D49;">
+                        <td class="text-right" style="font-weight: 700; color: #003B73;">
                             Bs <?php echo number_format($p['monto'], 2); ?>
                         </td>
                     </tr>
@@ -442,7 +442,7 @@ $queryParams = http_build_query([
         </table>
 
         <div class="report-footer">
-            <span>Dra. Tatiana Ruiz &bull; Clínica Dental Bolident</span>
+            <span>Dentality &bull; Odontología por Especialidades</span>
             <span>Documento Oficial de Reporte Contable de Ingresos</span>
         </div>
     </div>

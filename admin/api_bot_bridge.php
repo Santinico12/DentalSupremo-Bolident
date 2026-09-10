@@ -1,6 +1,6 @@
 <?php
 /**
- * Dra. Tatiana Ruiz - API Bridge para Agente WhatsApp (Render.com / InfinityFree / VPS)
+ * Dentality - API Bridge para Agente WhatsApp (Render.com / InfinityFree / VPS)
  * Permite que el bot de Node.js interactúe de forma segura con la base de datos PHP/MySQL
  */
 
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require_once __DIR__ . '/../src/config/db.php';
 
 // Obtener clave secreta del puente desde variable de entorno o clave por defecto
-$bridgeSecret = getenv('API_BRIDGE_KEY') ?: 'tatianaruiz_secret_bridge_key_2026';
+$bridgeSecret = getenv('API_BRIDGE_KEY') ?: 'bolident_secret_bridge_key_2026';
 
 // Validar Token de autorización
 $headers = function_exists('apache_request_headers') ? apache_request_headers() : [];
@@ -37,7 +37,7 @@ if (preg_match('/Bearer\s(\S+)/', $authHeader, $matches)) {
     $token = $_GET['key'];
 }
 
-if ($token !== $bridgeSecret && $token !== 'bolident_secret_bridge_key_2026') {
+if ($token !== $bridgeSecret && $token !== 'bolident_secret_bridge_key_2026' && $token !== 'dentality_secret_bridge_key_2026' && $token !== 'tatianaruiz_secret_bridge_key_2026') {
     http_response_code(401);
     echo json_encode(['ok' => false, 'error' => 'No autorizado. Token de API Bridge inválido.']);
     exit;
@@ -60,7 +60,7 @@ try {
 
     switch ($action) {
         case 'ping':
-            echo json_encode(['ok' => true, 'mensaje' => 'API Bridge Dra. Tatiana Ruiz Activo y Conectado']);
+            echo json_encode(['ok' => true, 'mensaje' => 'API Bridge Dentality Activo y Conectado']);
             break;
 
         case 'obtener_clientes':
@@ -929,9 +929,9 @@ try {
 
             echo json_encode([
                 'ok' => true,
-                'nombre_clinica' => 'Dra. Tatiana Ruiz',
-                'direccion' => 'Parque Fidel Anze Clinica NUR Primer Piso oficina 19',
-                'telefono' => '+591 70309222',
+                'nombre_clinica' => 'Dentality',
+                'direccion' => 'Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia',
+                'telefono' => '76969699',
                 'horarios' => '08:30 a 19:30 (Lunes a Sábado)',
                 'consultorios' => array_column($consultorios, 'nombre'),
                 'doctores' => array_map(function($d) {

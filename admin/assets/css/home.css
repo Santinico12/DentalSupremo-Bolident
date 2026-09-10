@@ -101,7 +101,7 @@
     transform: translateX(-50%);
     width: 50px;
     height: 3px;
-    background-color: #6B1D49;
+    background-color: #003B73;
 }
 
 .features {
@@ -179,7 +179,7 @@
 .testimonial-card::before {
     content: '"';
     font-size: 60px;
-    color: #6B1D49;
+    color: #003B73;
     position: absolute;
     top: 10px;
     left: 20px;
@@ -210,7 +210,7 @@
 
 .feature-card i {
     font-size: 2.5em;
-    color: #6B1D49;
+    color: #003B73;
     margin-bottom: 20px;
 }
 
@@ -250,7 +250,7 @@
 }
 
 .location-title {
-    color: #6B1D49;
+    color: #003B73;
     font-size: 1.8em;
     margin-bottom: 30px;
     text-align: center;
@@ -277,7 +277,7 @@
 
 .contact-item i {
     font-size: 2em;
-    color: #6B1D49;
+    color: #003B73;
     margin-bottom: 15px;
 }
 
@@ -292,10 +292,10 @@
 .social-links a {
     font-size: 1.5em;
     margin: 0 10px;
-    color: #6B1D49;
+    color: #003B73;
     transition: color 0.3s;
 }
 
 .social-links a:hover {
-    color: #C47D9F;
+    color: #2998EC;
 }

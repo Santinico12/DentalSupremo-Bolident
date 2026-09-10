@@ -49,7 +49,7 @@ if (!empty($fecha_inicio) && !empty($fecha_fin)) {
         
         foreach ($citas as &$cita) {
             if (!isset($cita['consultorio_color']) || empty($cita['consultorio_color'])) {
-                $cita['consultorio_color'] = $consultorios_colors[$cita['consultorio_id']] ?? '#6B1D49';
+                $cita['consultorio_color'] = $consultorios_colors[$cita['consultorio_id']] ?? '#003B73';
             }
         }
         unset($cita);
@@ -87,7 +87,7 @@ foreach ($citas as $cita) {
         $citas_por_consultorio[$cons_id] = [
             'nombre' => $cita['consultorio_nombre'],
             'cantidad' => 0,
-            'color' => $cita['consultorio_color'] ?? '#6B1D49'
+            'color' => $cita['consultorio_color'] ?? '#003B73'
         ];
     }
     $citas_por_consultorio[$cons_id]['cantidad']++;
@@ -105,16 +105,16 @@ require_once '../templates/header_general.php';
 
 <style>
     :root {
-        --primary: #6B1D49;
-        --primary-gradient: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%);
-        --primary-dark: #531438;
-        --accent-teal: #C47D9F;
+        --primary: #003B73;
+        --primary-gradient: linear-gradient(135deg, #003B73 0%, #2998EC 100%);
+        --primary-dark: #062846;
+        --accent-teal: #2998EC;
         --accent-green: #10B981;
         --accent-purple: #8B5CF6;
         --accent-blue: #0284C7;
         --danger: #EF4444;
         --warning: #F59E0B;
-        --bg-main: #FDF8FA;
+        --bg-main: #F4F9FD;
         --card-bg: #FFFFFF;
         --text-dark: #1E293B;
         --text-muted: #64748B;
@@ -533,7 +533,7 @@ require_once '../templates/header_general.php';
     <div class="page-header">
         <div class="header-text">
             <h1><i class="fas fa-chart-line"></i> Informes y Estadísticas Avanzadas</h1>
-            <p>Analiza el rendimiento operativo de tu clínica Dra. Tatiana Ruiz con métricas detalladas</p>
+            <p>Analiza el rendimiento operativo de tu clínica Dentality con métricas detalladas</p>
         </div>
         <a href="dashboard.php" class="btn-back">
             <i class="fas fa-arrow-left"></i>
@@ -763,7 +763,7 @@ require_once '../templates/header_general.php';
                                 <td><?php echo htmlspecialchars($cita['descripcion'] ?? '-'); ?></td>
                                 <td>
                                     <span style="display: inline-flex; align-items: center; gap: 6px; font-weight: 600;">
-                                        <span style="width: 10px; height: 10px; border-radius: 50%; background-color: <?php echo htmlspecialchars($cita['consultorio_color'] ?? '#6B1D49'); ?>;"></span>
+                                        <span style="width: 10px; height: 10px; border-radius: 50%; background-color: <?php echo htmlspecialchars($cita['consultorio_color'] ?? '#003B73'); ?>;"></span>
                                         <?php echo htmlspecialchars($cita['consultorio_nombre']); ?>
                                     </span>
                                 </td>
@@ -833,19 +833,19 @@ require_once '../templates/header_general.php';
                 buttons: [
                     { 
                         extend: 'excel', 
-                        title: 'Informes de Citas - Dra. Tatiana Ruiz - <?php echo date("d-m-Y"); ?>', 
+                        title: 'Informes de Citas - Dentality - <?php echo date("d-m-Y"); ?>', 
                         exportOptions: { columns: [0,1,2,3,4,5,6,7] }, 
                         className: 'd-none' 
                     },
                     { 
                         extend: 'csv', 
-                        title: 'Informes de Citas - Dra. Tatiana Ruiz - <?php echo date("d-m-Y"); ?>', 
+                        title: 'Informes de Citas - Dentality - <?php echo date("d-m-Y"); ?>', 
                         exportOptions: { columns: [0,1,2,3,4,5,6,7] }, 
                         className: 'd-none' 
                     },
                     { 
                         extend: 'print', 
-                        title: 'Informes de Citas - Dra. Tatiana Ruiz',
+                        title: 'Informes de Citas - Dentality',
                         messageTop: '<h3>Período: <?php echo $fecha_inicio ? date("d/m/Y", strtotime($fecha_inicio)) . " al " . date("d/m/Y", strtotime($fecha_fin)) : ""; ?></h3>',
                         exportOptions: { columns: [0,1,2,3,4,5,6,7] }, 
                         className: 'd-none' 

@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Evento - Dra. Tatiana Ruiz</title>
+    <title>Registrar Evento - Dentality</title>
     
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -139,10 +139,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <style>
         :root {
-            --primary-color: #6B1D49;
-            --secondary-color: #C47D9F;
-            --primary-dark: #531438;
-            --bg-main: #FDF8FA;
+            --primary-color: #003B73;
+            --secondary-color: #2998EC;
+            --primary-dark: #062846;
+            --bg-main: #F4F9FD;
         }
 
         body {

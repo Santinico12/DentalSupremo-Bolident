@@ -1261,7 +1261,7 @@ h1, h2, h3, h4, h5, h6 {
 .odonto-quadrant-divider {
     width: 3px;
     height: 68px;
-    background: linear-gradient(180deg, #6B1D49 0%, #C47D9F 100%);
+    background: linear-gradient(180deg, #003B73 0%, #2998EC 100%);
     border-radius: 3px;
     margin: 0 8px;
     flex-shrink: 0;

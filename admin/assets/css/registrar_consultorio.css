@@ -48,12 +48,12 @@ input, button {
 }
 
 input:focus {
-    border-color: #6B1D49;
+    border-color: #003B73;
     outline: none;
 }
 
 button {
-    background-color: #6B1D49 !important;
+    background-color: #003B73 !important;
     color: #fff !important;
     border: none;
     cursor: pointer;
@@ -61,19 +61,19 @@ button {
 }
 
 button:hover {
-    background-color: #C47D9F !important;
+    background-color: #2998EC !important;
 }
 
 a {
     display: block;
     text-align: center;
     margin-top: 10px;
-    color: #6B1D49;
+    color: #003B73;
     text-decoration: none;
 }
 
 a:hover {
-    color: #C47D9F;
+    color: #2998EC;
 }
 
 .invalid-feedback {

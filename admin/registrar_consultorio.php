@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if ($action === 'create') {
         $nombre = trim($_POST['nombre'] ?? '');
-        $color = trim($_POST['color'] ?? '#6B1D49');
+        $color = trim($_POST['color'] ?? '#003B73');
         if (!empty($nombre)) {
             $consultorioModel->create($nombre, $color);
             $_SESSION['message'] = "Consultorio registrado exitosamente.";
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($action === 'update') {
         $id = (int)($_POST['id'] ?? 0);
         $nombre = trim($_POST['nombre'] ?? '');
-        $color = trim($_POST['color'] ?? '#6B1D49');
+        $color = trim($_POST['color'] ?? '#003B73');
         if ($id > 0 && !empty($nombre)) {
             $consultorioModel->update($id, $nombre, $color);
             $_SESSION['message'] = "Consultorio actualizado exitosamente.";
@@ -57,14 +57,14 @@ require_once '../templates/header_general.php';
 
 <style>
     :root {
-        --primary: #6B1D49;
-        --primary-gradient: linear-gradient(135deg, #6B1D49 0%, #C47D9F 100%);
-        --primary-dark: #531438;
-        --accent-teal: #C47D9F;
+        --primary: #003B73;
+        --primary-gradient: linear-gradient(135deg, #003B73 0%, #2998EC 100%);
+        --primary-dark: #062846;
+        --accent-teal: #2998EC;
         --accent-green: #10B981;
         --danger: #EF4444;
         --warning: #F59E0B;
-        --bg-main: #FDF8FA;
+        --bg-main: #F4F9FD;
         --card-bg: #FFFFFF;
         --text-dark: #1E293B;
         --text-muted: #64748B;
@@ -444,7 +444,7 @@ require_once '../templates/header_general.php';
         <div class="header-content">
             <div class="header-text">
                 <h1><i class="fas fa-clinic-medical"></i> Gestión de Consultorios</h1>
-                <p>Administra y personaliza las salas y consultorios de tu clínica Dra. Tatiana Ruiz</p>
+                <p>Administra y personaliza las salas y consultorios de tu clínica Dentality</p>
             </div>
         </div>
         <a href="dashboard.php" class="btn-back">
@@ -620,7 +620,7 @@ require_once '../templates/header_general.php';
                                    onchange="updateEditColorDisplay(this.value)"
                                    required>
                             <div class="color-display" id="editColorDisplay">
-                                #6B1D49
+                                #003B73
                             </div>
                         </div>
                     </div>
