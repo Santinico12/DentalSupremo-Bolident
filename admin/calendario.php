@@ -2067,3 +2067,4 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
         }
     }
 </style>
+<!-- hola desde antigravity -->
