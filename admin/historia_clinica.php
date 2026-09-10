@@ -39,6 +39,38 @@ if (!$cliente) {
 }
 
 $historia = $historiaModel->getByCliente($clienteId);
+if (!$historia) {
+    // Si aún no existe, inicializarla para que tenga token y número de HC de inmediato
+    $tokenInicial = bin2hex(random_bytes(16));
+    $numeroHc = 'HC-' . str_pad($clienteId, 5, '0', STR_PAD_LEFT);
+    $historiaModel->guardar($clienteId, [
+        'cliente_id' => $clienteId,
+        'numero_hc' => $numeroHc,
+        'firma_token' => $tokenInicial
+    ]);
+    $historia = $historiaModel->getByCliente($clienteId);
+}
+if ($historia && empty($historia['firma_token'])) {
+    $nuevoToken = bin2hex(random_bytes(16));
+    $pdo->prepare("UPDATE historia_clinica SET firma_token = ? WHERE id = ?")->execute([$nuevoToken, $historia['id']]);
+    $historia['firma_token'] = $nuevoToken;
+}
+
+$patologiasSeleccionadas = [];
+if (!empty($historia['patologias_personales'])) {
+    $decoded = json_decode($historia['patologias_personales'], true);
+    if (is_array($decoded)) {
+        $patologiasSeleccionadas = $decoded;
+    }
+}
+
+// Construir enlace para que el paciente firme desde su dispositivo
+$firmaToken = $historia['firma_token'] ?? '';
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443)) ? "https://" : "http://";
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$dir = dirname($_SERVER['PHP_SELF']);
+$linkFirma = $protocol . $host . rtrim($dir, '/\\') . '/firmar_ficha.php?token=' . urlencode($firmaToken);
+
 $evoluciones = $evolucionModel->getByCliente($clienteId);
 $archivos = $archivoModel->getByCliente($clienteId);
 $presupuestos = $presupuestoModel->getByCliente($clienteId);
@@ -261,6 +293,30 @@ require_once '../templates/header_general.php';
     }
 
     .pres-card-action:hover { background: var(--primary-dark); color: white; }
+
+    /* Patologías Grid & Badges */
+    .patologias-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; margin-top: 10px; }
+    .patologia-item { display: flex; align-items: center; gap: 9px; background: #fff; border: 1.5px solid #e2d1db; padding: 9px 14px; border-radius: 8px; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; user-select: none; }
+    .patologia-item:hover { background: #fbf2f6; border-color: var(--primary); }
+    .patologia-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
+    .patologia-item.checked { background: #f5e4ed; border-color: var(--primary); font-weight: 600; color: var(--primary-dark); }
+
+    /* Examen columnas */
+    .exam-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 850px) { .exam-columns { grid-template-columns: 1fr; } }
+    .exam-box { background: #fcfcfc; border: 1.5px solid #ebdbe3; border-radius: 12px; padding: 18px; }
+    .exam-box-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-top: 0; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 2px solid #f0dfe7; display: flex; align-items: center; gap: 8px; }
+
+    /* Radio / Check groups inline */
+    .inline-checks { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; padding: 6px 0; }
+    .inline-checks label { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; margin: 0; cursor: pointer; font-size: 0.9rem; color: #444; }
+    .inline-checks input[type="radio"], .inline-checks input[type="checkbox"] { accent-color: var(--primary); width: 17px; height: 17px; }
+
+    /* Firma box */
+    .firma-card-body { display: flex; gap: 25px; align-items: center; flex-wrap: wrap; }
+    .firma-preview-container { border: 2px dashed #b892a7; border-radius: 12px; padding: 15px; background: #faf5f8; text-align: center; min-width: 250px; min-height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .firma-preview-img { max-height: 110px; max-width: 230px; object-fit: contain; }
+    .signature-pad-canvas { border: 2px dashed #6B1D49; border-radius: 8px; background: #ffffff; cursor: crosshair; touch-action: none; width: 100%; height: 210px; }
 </style>
 
 <div class="page-container">
@@ -274,6 +330,15 @@ require_once '../templates/header_general.php';
             </div>
         </div>
         <div class="header-actions">
+            <a href="imprimir_historia.php?id=<?php echo $clienteId; ?>" target="_blank" class="btn-header" style="background: rgba(255,255,255,0.25);" title="Imprimir o exportar PDF formato oficial">
+                <i class="fas fa-print"></i> Formato Oficial
+            </a>
+            <button type="button" class="btn-header" onclick="abrirModalCompartirFirma()" style="background: #25D366; color: white;" title="Enviar enlace para firma en el celular del paciente">
+                <i class="fab fa-whatsapp"></i> Enlace Paciente
+            </button>
+            <button type="button" class="btn-header" onclick="abrirModalFirmaDoctor()" style="background: #17a2b8; color: white;" title="Abrir recuadro táctil para firmar en este equipo o tablet">
+                <i class="fas fa-signature"></i> Firmar en Pantalla
+            </button>
             <a href="odontograma.php?cliente_id=<?php echo $clienteId; ?>" class="btn-header">
                 <i class="fas fa-tooth"></i> Odontograma
             </a>
@@ -282,6 +347,12 @@ require_once '../templates/header_general.php';
             </a>
         </div>
     </div>
+
+    <?php if (isset($_SESSION['message'])): ?>
+    <div class="alerta alerta-<?php echo $_SESSION['message_type'] ?? 'info'; ?>" style="margin-bottom: 15px;">
+        <i class="fas fa-info-circle me-2"></i> <?php echo htmlspecialchars($_SESSION['message']); unset($_SESSION['message'], $_SESSION['message_type']); ?>
+    </div>
+    <?php endif; ?>
 
     <!-- Alertas médicas -->
     <?php if (!empty($alertas)): ?>
@@ -318,67 +389,142 @@ require_once '../templates/header_general.php';
 
     <!-- Tab: Ficha Médica -->
     <div id="tab-ficha" class="tab-content active">
-        <form method="POST" action="guardar_historia.php">
+        <form method="POST" action="guardar_historia.php" id="formHistoriaClinica">
             <input type="hidden" name="cliente_id" value="<?php echo $clienteId; ?>">
             
+            <!-- 1. Identificación y Datos Personales -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-user"></i> Datos Personales</h3>
+                    <h3 class="card-title"><i class="fas fa-id-card text-primary"></i> 1. Identificación y Datos Personales</h3>
                 </div>
                 <div class="form-grid">
                     <div class="form-group">
+                        <label>Cédula de Identidad (C.I.)</label>
+                        <input type="text" name="ci" class="form-control" value="<?php echo htmlspecialchars($historia['ci'] ?? ''); ?>" placeholder="Ej: 8472910 LP">
+                    </div>
+                    <div class="form-group">
+                        <label>Nº Historia Clínica</label>
+                        <input type="text" name="numero_hc" class="form-control" value="<?php echo htmlspecialchars($historia['numero_hc'] ?? ('HC-' . str_pad($clienteId, 5, '0', STR_PAD_LEFT))); ?>" placeholder="Ej: HC-00045">
+                    </div>
+                    <div class="form-group">
+                        <label>Codificación</label>
+                        <input type="text" name="codificacion" class="form-control" value="<?php echo htmlspecialchars($historia['codificacion'] ?? ''); ?>" placeholder="Ej: COD-BO-2026">
+                    </div>
+                    <div class="form-group">
                         <label>Fecha de Nacimiento</label>
-                        <input type="date" name="fecha_nacimiento" class="form-control" value="<?php echo $historia['fecha_nacimiento'] ?? ''; ?>">
+                        <input type="date" name="fecha_nacimiento" id="campo_fecha_nac" class="form-control" value="<?php echo $historia['fecha_nacimiento'] ?? ''; ?>" onchange="calcularEdadDesdeFecha(this.value)">
+                    </div>
+                    <div class="form-group">
+                        <label>Edad (Años)</label>
+                        <input type="number" name="edad" id="campo_edad" class="form-control" value="<?php echo $historia['edad'] ?? ''; ?>" min="0" max="125" placeholder="Calculado auto">
                     </div>
                     <div class="form-group">
                         <label>Sexo</label>
                         <select name="sexo" class="form-control">
                             <option value="">Seleccionar...</option>
-                            <option value="M" <?php echo ($historia['sexo'] ?? '') === 'M' ? 'selected' : ''; ?>>Masculino</option>
                             <option value="F" <?php echo ($historia['sexo'] ?? '') === 'F' ? 'selected' : ''; ?>>Femenino</option>
+                            <option value="M" <?php echo ($historia['sexo'] ?? '') === 'M' ? 'selected' : ''; ?>>Masculino</option>
                             <option value="Otro" <?php echo ($historia['sexo'] ?? '') === 'Otro' ? 'selected' : ''; ?>>Otro</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Ocupación</label>
-                        <input type="text" name="ocupacion" class="form-control" value="<?php echo htmlspecialchars($historia['ocupacion'] ?? ''); ?>">
+                        <label>Lugar de Nacimiento</label>
+                        <input type="text" name="lugar_nacimiento" class="form-control" value="<?php echo htmlspecialchars($historia['lugar_nacimiento'] ?? ''); ?>" placeholder="Ciudad / Departamento">
                     </div>
                     <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars($historia['email'] ?? ''); ?>">
+                        <label>Ocupación / Profesión</label>
+                        <input type="text" name="ocupacion" class="form-control" value="<?php echo htmlspecialchars($historia['ocupacion'] ?? ''); ?>" placeholder="Ej: Estudiante, Ingeniero, etc.">
+                    </div>
+                    <div class="form-group">
+                        <label>Email de Contacto</label>
+                        <input type="email" name="email" class="form-control" value="<?php echo htmlspecialchars($historia['email'] ?? ''); ?>" placeholder="paciente@correo.com">
                     </div>
                     <div class="form-group" style="grid-column: span 2;">
-                        <label>Dirección</label>
-                        <input type="text" name="direccion" class="form-control" value="<?php echo htmlspecialchars($historia['direccion'] ?? ''); ?>">
+                        <label>Dirección de Domicilio</label>
+                        <input type="text" name="direccion" class="form-control" value="<?php echo htmlspecialchars($historia['direccion'] ?? ''); ?>" placeholder="Zona, calle, número o referencia">
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #f0e6ec;">
+                    <h4 style="font-size: 0.95rem; color: #555; margin-bottom: 12px;"><i class="fas fa-phone-alt me-1"></i> Contacto de Emergencia</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nombre Completo</label>
+                            <input type="text" name="contacto_emergencia_nombre" class="form-control" value="<?php echo htmlspecialchars($historia['contacto_emergencia_nombre'] ?? ''); ?>" placeholder="Nombre de contacto">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono de Contacto</label>
+                            <input type="text" name="contacto_emergencia_telefono" class="form-control" value="<?php echo htmlspecialchars($historia['contacto_emergencia_telefono'] ?? ''); ?>" placeholder="Número de llamada">
+                        </div>
+                        <div class="form-group">
+                            <label>Parentesco / Relación</label>
+                            <input type="text" name="contacto_emergencia_parentesco" class="form-control" value="<?php echo htmlspecialchars($historia['contacto_emergencia_parentesco'] ?? ''); ?>" placeholder="Ej: Madre, Padre, Esposo(a), Hijo(a)">
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 2. Antecedentes Patológicos (Familiares y Personales) -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-phone-alt"></i> Contacto de Emergencia</h3>
+                    <h3 class="card-title"><i class="fas fa-heartbeat text-danger"></i> 2. Antecedentes Patológicos (Familiares y Personales)</h3>
                 </div>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" name="contacto_emergencia_nombre" class="form-control" value="<?php echo htmlspecialchars($historia['contacto_emergencia_nombre'] ?? ''); ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Teléfono</label>
-                        <input type="text" name="contacto_emergencia_telefono" class="form-control" value="<?php echo htmlspecialchars($historia['contacto_emergencia_telefono'] ?? ''); ?>">
-                    </div>
-                    <div class="form-group">
-                        <label>Parentesco</label>
-                        <input type="text" name="contacto_emergencia_parentesco" class="form-control" value="<?php echo htmlspecialchars($historia['contacto_emergencia_parentesco'] ?? ''); ?>" placeholder="Ej: Esposo(a), Padre, Madre">
-                    </div>
+                
+                <div class="form-group">
+                    <label>Antecedentes Familiares de Relevancia</label>
+                    <textarea name="antecedentes_familiares" class="form-control" rows="2" placeholder="Diabetes, cardiopatías, hipertensión, cáncer u otras afecciones en padres, abuelos o hermanos..."><?php echo htmlspecialchars($historia['antecedentes_familiares'] ?? ''); ?></textarea>
                 </div>
-            </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-heartbeat"></i> Antecedentes Médicos</h3>
+                <div style="margin-top: 18px;">
+                    <label style="font-weight: 700; color: #333; display: block; margin-bottom: 4px;">
+                        <i class="fas fa-clipboard-check text-primary me-1"></i> Patologías Personales (Marque las que presente o haya presentado):
+                    </label>
+                    <div class="patologias-grid">
+                        <?php
+                        $catalogoPatologias = [
+                            'anemia' => 'Anemia',
+                            'cardiopatias' => 'Cardiopatías',
+                            'chagas' => 'Chagas',
+                            'asma' => 'Asma',
+                            'diabetes' => 'Diabetes',
+                            'problemas_renales' => 'Problemas Renales',
+                            'enf_gastrica' => 'Enfermedad Gástrica / Úlcera',
+                            'hepatitis' => 'Hepatitis',
+                            'tuberculosis' => 'Tuberculosis',
+                            'epilepsia' => 'Epilepsia',
+                            'hipertension' => 'Hipertensión Arterial',
+                            'vih' => 'VIH / SIDA',
+                            'problemas_coagulacion' => 'Problemas de Coagulación',
+                            'otros' => 'Otras Afecciones'
+                        ];
+                        foreach ($catalogoPatologias as $clave => $nombre):
+                            $checked = in_array($clave, $patologiasSeleccionadas);
+                        ?>
+                        <label class="patologia-item <?php echo $checked ? 'checked' : ''; ?>">
+                            <input type="checkbox" name="patologias[]" value="<?php echo $clave; ?>" <?php echo $checked ? 'checked' : ''; ?> onchange="this.parentElement.classList.toggle('checked', this.checked)">
+                            <span><?php echo $nombre; ?></span>
+                        </label>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
-                <div class="form-grid">
+
+                <div class="form-grid" style="margin-top: 20px;">
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label>¿Se encuentra actualmente bajo algún tratamiento médico?</label>
+                        <input type="text" name="en_tratamiento_medico" class="form-control" value="<?php echo htmlspecialchars($historia['en_tratamiento_medico'] ?? ''); ?>" placeholder="Indique si está en tratamiento y el motivo">
+                    </div>
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label>¿Toma algún medicamento actualmente? (Detalle nombres y dosis):</label>
+                        <textarea name="toma_medicamento" class="form-control" rows="2" placeholder="Nombres de medicamentos, anticoagulantes, antihipertensivos, antibióticos, etc."><?php echo htmlspecialchars($historia['toma_medicamento'] ?? ($historia['medicamentos_actuales'] ?? '')); ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Hemorragia anormal en extracciones dentales previas</label>
+                        <select name="hemorragia_extraccion" class="form-control">
+                            <option value="No" <?php echo ($historia['hemorragia_extraccion'] ?? 'No') === 'No' ? 'selected' : ''; ?>>No</option>
+                            <option value="Inmediata" <?php echo ($historia['hemorragia_extraccion'] ?? '') === 'Inmediata' ? 'selected' : ''; ?>>Sí - Inmediata</option>
+                            <option value="Mediata" <?php echo ($historia['hemorragia_extraccion'] ?? '') === 'Mediata' ? 'selected' : ''; ?>>Sí - Mediata (tardía)</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label>Grupo Sanguíneo</label>
                         <select name="grupo_sanguineo" class="form-control">
@@ -389,72 +535,252 @@ require_once '../templates/header_general.php';
                         </select>
                     </div>
                     <div class="form-group" style="grid-column: span 2;">
-                        <label><i class="fas fa-exclamation-triangle text-danger me-1"></i> Alergias</label>
-                        <textarea name="alergias" class="form-control" rows="2" placeholder="Medicamentos, anestésicos, látex, etc."><?php echo htmlspecialchars($historia['alergias'] ?? ''); ?></textarea>
-                    </div>
-                    <div class="form-group" style="grid-column: span 2;">
-                        <label>Enfermedades Sistémicas</label>
-                        <textarea name="enfermedades_sistemicas" class="form-control" rows="2" placeholder="Diabetes, hipertensión, cardiopatías, asma, epilepsia, etc."><?php echo htmlspecialchars($historia['enfermedades_sistemicas'] ?? ''); ?></textarea>
-                    </div>
-                    <div class="form-group" style="grid-column: span 2;">
-                        <label>Medicamentos Actuales</label>
-                        <textarea name="medicamentos_actuales" class="form-control" rows="2" placeholder="Lista de medicamentos que toma actualmente"><?php echo htmlspecialchars($historia['medicamentos_actuales'] ?? ''); ?></textarea>
+                        <label><i class="fas fa-exclamation-triangle text-danger me-1"></i> Alergias Conocidas (Medicamentos, anestésicos, látex, etc.)</label>
+                        <textarea name="alergias" class="form-control" rows="2" placeholder="Penicilina, anestesia local, analgésicos, látex, etc."><?php echo htmlspecialchars($historia['alergias'] ?? ''); ?></textarea>
                     </div>
                     <div class="form-group">
                         <label>Cirugías Previas</label>
-                        <textarea name="cirugias_previas" class="form-control" rows="2"><?php echo htmlspecialchars($historia['cirugias_previas'] ?? ''); ?></textarea>
+                        <input type="text" name="cirugias_previas" class="form-control" value="<?php echo htmlspecialchars($historia['cirugias_previas'] ?? ''); ?>" placeholder="Cirugías que haya tenido">
                     </div>
                     <div class="form-group">
-                        <label>Hospitalizaciones</label>
-                        <textarea name="hospitalizaciones" class="form-control" rows="2"><?php echo htmlspecialchars($historia['hospitalizaciones'] ?? ''); ?></textarea>
+                        <label>Hospitalizaciones Previas</label>
+                        <input type="text" name="hospitalizaciones" class="form-control" value="<?php echo htmlspecialchars($historia['hospitalizaciones'] ?? ''); ?>" placeholder="Causas de hospitalización">
                     </div>
                 </div>
-                <div class="form-grid" style="margin-top: 15px;">
-                    <div class="form-group">
-                        <label><input type="checkbox" name="embarazo" value="1" <?php echo ($historia['embarazo'] ?? 0) ? 'checked' : ''; ?>> Embarazada</label>
+
+                <div class="inline-checks" style="margin-top: 10px; background: #fff5f8; border-radius: 8px; padding: 12px 15px;">
+                    <label>
+                        <input type="checkbox" name="embarazo" value="1" <?php echo ($historia['embarazo'] ?? 0) ? 'checked' : ''; ?>>
+                        <i class="fas fa-baby me-1 text-primary"></i> Paciente embarazada
+                    </label>
+                    <label>
+                        <input type="checkbox" name="lactancia" value="1" <?php echo ($historia['lactancia'] ?? 0) ? 'checked' : ''; ?>>
+                        <i class="fas fa-female me-1 text-primary"></i> En período de lactancia
+                    </label>
+                </div>
+            </div>
+
+            <!-- 3. Examen Estomatognático (Extraoral e Intraoral) -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-stethoscope text-primary"></i> 3. Examen Estomatognático (Extraoral e Intraoral)</h3>
+                </div>
+                <div class="exam-columns">
+                    <!-- Columna Extraoral -->
+                    <div class="exam-box">
+                        <div class="exam-box-title">
+                            <i class="fas fa-head-side-mask"></i> Examen Extraoral
+                        </div>
+                        <div class="form-group">
+                            <label>Articulación Temporomandibular (ATM)</label>
+                            <input type="text" name="atm" class="form-control" value="<?php echo htmlspecialchars($historia['atm'] ?? 'Aparentemente normal'); ?>" placeholder="Normal, chasquido, dolor, subluxación...">
+                        </div>
+                        <div class="form-group">
+                            <label>Ganglios Linfáticos</label>
+                            <input type="text" name="ganglios_linfaticos" class="form-control" value="<?php echo htmlspecialchars($historia['ganglios_linfaticos'] ?? 'No palpables'); ?>" placeholder="No palpables, inflamados, indurados...">
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo de Respirador</label>
+                            <select name="tipo_respirador" class="form-control">
+                                <option value="Nasal" <?php echo ($historia['tipo_respirador'] ?? 'Nasal') === 'Nasal' ? 'selected' : ''; ?>>Nasal</option>
+                                <option value="Bucal" <?php echo ($historia['tipo_respirador'] ?? '') === 'Bucal' ? 'selected' : ''; ?>>Bucal</option>
+                                <option value="Mixto" <?php echo ($historia['tipo_respirador'] ?? '') === 'Mixto' ? 'selected' : ''; ?>>Mixto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Otros Hallazgos Extraorales</label>
+                            <textarea name="examen_extraoral_otros" class="form-control" rows="2" placeholder="Facies, asimetrías, lesiones en piel..."><?php echo htmlspecialchars($historia['examen_extraoral_otros'] ?? ''); ?></textarea>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label><input type="checkbox" name="lactancia" value="1" <?php echo ($historia['lactancia'] ?? 0) ? 'checked' : ''; ?>> En período de lactancia</label>
+
+                    <!-- Columna Intraoral -->
+                    <div class="exam-box">
+                        <div class="exam-box-title">
+                            <i class="fas fa-teeth-open"></i> Examen Intraoral
+                        </div>
+                        <div class="form-group">
+                            <label>Labios</label>
+                            <input type="text" name="labios" class="form-control" value="<?php echo htmlspecialchars($historia['labios'] ?? 'Aparentemente normales'); ?>" placeholder="Normales, secos, queilitis...">
+                        </div>
+                        <div class="form-group">
+                            <label>Lengua</label>
+                            <input type="text" name="lengua" class="form-control" value="<?php echo htmlspecialchars($historia['lengua'] ?? 'Aparentemente normal'); ?>" placeholder="Normal, saburral, geográfica...">
+                        </div>
+                        <div class="form-group">
+                            <label>Paladar (Duro y Blando)</label>
+                            <input type="text" name="paladar" class="form-control" value="<?php echo htmlspecialchars($historia['paladar'] ?? 'Aparentemente normal'); ?>" placeholder="Normal, ojival, fisurado...">
+                        </div>
+                        <div class="form-group">
+                            <label>Piso de Boca</label>
+                            <input type="text" name="piso_boca" class="form-control" value="<?php echo htmlspecialchars($historia['piso_boca'] ?? 'Aparentemente normal'); ?>" placeholder="Normal, torus, ránula...">
+                        </div>
+                        <div class="form-group">
+                            <label>Mucosa Yugal</label>
+                            <input type="text" name="mucosa_yugal" class="form-control" value="<?php echo htmlspecialchars($historia['mucosa_yugal'] ?? 'Normal'); ?>" placeholder="Normal, aftas, línea alba...">
+                        </div>
+                        <div class="form-group">
+                            <label>Encías</label>
+                            <input type="text" name="encias" class="form-control" value="<?php echo htmlspecialchars($historia['encias'] ?? 'Sanas'); ?>" placeholder="Sanas, gingivitis, periodontitis...">
+                        </div>
+                        <div class="form-group">
+                            <label>¿Usa Prótesis Dental?</label>
+                            <select name="usa_protesis" class="form-control">
+                                <option value="0" <?php echo ($historia['usa_protesis'] ?? 0) == 0 ? 'selected' : ''; ?>>No</option>
+                                <option value="1" <?php echo ($historia['usa_protesis'] ?? 0) == 1 ? 'selected' : ''; ?>>Sí - Prótesis Removible</option>
+                                <option value="2" <?php echo ($historia['usa_protesis'] ?? 0) == 2 ? 'selected' : ''; ?>>Sí - Prótesis Fija</option>
+                                <option value="3" <?php echo ($historia['usa_protesis'] ?? 0) == 3 ? 'selected' : ''; ?>>Sí - Prótesis Total</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 4. Higiene Bucodental y Hábitos -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-tooth"></i> Antecedentes Odontológicos</h3>
+                    <h3 class="card-title"><i class="fas fa-smile-beam text-primary"></i> 4. Higiene Bucodental y Hábitos</h3>
                 </div>
                 <div class="form-grid">
                     <div class="form-group">
-                        <label>Última Visita al Dentista</label>
+                        <label>Elementos de Higiene Bucal</label>
+                        <div class="inline-checks">
+                            <label><input type="checkbox" name="usa_cepillo" value="1" <?php echo ($historia['usa_cepillo'] ?? 1) ? 'checked' : ''; ?>> Cepillo</label>
+                            <label><input type="checkbox" name="usa_hilo" value="1" <?php echo ($historia['usa_hilo'] ?? 0) ? 'checked' : ''; ?>> Hilo Dental</label>
+                            <label><input type="checkbox" name="usa_enjuague" value="1" <?php echo ($historia['usa_enjuague'] ?? 0) ? 'checked' : ''; ?>> Enjuague</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Frecuencia de Cepillado</label>
+                        <select name="frecuencia_cepillado" class="form-control">
+                            <option value="">Seleccionar...</option>
+                            <option value="1 vez al día" <?php echo ($historia['frecuencia_cepillado'] ?? '') === '1 vez al día' ? 'selected' : ''; ?>>1 vez al día</option>
+                            <option value="2 veces al día" <?php echo ($historia['frecuencia_cepillado'] ?? '') === '2 veces al día' ? 'selected' : ''; ?>>2 veces al día</option>
+                            <option value="3 o más veces al día" <?php echo ($historia['frecuencia_cepillado'] ?? '') === '3 o más veces al día' ? 'selected' : ''; ?>>3 o más veces al día</option>
+                            <option value="Ocasional" <?php echo ($historia['frecuencia_cepillado'] ?? '') === 'Ocasional' ? 'selected' : ''; ?>>Ocasional</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Sangrado de Encías al Cepillarse</label>
+                        <select name="sangrado_encias" class="form-control">
+                            <option value="0" <?php echo ($historia['sangrado_encias'] ?? 0) == 0 ? 'selected' : ''; ?>>No presenta sangrado</option>
+                            <option value="1" <?php echo ($historia['sangrado_encias'] ?? 0) == 1 ? 'selected' : ''; ?>>Sí presenta sangrado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nivel de Higiene Bucal Evaluado</label>
+                        <select name="nivel_higiene_bucal" class="form-control">
+                            <option value="Buena" <?php echo ($historia['nivel_higiene_bucal'] ?? 'Buena') === 'Buena' ? 'selected' : ''; ?>>Buena</option>
+                            <option value="Regular" <?php echo ($historia['nivel_higiene_bucal'] ?? '') === 'Regular' ? 'selected' : ''; ?>>Regular</option>
+                            <option value="Mala" <?php echo ($historia['nivel_higiene_bucal'] ?? '') === 'Mala' ? 'selected' : ''; ?>>Mala</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Hábitos de Consumo</label>
+                        <div class="inline-checks">
+                            <label><input type="checkbox" name="habitos_fuma" value="1" <?php echo ($historia['habitos_fuma'] ?? 0) ? 'checked' : ''; ?>> <i class="fas fa-smoking me-1"></i> Fuma tabaco</label>
+                            <label><input type="checkbox" name="habitos_bebe" value="1" <?php echo ($historia['habitos_bebe'] ?? 0) ? 'checked' : ''; ?>> <i class="fas fa-wine-bottle me-1"></i> Consume alcohol</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Otros Hábitos (Bruxismo, onicofagia, otros)</label>
+                        <input type="text" name="habitos_otros" class="form-control" value="<?php echo htmlspecialchars($historia['habitos_otros'] ?? ($historia['habitos'] ?? '')); ?>" placeholder="Ej: Bruxismo nocturno, morder bolígrafos...">
+                    </div>
+                    <div class="form-group">
+                        <label>Última Visita al Odontólogo</label>
                         <input type="date" name="ultima_visita_dentista" class="form-control" value="<?php echo $historia['ultima_visita_dentista'] ?? ''; ?>">
                     </div>
                     <div class="form-group">
-                        <label>Experiencia con Anestesia</label>
-                        <textarea name="experiencia_anestesia" class="form-control" rows="2" placeholder="Reacciones adversas, problemas previos..."><?php echo htmlspecialchars($historia['experiencia_anestesia'] ?? ''); ?></textarea>
+                        <label>Experiencia con Anestesia Dental</label>
+                        <input type="text" name="experiencia_anestesia" class="form-control" value="<?php echo htmlspecialchars($historia['experiencia_anestesia'] ?? ''); ?>" placeholder="Normal, mareos, hipotensión, dolor...">
                     </div>
-                    <div class="form-group">
-                        <label>Hábitos</label>
-                        <textarea name="habitos" class="form-control" rows="2" placeholder="Bruxismo, onicofagia, respirador bucal, tabaco, alcohol..."><?php echo htmlspecialchars($historia['habitos'] ?? ''); ?></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Higiene Bucal</label>
-                        <textarea name="higiene_bucal" class="form-control" rows="2" placeholder="Frecuencia de cepillado, uso de hilo dental, enjuague..."><?php echo htmlspecialchars($historia['higiene_bucal'] ?? ''); ?></textarea>
+                    <div class="form-group" style="grid-column: span 2;">
+                        <label>Problemas o Complicaciones Dentales Previas Graves</label>
+                        <textarea name="problema_grave_dental_anterior" class="form-control" rows="2" placeholder="Infecciones severas, alvéolo seco, dificultad de cicatrización..."><?php echo htmlspecialchars($historia['problema_grave_dental_anterior'] ?? ''); ?></textarea>
                     </div>
                 </div>
             </div>
 
+            <!-- 5. Consulta Clínica, Diagnóstico y Tratamiento -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-clipboard"></i> Observaciones Generales</h3>
+                    <h3 class="card-title"><i class="fas fa-notes-medical text-primary"></i> 5. Consulta Clínica, Diagnóstico y Plan de Tratamiento</h3>
                 </div>
                 <div class="form-group">
-                    <textarea name="observaciones" class="form-control" rows="3" placeholder="Notas adicionales sobre el paciente..."><?php echo htmlspecialchars($historia['observaciones'] ?? ''); ?></textarea>
+                    <label style="font-weight: 700;">Motivo de Consulta (Palabras del Paciente):</label>
+                    <textarea name="motivo_consulta" class="form-control" rows="2" placeholder="Refiere dolor en molar, revisión periódica, limpieza, etc."><?php echo htmlspecialchars($historia['motivo_consulta'] ?? ''); ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label style="font-weight: 700;">Examen Clínico Odontológico:</label>
+                    <textarea name="examen_clinico" class="form-control" rows="3" placeholder="Hallazgos clínicos observados en la cavidad oral, piezas con caries, movilidad..."><?php echo htmlspecialchars($historia['examen_clinico'] ?? ''); ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label style="font-weight: 700;">Diagnóstico Clínico Presuntivo / Definitivo:</label>
+                    <textarea name="diagnostico" class="form-control" rows="2" placeholder="Diagnóstico odontológico establecido..."><?php echo htmlspecialchars($historia['diagnostico'] ?? ''); ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label style="font-weight: 700;">Plan de Tratamiento Sugerido:</label>
+                    <textarea name="plan_tratamiento" class="form-control" rows="2" placeholder="Profilaxis, restauraciones, endodoncia, prótesis, extracciones..."><?php echo htmlspecialchars($historia['plan_tratamiento'] ?? ''); ?></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Observaciones Adicionales</label>
+                    <textarea name="observaciones" class="form-control" rows="2" placeholder="Notas internas sobre el paciente o el caso..."><?php echo htmlspecialchars($historia['observaciones'] ?? ''); ?></textarea>
                 </div>
             </div>
 
-            <div style="text-align: center;">
-                <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save"></i> Guardar Ficha Médica
+            <!-- 6. Declaración Jurada y Firma Digital del Paciente -->
+            <div class="card" style="border-left: 5px solid var(--primary);">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-file-signature text-primary"></i> 6. Declaración Jurada y Firma Digital del Paciente</h3>
+                </div>
+                
+                <div style="background: #fdf8fa; border: 1px solid #ead3e1; border-radius: 10px; padding: 15px; margin-bottom: 20px; font-size: 0.88rem; line-height: 1.5; color: #4a2839;">
+                    <i class="fas fa-balance-scale me-1 text-primary"></i>
+                    <strong>Declaración Legal:</strong> Declaro bajo juramento que los datos personales y antecedentes de salud consignados en la presente historia clínica son verídicos y fidedignos, no habiendo omitido información relevante sobre mi estado de salud o tratamientos en curso. Asimismo, autorizo al profesional odontólogo tratante a realizar los exámenes clínicos, radiológicos y procedimientos odontológicos pertinentes a mi diagnóstico y tratamiento.
+                </div>
+
+                <div class="firma-card-body">
+                    <div class="firma-preview-container">
+                        <?php if (!empty($historia['firma_paciente'])): ?>
+                            <div style="margin-bottom: 8px;">
+                                <span class="badge" style="background: #28a745; color: white; padding: 6px 12px; font-size: 0.82rem; border-radius: 20px;">
+                                    <i class="fas fa-check-circle me-1"></i> Firmado Digitalmente
+                                </span>
+                            </div>
+                            <img src="<?php echo $historia['firma_paciente']; ?>" alt="Firma del Paciente" class="firma-preview-img" id="imgFirmaPreview">
+                            <div style="font-size: 0.78rem; color: #777; margin-top: 6px;" id="lblFechaFirma">
+                                <i class="fas fa-calendar-alt me-1"></i> <?php echo !empty($historia['fecha_firma']) ? date('d/m/Y H:i', strtotime($historia['fecha_firma'])) : 'Registrado'; ?>
+                            </div>
+                        <?php else: ?>
+                            <i class="fas fa-file-signature" style="font-size: 3rem; color: #d69db8; margin-bottom: 10px;"></i>
+                            <div style="color: #888; font-size: 0.9rem; font-weight: 600;">Pendiente de Firma</div>
+                            <div style="color: #aaa; font-size: 0.78rem;">El paciente aún no ha firmado esta ficha</div>
+                        <?php endif; ?>
+                    </div>
+
+                    <div style="flex: 1; min-width: 250px;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 1rem; color: #333;">Acciones de Firma:</h4>
+                        <p style="font-size: 0.88rem; color: #666; margin-bottom: 15px;">
+                            Puede registrar la firma digital directamente en pantalla (usando tablet o ratón en consulta) o enviar un enlace seguro para que el paciente firme desde su teléfono celular.
+                        </p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button type="button" class="btn" style="background: #17a2b8; color: white;" onclick="abrirModalFirmaDoctor()">
+                                <i class="fas fa-pen-fancy me-1"></i> <?php echo !empty($historia['firma_paciente']) ? 'Cambiar / Re-firmar en Pantalla' : 'Firmar Ahora en Pantalla'; ?>
+                            </button>
+                            <button type="button" class="btn" style="background: #25D366; color: white;" onclick="abrirModalCompartirFirma()">
+                                <i class="fab fa-whatsapp me-1"></i> Compartir Enlace al Paciente
+                            </button>
+                            <a href="imprimir_historia.php?id=<?php echo $clienteId; ?>" target="_blank" class="btn" style="background: #6c757d; color: white;">
+                                <i class="fas fa-print me-1"></i> Imprimir Formato Oficial
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón Guardar Historia Clínica -->
+            <div style="text-align: center; margin: 30px 0 20px 0;">
+                <button type="submit" class="btn btn-primary" style="padding: 14px 40px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(107,29,73,0.35);">
+                    <i class="fas fa-save me-2"></i> Guardar Ficha Médica Completa
                 </button>
             </div>
         </form>
@@ -881,10 +1207,288 @@ document.addEventListener('click', function(e) {
         if (id === 'modalVerArchivo') cerrarModalVerArchivo();
         else if (id === 'modalEvolucion') cerrarModalEvolucion();
         else if (id === 'modalArchivo') cerrarModalArchivo();
+        else if (id === 'modalFirmaDoctor') cerrarModalFirmaDoctor();
+        else if (id === 'modalCompartirFirma') cerrarModalCompartirFirma();
         else e.target.classList.remove('show');
     }
 });
+
+// Función para calcular edad desde la fecha de nacimiento
+function calcularEdadDesdeFecha(fechaStr) {
+    if (!fechaStr) return;
+    const nacimiento = new Date(fechaStr);
+    const hoy = new Date();
+    let edad = hoy.getFullYear() - nacimiento.getFullYear();
+    const mes = hoy.getMonth() - nacimiento.getMonth();
+    if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
+        edad--;
+    }
+    if (edad >= 0 && edad <= 125) {
+        const campoEdad = document.getElementById('campo_edad');
+        if (campoEdad) campoEdad.value = edad;
+    }
+}
+
+// ----------------------------------------------------
+// Lógica de Firma Digital en Pantalla (Canvas)
+// ----------------------------------------------------
+let canvasFirma = null;
+let ctxFirma = null;
+let dibujando = false;
+let tieneTrazos = false;
+
+function initCanvasFirma() {
+    canvasFirma = document.getElementById('canvasFirmaDoctor');
+    if (!canvasFirma) return;
+    
+    ctxFirma = canvasFirma.getContext('2d');
+    
+    // Ajustar resolución interna para que la firma sea nítida en pantallas Retina/móviles
+    const rect = canvasFirma.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+    canvasFirma.width = rect.width * dpr;
+    canvasFirma.height = rect.height * dpr;
+    ctxFirma.scale(dpr, dpr);
+    
+    ctxFirma.strokeStyle = '#000066';
+    ctxFirma.lineWidth = 2.5;
+    ctxFirma.lineCap = 'round';
+    ctxFirma.lineJoin = 'round';
+
+    function getPos(e) {
+        const r = canvasFirma.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+            x: clientX - r.left,
+            y: clientY - r.top
+        };
+    }
+
+    function empezarTrazo(e) {
+        e.preventDefault();
+        dibujando = true;
+        const pos = getPos(e);
+        ctxFirma.beginPath();
+        ctxFirma.moveTo(pos.x, pos.y);
+    }
+
+    function dibujarTrazo(e) {
+        if (!dibujando) return;
+        e.preventDefault();
+        tieneTrazos = true;
+        const pos = getPos(e);
+        ctxFirma.lineTo(pos.x, pos.y);
+        ctxFirma.stroke();
+    }
+
+    function terminarTrazo(e) {
+        if (!dibujando) return;
+        e.preventDefault();
+        dibujando = false;
+    }
+
+    // Eventos Mouse y Touch / Pointer
+    canvasFirma.addEventListener('mousedown', empezarTrazo);
+    canvasFirma.addEventListener('mousemove', dibujarTrazo);
+    window.addEventListener('mouseup', terminarTrazo);
+
+    canvasFirma.addEventListener('touchstart', empezarTrazo, { passive: false });
+    canvasFirma.addEventListener('touchmove', dibujarTrazo, { passive: false });
+    canvasFirma.addEventListener('touchend', terminarTrazo);
+}
+
+function abrirModalFirmaDoctor() {
+    document.getElementById('modalFirmaDoctor').classList.add('show');
+    setTimeout(() => {
+        initCanvasFirma();
+        limpiarFirmaDoctor();
+    }, 150);
+}
+
+function cerrarModalFirmaDoctor() {
+    document.getElementById('modalFirmaDoctor').classList.remove('show');
+}
+
+function limpiarFirmaDoctor() {
+    if (!canvasFirma || !ctxFirma) return;
+    const dpr = window.devicePixelRatio || 1;
+    ctxFirma.save();
+    ctxFirma.setTransform(1, 0, 0, 1, 0, 0);
+    ctxFirma.clearRect(0, 0, canvasFirma.width, canvasFirma.height);
+    ctxFirma.restore();
+    tieneTrazos = false;
+}
+
+function guardarFirmaDoctor() {
+    if (!tieneTrazos) {
+        alert('Por favor realice su firma en el recuadro antes de guardar.');
+        return;
+    }
+    
+    const btnGuardar = document.getElementById('btnGuardarFirmaDoctor');
+    btnGuardar.disabled = true;
+    btnGuardar.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Guardando...';
+
+    const dataURL = canvasFirma.toDataURL('image/png');
+    const ciVal = document.getElementById('doc_ci_firma')?.value || '';
+
+    const formData = new FormData();
+    formData.append('ajax', '1');
+    formData.append('solo_firma', '1');
+    formData.append('cliente_id', '<?php echo $clienteId; ?>');
+    formData.append('firma_paciente', dataURL);
+    formData.append('ci', ciVal);
+
+    fetch('guardar_historia.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(r => r.json())
+    .then(res => {
+        btnGuardar.disabled = false;
+        btnGuardar.innerHTML = '<i class="fas fa-check me-1"></i> Guardar Firma';
+        
+        if (res.ok) {
+            alert('✅ Firma registrada y guardada exitosamente.');
+            cerrarModalFirmaDoctor();
+            window.location.reload();
+        } else {
+            alert('❌ Error al guardar firma: ' + (res.error || 'Intente nuevamente.'));
+        }
+    })
+    .catch(err => {
+        btnGuardar.disabled = false;
+        btnGuardar.innerHTML = '<i class="fas fa-check me-1"></i> Guardar Firma';
+        alert('❌ Error de conexión al guardar la firma.');
+    });
+}
+
+// ----------------------------------------------------
+// Compartir enlace de firma
+// ----------------------------------------------------
+function abrirModalCompartirFirma() {
+    document.getElementById('modalCompartirFirma').classList.add('show');
+}
+
+function cerrarModalCompartirFirma() {
+    document.getElementById('modalCompartirFirma').classList.remove('show');
+}
+
+function copiarEnlaceFirma() {
+    const input = document.getElementById('inputLinkFirma');
+    if (!input) return;
+    
+    input.select();
+    input.setSelectionRange(0, 99999);
+    
+    navigator.clipboard.writeText(input.value).then(() => {
+        const btn = document.getElementById('btnCopiarEnlaceFirma');
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check me-1"></i> ¡Copiado!';
+        btn.style.background = '#28a745';
+        setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.style.background = 'var(--primary)';
+        }, 2000);
+    }).catch(() => {
+        document.execCommand('copy');
+        alert('Enlace copiado al portapapeles');
+    });
+}
 </script>
+
+<!-- Modal para Firma en Pantalla (Tablet / Doctor) -->
+<div class="modal-overlay" id="modalFirmaDoctor">
+    <div class="modal-box" style="max-width: 650px; width: 95%;">
+        <div class="modal-header">
+            <h4 style="color: var(--primary);"><i class="fas fa-signature me-2"></i>Firma Digital del Paciente</h4>
+            <button class="modal-close" onclick="cerrarModalFirmaDoctor()">&times;</button>
+        </div>
+        <div>
+            <div style="background: #fdf8fa; border: 1px solid #ebd3e0; border-radius: 8px; padding: 10px 15px; margin-bottom: 15px; font-size: 0.88rem; color: #555;">
+                <strong>Paciente:</strong> <?php echo htmlspecialchars($cliente['nombre']); ?> | 
+                <strong>Teléfono:</strong> <?php echo htmlspecialchars($cliente['telefono']); ?>
+            </div>
+
+            <div class="form-group">
+                <label style="font-weight: 600; font-size: 0.9rem;">C.I. / Documento de Identidad del Firmante:</label>
+                <input type="text" id="doc_ci_firma" class="form-control" value="<?php echo htmlspecialchars($historia['ci'] ?? ''); ?>" placeholder="Ej: 8472910 LP">
+            </div>
+
+            <div style="margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                <label style="font-weight: 600; font-size: 0.9rem; color: #333;">
+                    Firme en el recuadro (Stylus, Dedo o Ratón):
+                </label>
+                <button type="button" class="btn btn-sm" style="background: #f0f0f0; color: #555; border: 1px solid #ccc;" onclick="limpiarFirmaDoctor()">
+                    <i class="fas fa-eraser me-1"></i> Limpiar
+                </button>
+            </div>
+
+            <div style="border: 2px dashed var(--primary); border-radius: 10px; background: #ffffff; padding: 4px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);">
+                <canvas id="canvasFirmaDoctor" style="width: 100%; height: 210px; display: block; cursor: crosshair; touch-action: none; border-radius: 6px;"></canvas>
+            </div>
+            <div style="font-size: 0.78rem; color: #888; text-align: center; margin-top: 6px;">
+                <i class="fas fa-info-circle me-1"></i> Al registrar su firma, el paciente valida que los datos y antecedentes consignados son fidedignos.
+            </div>
+        </div>
+        <div class="modal-footer" style="margin-top: 20px;">
+            <button type="button" class="btn" style="background: #6c757d; color: white;" onclick="cerrarModalFirmaDoctor()">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="btnGuardarFirmaDoctor" onclick="guardarFirmaDoctor()">
+                <i class="fas fa-check me-1"></i> Guardar Firma
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Compartir Enlace al Paciente -->
+<div class="modal-overlay" id="modalCompartirFirma">
+    <div class="modal-box" style="max-width: 580px; width: 95%;">
+        <div class="modal-header">
+            <h4 style="color: #25D366;"><i class="fab fa-whatsapp me-2"></i>Enviar Enlace para Firma Digital</h4>
+            <button class="modal-close" onclick="cerrarModalCompartirFirma()">&times;</button>
+        </div>
+        <div>
+            <p style="font-size: 0.92rem; color: #555; margin-bottom: 15px;">
+                El paciente puede abrir este enlace desde su smartphone para revisar su ficha médica y firmar directamente con su dedo:
+            </p>
+            
+            <div class="form-group">
+                <label style="font-weight: 600; font-size: 0.88rem;">Enlace Directo de Verificación y Firma:</label>
+                <div style="display: flex; gap: 8px;">
+                    <input type="text" id="inputLinkFirma" class="form-control" value="<?php echo htmlspecialchars($linkFirma); ?>" readonly style="background: #f8f9fa; font-size: 0.85rem;">
+                    <button type="button" class="btn btn-primary" id="btnCopiarEnlaceFirma" onclick="copiarEnlaceFirma()" style="white-space: nowrap;">
+                        <i class="fas fa-copy me-1"></i> Copiar
+                    </button>
+                </div>
+            </div>
+
+            <?php
+            $telefonoLimpio = preg_replace('/\D/', '', $cliente['telefono']);
+            if (strlen($telefonoLimpio) === 8 && !str_starts_with($telefonoLimpio, '591')) {
+                $telefonoLimpio = '591' . $telefonoLimpio;
+            }
+            $mensajeWs = "Hola " . $cliente['nombre'] . ", le saludamos de Bolident Dra. Tatiana Ruiz. Por favor ingrese al siguiente enlace para verificar sus datos y registrar su firma en su Ficha Odontológica Oficial: " . $linkFirma;
+            $urlWhatsapp = "https://api.whatsapp.com/send?phone=" . $telefonoLimpio . "&text=" . urlencode($mensajeWs);
+            ?>
+
+            <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 15px; margin-top: 20px; text-align: center;">
+                <div style="font-weight: 600; color: #166534; margin-bottom: 10px;">
+                    <i class="fab fa-whatsapp me-1"></i> Enviar Directamente por WhatsApp
+                </div>
+                <p style="font-size: 0.85rem; color: #15803d; margin-bottom: 12px;">
+                    Número registrado: <strong><?php echo htmlspecialchars($cliente['telefono']); ?></strong>
+                </p>
+                <a href="<?php echo $urlWhatsapp; ?>" target="_blank" class="btn" style="background: #25D366; color: white; padding: 12px 25px; text-decoration: none; border-radius: 8px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);">
+                    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Abrir Chat de WhatsApp
+                </a>
+            </div>
+        </div>
+        <div class="modal-footer" style="margin-top: 20px;">
+            <button type="button" class="btn" style="background: #6c757d; color: white;" onclick="cerrarModalCompartirFirma()">Cerrar</button>
+        </div>
+    </div>
+</div>
 
 <!-- Modal para visualizar archivos clínicos (Ancho ampliado a 1000px) -->
 <div class="modal-overlay" id="modalVerArchivo">
