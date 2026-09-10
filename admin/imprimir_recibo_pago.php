@@ -391,8 +391,8 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
                     <h1>Dra. Tatiana Ruiz</h1>
                     <div class="specialty">Cirujano Dentista &bull; Odontología Especializada</div>
                     <div class="contact">
-                        Calle Beni 377 casi Tomas Frias Edif. BELIZE &bull; Cochabamba, Bolivia<br>
-                        Teléfono / WhatsApp: +591 79999200
+                        Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19 &bull; Cochabamba, Bolivia<br>
+                        Teléfono / WhatsApp: +591 70309222
                     </div>
                 </td>
                 <td class="header-receipt-box">
@@ -585,7 +585,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
 
         <!-- Pie de Página -->
         <div class="receipt-footer">
-            Dra. Tatiana Ruiz &bull; Calle Beni 377 casi Tomas Frias Edif. BELIZE &bull; Tel: +591 79999200 &bull; Cochabamba, Bolivia
+            Dra. Tatiana Ruiz &bull; Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19 &bull; Tel: +591 70309222 &bull; Cochabamba, Bolivia
         </div>
     </div>
 

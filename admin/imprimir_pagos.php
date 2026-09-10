@@ -335,7 +335,7 @@ $queryParams = http_build_query([
                 <td style="padding-left: 10px; vertical-align: middle;">
                     <div class="clinic-title">Dra. Tatiana Ruiz</div>
                     <div class="clinic-sub">Cirujano Dentista &bull; Clínica Dental Bolident</div>
-                    <div class="clinic-contact">Calle Beni 377 casi Tomas Frias Edif. BELIZE &bull; Tel: +591 79999200</div>
+                    <div class="clinic-contact">Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19 &bull; Tel: +591 70309222</div>
                 </td>
                 <td class="report-title-box">
                     <h2>Reporte de Pagos</h2>

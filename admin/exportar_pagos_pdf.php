@@ -193,7 +193,7 @@ $html = '
             <td style="width: 65%;">
                 <div class="clinic-title">Dra. Tatiana Ruiz</div>
                 <div class="clinic-sub">Cirujano Dentista &bull; Clínica Dental Bolident</div>
-                <div class="clinic-info">Calle Beni 377 casi Tomas Frias Edif. BELIZE &bull; Tel: +591 79999200</div>
+                <div class="clinic-info">Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19 &bull; Tel: +591 70309222</div>
             </td>
             <td style="width: 35%; text-align: right; vertical-align: middle;">
                 <div style="font-size: 12pt; font-weight: bold; color: #6B1D49; text-transform: uppercase;">Reporte de Pagos</div>

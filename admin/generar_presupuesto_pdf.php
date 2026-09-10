@@ -23,8 +23,8 @@ if (!$presupuesto) {
 // Configuración de la clínica
 $clinica = [
     'nombre' => 'Dra. Tatiana Ruiz',
-    'direccion' => 'Calle Beni 377 casi Tomas Frias Edif. BELIZE, Cochabamba, Bolivia',
-    'telefono' => '+591 79999200',
+    'direccion' => 'Calle Fidel Anze Entre Av. Pando y Av. Melchor Urquidi Clinica NUR Piso 1 Of. 19, Cochabamba, Bolivia',
+    'telefono' => '+591 70309222',
     'email' => '',
     'nit' => ''
 ];
