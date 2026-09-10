@@ -858,6 +858,17 @@ require_once '../templates/header_general.php';
             <div id="containerPausedChats" style="max-height: 140px; overflow-y: auto; padding-right: 4px;">
                 <div class="text-muted text-center py-3 small">No hay chats pausados. La IA está activa para todos.</div>
             </div>
+
+            <!-- Registro de Eventos en Vivo (Logs) -->
+            <div class="mt-3 pt-2 border-top">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <label class="form-label-custom mb-0"><i class="fas fa-terminal text-primary me-1"></i> Registro en Vivo de la IA (Logs):</label>
+                    <small class="text-muted" style="font-size: 0.7rem;">En tiempo real</small>
+                </div>
+                <div id="containerBotLogs" style="max-height: 150px; overflow-y: auto; background: #0F172A; color: #E2E8F0; padding: 10px; border-radius: 8px; font-family: monospace; font-size: 0.74rem; display: flex; flex-direction: column; gap: 4px;">
+                    <div class="text-muted text-center py-2">Esperando actividad del bot...</div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -961,11 +972,22 @@ async function pausarChatManual() {
     }
     const tel = num.startsWith('+') ? num : (cod + num.replace(/\D/g, ''));
 
+    // Obtener nombre si fue seleccionado del dropdown
+    const select = document.getElementById('selectPacientePausar');
+    let pacienteNombre = null;
+    if (select && select.selectedIndex > 0) {
+        pacienteNombre = select.options[select.selectedIndex].getAttribute('data-nombre');
+    }
+
     try {
         const res = await fetch(`${getBotApiUrl()}/pause-chat`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ telefono: tel, durationMinutes: 60 })
+            body: JSON.stringify({ 
+                telefono: tel, 
+                durationMinutes: 60,
+                pacienteNombre: pacienteNombre
+            })
         });
         const data = await res.json();
         if (data.ok) {
@@ -1043,10 +1065,13 @@ function renderPausedChats(pausedList) {
     const badge = document.getElementById('badgePausedCount');
     if (!container) return;
 
-    // Filtrar LIDs sin mapear que tengan 13+ dígitos y no empiecen con 591
+    // Solo filtrar identificadores internos de Baileys que tengan @lid o sean mayores a 14 dígitos sin nombre
     const validList = Array.isArray(pausedList) ? pausedList.filter(c => {
-        const clean = String(c.phone).replace(/\D/g, '');
-        return !(clean.length >= 13 && !clean.startsWith('591'));
+        const str = String(c.phone || '');
+        if (str.includes('@lid')) return false;
+        const clean = str.replace(/\D/g, '');
+        if (clean.length > 14 && !c.pacienteNombre && !clean.startsWith('591')) return false;
+        return clean.length >= 6;
     }) : [];
 
     if (validList.length === 0) {
@@ -1072,6 +1097,32 @@ function renderPausedChats(pausedList) {
                 </button>
             </div>
         `;
+    }).join('');
+}
+
+function renderBotLogs(logs) {
+    const box = document.getElementById('containerBotLogs');
+    if (!box) return;
+
+    if (!Array.isArray(logs) || logs.length === 0) {
+        box.innerHTML = '<div class="text-muted text-center py-2">Sin actividad reciente...</div>';
+        return;
+    }
+
+    box.innerHTML = logs.slice(0, 20).map(l => {
+        let badgeColor = '#94A3B8';
+        if (l.type === 'error') badgeColor = '#F87171';
+        else if (l.type === 'warning') badgeColor = '#FBBF24';
+        else if (l.type === 'success') badgeColor = '#34D399';
+        else if (l.type === 'message_in') badgeColor = '#60A5FA';
+        else if (l.type === 'message_out') badgeColor = '#A78BFA';
+        
+        const safeMsg = String(l.message || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        return `<div style="display: flex; gap: 6px; align-items: baseline; line-height: 1.35;">
+            <span style="color: #64748B; font-size: 0.68rem; flex-shrink: 0;">[${l.timeFormatted || ''}]</span>
+            <span style="color: ${badgeColor}; font-weight: 700; font-size: 0.68rem; flex-shrink: 0;">[${(l.type || 'info').toUpperCase()}]</span>
+            <span style="color: #F1F5F9; word-break: break-word;">${safeMsg}</span>
+        </div>`;
     }).join('');
 }
 
@@ -1257,6 +1308,10 @@ async function checkBotStatus() {
 
         if (Array.isArray(data.pausedChats)) {
             renderPausedChats(data.pausedChats);
+        }
+
+        if (Array.isArray(data.recentLogs)) {
+            renderBotLogs(data.recentLogs);
         }
 
         statusDot.className = 'status-dot';
