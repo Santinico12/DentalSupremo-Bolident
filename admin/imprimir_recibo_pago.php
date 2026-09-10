@@ -65,7 +65,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #F4F9FD;
             color: #222;
             font-size: 12px;
             line-height: 1.4;
@@ -180,8 +180,8 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
         .info-col:last-child { padding-right: 0; }
 
         .info-card {
-            background: #fcf8fa;
-            border: 1px solid #ebdbe4;
+            background: #F8FAFC;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
             padding: 10px 14px;
                .info-card-title {
@@ -301,7 +301,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
         .total-item.saldo {
             font-weight: 700;
             color: #dc3545;
-            border-top: 1px dashed #ebdbe4;
+            border-top: 1px dashed #e2e8f0;
             margin-top: 4px;
             padding-top: 4px;
         }
@@ -339,7 +339,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
         .receipt-footer {
             margin-top: 25px;
             padding-top: 10px;
-            border-top: 1px solid #ebdbe4;
+            border-top: 1px solid #e2e8f0;
             text-align: center;
             font-size: 9.5px;
             color: #777;
@@ -428,7 +428,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
                     </div>
                     <?php endif; ?>
                     <?php if ($pago['pagador_nombre'] && $pago['pagador_nombre'] !== $pago['cliente_nombre']): ?>
-                    <div class="info-row" style="border-top: 1px dashed #ebdbe4; padding-top: 3px; margin-top: 3px;">
+                    <div class="info-row" style="border-top: 1px dashed #e2e8f0; padding-top: 3px; margin-top: 3px;">
                         <span class="info-lbl">Pagado por (Tercero):</span>
                         <span class="info-val"><?php echo htmlspecialchars($pago['pagador_nombre']); ?></span>
                     </div>

@@ -126,7 +126,7 @@ require_once '../templates/header_general.php';
 
 <style>
     :root { --primary: #003B73; --primary-dark: #062846; --accent: #2998EC; }
-    body { background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%); }
+    body { background: linear-gradient(135deg, #F4F9FD 0%, #E8F2FA 100%); }
     .page-container { max-width: 800px; margin: 0 auto; padding: 20px; }
     
     .page-header {

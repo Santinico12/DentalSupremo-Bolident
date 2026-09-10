@@ -86,7 +86,7 @@ require_once '../templates/header_general.php';
     }
 
     body {
-        background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%);
+        background: linear-gradient(135deg, #F4F9FD 0%, #E8F2FA 100%);
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
@@ -223,7 +223,7 @@ require_once '../templates/header_general.php';
     .form-control:focus, .form-select:focus {
         border-color: var(--primary);
         background: white;
-        box-shadow: 0 0 0 0.2rem rgba(196, 162, 126, 0.25);
+        box-shadow: 0 0 0 0.2rem rgba(41, 152, 236, 0.25);
         transform: translateY(-2px);
     }
 
@@ -269,7 +269,7 @@ require_once '../templates/header_general.php';
         cursor: pointer;
         transition: all 0.3s ease;
         margin-top: 10px;
-        box-shadow: 0 4px 15px rgba(196, 162, 126, 0.4);
+        box-shadow: 0 4px 15px rgba(0, 59, 115, 0.35);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -325,7 +325,7 @@ require_once '../templates/header_general.php';
 
     /* Info boxes */
     .info-box {
-        background: rgba(196, 162, 126, 0.1);
+        background: rgba(41, 152, 236, 0.08);
         border-left: 4px solid var(--primary);
         padding: 15px 20px;
         border-radius: 10px;

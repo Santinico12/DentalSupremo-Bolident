@@ -207,7 +207,7 @@ require_once __DIR__ . '/../admin/check_auth.php';
         .sidebar-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(83, 20, 56, 0.5);
+            background: rgba(6, 40, 70, 0.55);
             backdrop-filter: blur(3px);
             z-index: 1040;
             opacity: 0;
@@ -289,7 +289,7 @@ require_once __DIR__ . '/../admin/check_auth.php';
         .sidebar-brand:hover .brand-logo-container {
             transform: scale(1.06);
             border-color: var(--accent);
-            box-shadow: 0 0 14px rgba(196, 125, 159, 0.5);
+            box-shadow: 0 0 14px rgba(41, 152, 236, 0.5);
         }
 
         .brand-logo {

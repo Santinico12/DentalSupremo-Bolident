@@ -66,7 +66,7 @@ if (!empty($itemsPresupuesto)) {
         $pUnit = number_format($item['precio_unitario'], 2);
         $subt = number_format($item['subtotal'], 2);
 
-        $bg = ($idx % 2 == 0) ? 'background-color: #fdfafc;' : 'background-color: #ffffff;';
+        $bg = ($idx % 2 == 0) ? 'background-color: #F8FAFC;' : 'background-color: #ffffff;';
 
         $filasTratamientos .= "
         <tr style=\"$bg\">
@@ -111,8 +111,8 @@ $html = '
     
     .info-table { width: 100%; margin-bottom: 10px; }
     .info-card {
-        background-color: #fcf8fa;
-        border: 1px solid #ebdbe4;
+        background-color: #F8FAFC;
+        border: 1px solid #e2e8f0;
         border-radius: 6px;
         padding: 8px 10px;
         font-size: 8.5pt;
@@ -122,7 +122,7 @@ $html = '
         font-weight: bold;
         font-size: 8.5pt;
         text-transform: uppercase;
-        border-bottom: 1px dashed #ebdbe4;
+        border-bottom: 1px dashed #e2e8f0;
         padding-bottom: 3px;
         margin-bottom: 5px;
     }
@@ -144,17 +144,17 @@ $html = '
         width: 100%;
         border-collapse: collapse;
         font-size: 8.5pt;
-        border: 1px solid #ebdbe4;
+        border: 1px solid #e2e8f0;
     }
     .table-items th {
-        background-color: #f7eff3;
+        background-color: #F1F5F9;
         color: #003B73;
         font-size: 8pt;
         text-transform: uppercase;
         padding: 6px;
-        border-bottom: 1px solid #ebdbe4;
+        border-bottom: 1px solid #e2e8f0;
     }
-    .table-items td { border-bottom: 1px solid #f2e9ee; }
+    .table-items td { border-bottom: 1px solid #e2e8f0; }
 
     .literal-box {
         background-color: #F4F9FD;
@@ -166,7 +166,7 @@ $html = '
 
     .totals-table { width: 100%; margin-top: 5px; }
     .totals-box {
-        background-color: #fcf8fa;
+        background-color: #F8FAFC;
         border: 1.5px solid #003B73;
         border-radius: 6px;
         padding: 8px 10px;
@@ -189,7 +189,7 @@ $html = '
     .footer {
         margin-top: 20px;
         padding-top: 6px;
-        border-top: 1px solid #ebdbe4;
+        border-top: 1px solid #e2e8f0;
         text-align: center;
         font-size: 7.5pt;
         color: #777;
@@ -229,7 +229,7 @@ $html = '
                     (!empty($clienteCi) ? '<div class="row-item"><span class="lbl">C.I.:</span> <span class="val">' . htmlspecialchars($clienteCi) . '</span></div>' : '') .
                     (!empty($pago['cliente_telefono']) ? '<div class="row-item"><span class="lbl">Teléfono:</span> <span class="val">' . htmlspecialchars($pago['cliente_telefono']) . '</span></div>' : '') .
                     (($pago['pagador_nombre'] && $pago['pagador_nombre'] !== $pago['cliente_nombre']) ? 
-                        '<div class="row-item" style="border-top: 1px dashed #ebdbe4; margin-top: 2px; padding-top: 2px;"><span class="lbl">Pagó (Tercero):</span> <span class="val">' . htmlspecialchars($pago['pagador_nombre']) . '</span></div>' .
+                        '<div class="row-item" style="border-top: 1px dashed #e2e8f0; margin-top: 2px; padding-top: 2px;"><span class="lbl">Pagó (Tercero):</span> <span class="val">' . htmlspecialchars($pago['pagador_nombre']) . '</span></div>' .
                         (!empty($pago['pagador_ci']) ? '<div class="row-item"><span class="lbl">C.I. Pagador:</span> <span class="val">' . htmlspecialchars($pago['pagador_ci']) . '</span></div>' : '')
                     : '') . '
                 </div>

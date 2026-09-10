@@ -112,7 +112,7 @@ if (!empty($pagos)) {
         $metodoTxt = ucfirst($p['metodo_pago']);
         $montoFmt = number_format($p['monto'], 2);
 
-        $bg = ($idx % 2 == 0) ? 'background-color: #fdfafc;' : 'background-color: #ffffff;';
+        $bg = ($idx % 2 == 0) ? 'background-color: #F8FAFC;' : 'background-color: #ffffff;';
 
         $filasPagos .= "
         <tr style=\"$bg\">
@@ -128,7 +128,7 @@ if (!empty($pagos)) {
     }
 
     $filasPagos .= "
-    <tr style=\"background-color: #f8eff4; font-weight: bold;\">
+    <tr style=\"background-color: #F1F5F9; font-weight: bold;\">
         <td colspan=\"6\" style=\"text-align: right; padding: 8px; font-weight: bold; color: #003B73; text-transform: uppercase;\">TOTAL RECAUDADO ($cantidadPagos pagos):</td>
         <td style=\"text-align: right; padding: 8px; font-weight: bold; color: #003B73; font-size: 10.5pt;\">Bs " . number_format($totalMonto, 2) . "</td>
     </tr>";
@@ -150,8 +150,8 @@ $html = '
     
     .stats-table { width: 100%; margin-bottom: 12px; border-collapse: separate; }
     .stat-card {
-        background-color: #fcf8fa;
-        border: 1px solid #ebdbe4;
+        background-color: #F8FAFC;
+        border: 1px solid #e2e8f0;
         border-radius: 6px;
         padding: 6px;
         text-align: center;
@@ -164,7 +164,7 @@ $html = '
         width: 100%;
         border-collapse: collapse;
         font-size: 8pt;
-        border: 1px solid #ebdbe4;
+        border: 1px solid #e2e8f0;
     }
     .payments-table th {
         background-color: #003B73;
@@ -174,12 +174,12 @@ $html = '
         padding: 6px 4px;
         text-align: left;
     }
-    .payments-table td { border-bottom: 1px solid #f0e4eb; }
+    .payments-table td { border-bottom: 1px solid #e2e8f0; }
 
     .footer {
         margin-top: 15px;
         padding-top: 5px;
-        border-top: 1px solid #ebdbe4;
+        border-top: 1px solid #e2e8f0;
         font-size: 7pt;
         color: #777;
         text-align: center;

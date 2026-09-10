@@ -40,7 +40,7 @@ require_once '../templates/header_general.php';
         --danger: #dc3545;
         --info: #17a2b8;
     }
-    body { background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%); }
+    body { background: linear-gradient(135deg, #F4F9FD 0%, #E8F2FA 100%); }
     .page-container { width: 100%; margin: 0; padding: 0; }
     
     .page-header {
@@ -99,7 +99,7 @@ require_once '../templates/header_general.php';
     .badge-tipo { padding: 5px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; display: inline-flex; align-items: center; gap: 4px; }
     .badge-ingreso-presupuesto { background: #e2f0d9; color: #385723; }
     .badge-ingreso-otro { background: #e1f5fe; color: #0288d1; }
-    .badge-egreso { background: #fce4ec; color: #c2185b; }
+    .badge-egreso { background: #fee2e2; color: #dc2626; }
 
     .badge-metodo { padding: 3px 8px; border-radius: 12px; font-size: 0.72rem; font-weight: 600; text-transform: capitalize; }
     .badge-efectivo { background: #e2f0d9; color: #385723; }

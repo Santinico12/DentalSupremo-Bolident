@@ -111,7 +111,7 @@ $queryParams = http_build_query([
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #F4F9FD;
             color: #222;
             font-size: 11.5px;
             line-height: 1.35;
@@ -216,7 +216,7 @@ $queryParams = http_build_query([
             display: table-cell;
             width: 20%;
             background: #F4F9FD;
-            border: 1px solid #ebdbe4;
+            border: 1px solid #e2e8f0;
             border-radius: 8px;
             padding: 10px 8px;
             text-align: center;
@@ -240,7 +240,7 @@ $queryParams = http_build_query([
             border-collapse: collapse;
             font-size: 10.5px;
             margin-bottom: 15px;
-            border: 1px solid #e0d0d9;
+            border: 1px solid #e2e8f0;
         }
         .payments-table th {
             background: #003B73;
@@ -255,13 +255,13 @@ $queryParams = http_build_query([
         .payments-table th.text-right { text-align: right; }
         .payments-table td {
             padding: 7px 6px;
-            border-bottom: 1px solid #f0e4eb;
+            border-bottom: 1px solid #e2e8f0;
             color: #222;
             vertical-align: middle;
         }
         .payments-table td.text-center { text-align: center; }
         .payments-table td.text-right { text-align: right; }
-        .payments-table tr:nth-child(even) { background: #fdfafc; }
+        .payments-table tr:nth-child(even) { background: #F8FAFC; }
 
         .badge-method {
             padding: 2px 7px;
@@ -276,7 +276,7 @@ $queryParams = http_build_query([
         .badge-transferencia { background: #d4edda; color: #155724; }
 
         .total-row td {
-            background: #f8eff4 !important;
+            background: #F1F5F9 !important;
             border-top: 2px solid #003B73;
             font-weight: 800;
             font-size: 11px;
@@ -287,7 +287,7 @@ $queryParams = http_build_query([
         .report-footer {
             margin-top: 25px;
             padding-top: 10px;
-            border-top: 1px solid #ebdbe4;
+            border-top: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
             font-size: 9px;

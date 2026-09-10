@@ -154,7 +154,7 @@ require_once '../templates/header_general.php';
 
 <style>
     :root { --primary: #003B73; --primary-dark: #062846; --accent: #2998EC; }
-    body { background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%); }
+    body { background: linear-gradient(135deg, #F4F9FD 0%, #E8F2FA 100%); }
     .page-container { max-width: 800px; margin: 0 auto; padding: 20px; }
     
     .page-header {
@@ -241,14 +241,14 @@ require_once '../templates/header_general.php';
     }
     .monto-rapido-btn:hover {
         border-color: var(--primary);
-        background: #fff8f0;
+        background: #EBF4FC;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(196, 162, 126, 0.2);
+        box-shadow: 0 4px 12px rgba(41, 152, 236, 0.2);
     }
     .monto-rapido-btn.active {
         border-color: var(--primary);
-        background: linear-gradient(135deg, #fff8f0, #fef3e8);
-        box-shadow: 0 4px 15px rgba(196, 162, 126, 0.25);
+        background: linear-gradient(135deg, #EBF4FC, #D6EAFC);
+        box-shadow: 0 4px 15px rgba(0, 59, 115, 0.25);
     }
     .monto-rapido-btn.active i { color: var(--primary-dark); }
     .monto-rapido-btn.active strong { color: var(--primary-dark); }

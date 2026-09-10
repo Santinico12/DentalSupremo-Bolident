@@ -83,7 +83,7 @@ h1 {
 .form-control:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(196, 125, 159, 0.3);
+    box-shadow: 0 0 0 3px rgba(41, 152, 236, 0.25);
 }
 
 .password-field {
@@ -161,7 +161,7 @@ h1 {
 .form-control:focus,
 .toggle-password:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(196, 125, 159, 0.3);
+    box-shadow: 0 0 0 3px rgba(41, 152, 236, 0.25);
 }
 
 /* Dark mode */

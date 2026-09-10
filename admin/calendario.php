@@ -1158,7 +1158,7 @@ function enhanceModalForEvent(event) {
                         </div>
 
                         <div class="d-flex align-items-center mb-3">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: rgba(196, 125, 159, 0.15); color: #003B73; flex-shrink: 0;">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background: rgba(41, 152, 236, 0.15); color: #003B73; flex-shrink: 0;">
                                 <i class="fas fa-clinic-medical"></i>
                             </div>
                             <div>
@@ -1945,7 +1945,7 @@ function cargarHistoriaClinica(citaId, abrirCompleta) {
                         padding: 25px;
                         border-radius: 12px;
                         border: 2px solid #003B73;
-                        background: linear-gradient(135deg, rgba(0, 59, 115, 0.05) 0%, rgba(196, 125, 159, 0.08) 100%);
+                        background: linear-gradient(135deg, rgba(0, 59, 115, 0.05) 0%, rgba(41, 152, 236, 0.08) 100%);
                         cursor: pointer;
                         transition: all 0.3s ease;
                     " id="opcion-cita-card">

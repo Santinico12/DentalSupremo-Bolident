@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         .form-control:focus, .form-select:focus {
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(196, 162, 126, 0.25);
+            box-shadow: 0 0 0 0.25rem rgba(41, 152, 236, 0.25);
         }
         
         .btn-registrar {

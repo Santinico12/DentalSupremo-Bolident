@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%);
+            background: linear-gradient(135deg, #F4F9FD 0%, #E8F2FA 100%);
             position: relative;
             overflow: hidden;
         }
@@ -230,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
             border-radius: 26px;
             overflow: hidden;
             background: #ffffff;
-            border: 2.5px solid rgba(196, 125, 159, 0.35);
+            border: 2.5px solid rgba(20, 24, 104, 0.35);
             box-shadow: 0 10px 25px rgba(0, 59, 115, 0.16), 0 4px 10px rgba(0, 0, 0, 0.04);
             padding: 4px;
             animation: pulse 2.5s ease-in-out infinite;
@@ -345,7 +345,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
             outline: none;
             border-color: var(--primary);
             background: white;
-            box-shadow: 0 0 0 4px rgba(196, 162, 126, 0.1);
+            box-shadow: 0 0 0 4px rgba(41, 152, 236, 0.18);
             transform: translateY(-2px);
         }
 
@@ -387,7 +387,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(196, 162, 126, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 59, 115, 0.35);
             display: flex;
             align-items: center;
             justify-content: center;

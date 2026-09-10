@@ -66,7 +66,7 @@ require_once '../templates/header_general.php';
 
 <style>
     :root { --primary: #003B73; --primary-dark: #062846; --accent: #2998EC; }
-    body { background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%); }
+    body { background: linear-gradient(135deg, #F4F9FD 0%, #E8F2FA 100%); }
     .page-container { width: 100%; margin: 0; padding: 0; }
     
     .page-header {
@@ -152,7 +152,7 @@ require_once '../templates/header_general.php';
     }
     .btn-view { background: #e3f2fd; color: #1976d2; }
     .btn-pdf { background: #ffebee; color: #c62828; }
-    .btn-delete { background: #fce4ec; color: #c2185b; }
+    .btn-delete { background: #fee2e2; color: #dc2626; }
     .btn-action:hover { transform: scale(1.1); }
 
     .empty-state { text-align: center; padding: 60px 20px; color: #888; }

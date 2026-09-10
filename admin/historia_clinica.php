@@ -86,7 +86,7 @@ require_once '../templates/header_general.php';
 
 <style>
     :root { --primary: #003B73; --primary-dark: #062846; --accent: #2998EC; }
-    body { background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%); }
+    body { background: linear-gradient(135deg, #F4F9FD 0%, #E8F2FA 100%); }
     .page-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
     
     /* Header del paciente */
@@ -444,7 +444,7 @@ require_once '../templates/header_general.php';
         letter-spacing: 0.3px;
     }
 
-    .pres-card-estado.aprobado { background: rgba(196,162,126,0.15); color: var(--primary-dark); }
+    .pres-card-estado.aprobado { background: rgba(41,152,236,0.15); color: var(--primary); }
     .pres-card-estado.pagado { background: rgba(40,167,69,0.12); color: #28a745; }
     .pres-card-estado.pendiente { background: rgba(255,193,7,0.12); color: #d4a106; }
     .pres-card-estado.cancelado { background: rgba(220,53,69,0.12); color: #dc3545; }

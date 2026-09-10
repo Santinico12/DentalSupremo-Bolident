@@ -54,9 +54,9 @@ require_once '../templates/header_general.php';
         --primary-dark: #062846; 
         --accent: #2998EC; 
         --light-bg: #F4F9FD;
-        --border-color: #f0e2ea;
+        --border-color: #e2e8f0;
     }
-    body { background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%); min-height: 100vh; }
+    body { background: linear-gradient(135deg, #F4F9FD 0%, #E8F2FA 100%); min-height: 100vh; }
     .page-container { max-width: 950px; margin: 0 auto; padding: 20px 15px 40px; }
     
     .page-header {
@@ -120,7 +120,7 @@ require_once '../templates/header_general.php';
     }
     
     .monto-banner {
-        background: linear-gradient(135deg, rgba(0, 59, 115, 0.05), rgba(196, 125, 159, 0.1));
+        background: linear-gradient(135deg, rgba(0, 59, 115, 0.05), rgba(41, 152, 236, 0.08));
         border: 2px dashed var(--accent);
         border-radius: 14px;
         padding: 20px;
@@ -141,7 +141,7 @@ require_once '../templates/header_general.php';
         justify-content: space-between; 
         align-items: center;
         padding: 10px 0; 
-        border-bottom: 1px solid #f7f1f4; 
+        border-bottom: 1px solid #e2e8f0; 
     }
     .detail-row:last-child { border-bottom: none; }
     .detail-label { font-weight: 600; color: #666; font-size: 0.9rem; }
@@ -157,7 +157,7 @@ require_once '../templates/header_general.php';
 
     /* Motivo / Presupuesto info */
     .motivo-header {
-        background: #fdf6fa;
+        background: #F4F9FD;
         border-radius: 12px;
         padding: 16px 20px;
         margin-bottom: 20px;
@@ -176,7 +176,7 @@ require_once '../templates/header_general.php';
     .treatments-table-wrapper {
         overflow-x: auto;
         border-radius: 10px;
-        border: 1px solid #f0e6ec;
+        border: 1px solid #e2e8f0;
         margin-bottom: 20px;
     }
     .treatments-table {
@@ -185,25 +185,25 @@ require_once '../templates/header_general.php';
         font-size: 0.88rem;
     }
     .treatments-table th {
-        background: #f8eff4;
+        background: #F1F5F9;
         color: var(--primary-dark);
         padding: 11px 14px;
         font-weight: 700;
         text-align: left;
-        border-bottom: 2px solid #ecd8e4;
+        border-bottom: 2px solid #cbd5e1;
         white-space: nowrap;
     }
     .treatments-table th.text-right { text-align: right; }
     .treatments-table th.text-center { text-align: center; }
     .treatments-table td {
         padding: 11px 14px;
-        border-bottom: 1px solid #f5edf2;
+        border-bottom: 1px solid #e2e8f0;
         color: #333;
         vertical-align: middle;
     }
     .treatments-table td.text-right { text-align: right; font-weight: 600; }
     .treatments-table td.text-center { text-align: center; }
-    .treatments-table tr:hover { background-color: #fdfafc; }
+    .treatments-table tr:hover { background-color: #F8FAFC; }
 
     /* Balance Cards */
     .balance-grid {
@@ -429,7 +429,7 @@ require_once '../templates/header_general.php';
             </table>
         </div>
         <?php else: ?>
-        <div style="padding: 20px; text-align: center; color: #888; background: #fdfafc; border-radius: 8px; margin-bottom: 15px;">
+        <div style="padding: 20px; text-align: center; color: #888; background: #F8FAFC; border-radius: 8px; margin-bottom: 15px;">
             <i class="fas fa-info-circle me-1"></i> No se detallaron ítems individuales en este presupuesto.
         </div>
         <?php endif; ?>

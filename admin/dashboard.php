@@ -108,7 +108,7 @@ require_once '../templates/header_general.php';
     }
 
     body {
-        background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%);
+        background: linear-gradient(135deg, #F4F9FD 0%, #E8F2FA 100%);
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
@@ -288,7 +288,7 @@ require_once '../templates/header_general.php';
     .filter-btn.active {
         background: var(--primary);
         color: white;
-        box-shadow: 0 3px 10px rgba(196, 162, 126, 0.35);
+        box-shadow: 0 3px 10px rgba(0, 59, 115, 0.3);
     }
 
     .chip {

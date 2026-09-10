@@ -40,13 +40,14 @@ h1 {
 }
 
 .btn-danger {
-    background-color: #F4C6C6;
+    background-color: #fee2e2;
     border: none;
-    color: #6E6E6E;
+    color: #dc2626;
 }
 
 .btn-danger:hover {
-    background-color: #E3B5B5;
+    background-color: #fca5a5;
+    color: #991b1b;
 }
 
 .btn-dashboard {

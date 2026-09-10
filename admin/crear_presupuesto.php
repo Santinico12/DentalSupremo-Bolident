@@ -90,7 +90,7 @@ require_once '../templates/header_general.php';
 
 <style>
     :root { --primary: #003B73; --primary-dark: #062846; --accent: #2998EC; }
-    body { background: linear-gradient(135deg, #F4F9FD 0%, #f3e6ed 100%); }
+    body { background: linear-gradient(135deg, #F4F9FD 0%, #E8F2FA 100%); }
     .page-container { max-width: 1100px; margin: 0 auto; padding: 20px; }
     
     .page-header {
@@ -114,7 +114,7 @@ require_once '../templates/header_general.php';
     .form-group { margin-bottom: 15px; position: relative; }
     .form-group label { display: block; font-weight: 600; margin-bottom: 6px; color: #555; font-size: 0.9rem; }
     .form-control { width: 100%; padding: 12px 15px; border: 2px solid #e9ecef; border-radius: 10px; font-size: 1rem; transition: all 0.2s; }
-    .form-control:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(196,162,126,0.15); }
+    .form-control:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px rgba(41,152,236,0.2); }
     
     /* Buscador de clientes */
     .search-container { position: relative; }
@@ -142,12 +142,12 @@ require_once '../templates/header_general.php';
         border-bottom: 1px solid #eee;
         transition: background 0.2s;
     }
-    .search-result-item:hover { background: rgba(196,162,126,0.1); }
+    .search-result-item:hover { background: rgba(41,152,236,0.08); }
     .search-result-item:last-child { border-bottom: none; }
     .result-name { font-weight: 600; color: #333; }
     .result-phone { font-size: 0.85rem; color: #888; }
     .selected-client {
-        background: rgba(196,162,126,0.1);
+        background: rgba(41,152,236,0.08);
         border: 2px solid var(--primary);
         border-radius: 10px;
         padding: 12px 15px;
@@ -196,7 +196,7 @@ require_once '../templates/header_general.php';
         justify-content: space-between;
         border-bottom: 1px solid #eee;
     }
-    .trat-option:hover { background: rgba(196,162,126,0.1); }
+    .trat-option:hover { background: rgba(41,152,236,0.08); }
     .trat-name { font-weight: 600; }
     .trat-price { color: var(--primary); font-weight: 700; }
     .trat-option.new-trat { background: #e8f4fd; border-bottom: none; color: #0066cc; }
@@ -228,7 +228,7 @@ require_once '../templates/header_general.php';
     .total-row.final { font-size: 1.3rem; font-weight: 800; color: var(--primary); border-top: 2px solid #ddd; padding-top: 15px; margin-top: 10px; }
 
     .btn-submit { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 15px 40px; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 10px; }
-    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(196,162,126,0.4); }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,59,115,0.3); }
 
     /* Clases para desktop/móvil */
     .mobile-only { display: none; }
