@@ -126,9 +126,13 @@ require_once '../templates/header_general.php';
     .badge-qr { background: #e2d5f1; color: #6f42c1; }
     .badge-transferencia { background: #d4edda; color: #155724; }
 
-    .btn-action { width: 32px; height: 32px; border-radius: 6px; border: none; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; margin: 0 2px; transition: all 0.2s; }
+    .btn-action { width: 32px; height: 32px; border-radius: 6px; border: none; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; margin: 0 2px; transition: all 0.2s; text-decoration: none; }
     .btn-view { background: #e3f2fd; color: #1976d2; }
     .btn-delete { background: #ffebee; color: #c62828; }
+    .btn-print-action { background: #f3e5f5; color: #6a1b9a; }
+    .btn-print-action:hover { background: #e1bee7; color: #4a148c; }
+    .btn-pdf-action { background: #ffebee; color: #c62828; }
+    .btn-pdf-action:hover { background: #ffcdd2; color: #b71c1c; }
     .btn-action:hover { transform: scale(1.1); }
 
     /* Pendientes */
@@ -192,6 +196,12 @@ function cerrarModalComprobante() {
     <div class="page-header">
         <h1><i class="fas fa-money-bill-wave"></i> Gestión de Pagos</h1>
         <div class="header-actions">
+            <button type="button" onclick="abrirReporteImprimir()" class="btn-header btn-new" title="Imprimir Reporte General de Pagos">
+                <i class="fas fa-print"></i> Imprimir Reporte
+            </button>
+            <button type="button" onclick="abrirReportePdf()" class="btn-header" style="background: #dc3545; color: white;" title="Exportar Reporte a PDF">
+                <i class="fas fa-file-pdf"></i> Exportar PDF
+            </button>
             <a href="presupuestos.php" class="btn-header btn-back">
                 <i class="fas fa-file-invoice-dollar"></i> Presupuestos
             </a>
@@ -277,6 +287,12 @@ function cerrarModalComprobante() {
                         <i class="fas fa-times"></i> Limpiar
                     </a>
                     <?php endif; ?>
+                    <button type="button" onclick="abrirReporteImprimir()" class="btn-action" style="width: auto; padding: 0 10px; height: 35px; background: #fdf0f6; color: var(--primary-dark); border: 1px solid var(--accent); gap: 5px; font-weight: 600; font-size: 0.82rem;" title="Imprimir reporte con estos filtros">
+                        <i class="fas fa-print"></i> Imprimir
+                    </button>
+                    <button type="button" onclick="abrirReportePdf()" class="btn-action" style="width: auto; padding: 0 10px; height: 35px; background: #ffebee; color: #c62828; border: 1px solid #ffcdd2; gap: 5px; font-weight: 600; font-size: 0.82rem;" title="Descargar PDF con estos filtros">
+                        <i class="fas fa-file-pdf"></i> PDF
+                    </button>
                     <select onchange="cambiarPorPagina(this.value)" style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px;">
                         <option value="10" <?php echo $porPagina == 10 ? 'selected' : ''; ?>>10 por pág</option>
                         <option value="25" <?php echo $porPagina == 25 ? 'selected' : ''; ?>>25 por pág</option>
@@ -336,8 +352,14 @@ function cerrarModalComprobante() {
                         </td>
                         <td class="monto">Bs <?php echo number_format($pago['monto'], 2); ?></td>
                         <td>
-                            <a href="ver_pago.php?id=<?php echo $pago['id']; ?>" class="btn-action btn-view" title="Ver detalle">
+                            <a href="ver_pago.php?id=<?php echo $pago['id']; ?>" class="btn-action btn-view" title="Ver detalle y motivo del pago">
                                 <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="imprimir_recibo_pago.php?id=<?php echo $pago['id']; ?>" target="_blank" class="btn-action btn-print-action" title="Imprimir Recibo Oficial">
+                                <i class="fas fa-print"></i>
+                            </a>
+                            <a href="exportar_recibo_pdf.php?id=<?php echo $pago['id']; ?>" target="_blank" class="btn-action btn-pdf-action" title="Descargar Recibo en PDF">
+                                <i class="fas fa-file-pdf"></i>
                             </a>
                             <button class="btn-action btn-delete" onclick="eliminarPago(<?php echo $pago['id']; ?>)" title="Eliminar">
                                 <i class="fas fa-trash"></i>
@@ -428,8 +450,14 @@ function cerrarModalComprobante() {
                         </td>
                         <td class="monto">Bs <?php echo number_format($pago['monto'], 2); ?></td>
                         <td>
-                            <a href="ver_pago.php?id=<?php echo $pago['id']; ?>" class="btn-action btn-view" title="Ver detalle">
+                            <a href="ver_pago.php?id=<?php echo $pago['id']; ?>" class="btn-action btn-view" title="Ver detalle y motivo del pago">
                                 <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="imprimir_recibo_pago.php?id=<?php echo $pago['id']; ?>" target="_blank" class="btn-action btn-print-action" title="Imprimir Recibo Oficial">
+                                <i class="fas fa-print"></i>
+                            </a>
+                            <a href="exportar_recibo_pdf.php?id=<?php echo $pago['id']; ?>" target="_blank" class="btn-action btn-pdf-action" title="Descargar Recibo en PDF">
+                                <i class="fas fa-file-pdf"></i>
                             </a>
                             <button class="btn-action btn-delete" onclick="eliminarPago(<?php echo $pago['id']; ?>)" title="Eliminar">
                                 <i class="fas fa-trash"></i>
@@ -597,6 +625,30 @@ function filtrarPorFecha() {
     if (desde) url += '&desde=' + desde;
     if (hasta) url += '&hasta=' + hasta;
     window.location.href = url;
+}
+
+function getFiltrosUrl() {
+    const desde = document.getElementById('fechaDesde')?.value || '';
+    const hasta = document.getElementById('fechaHasta')?.value || '';
+    const metodo = document.getElementById('filterMetodo')?.value || '';
+    const search = document.getElementById('searchPago')?.value || '';
+    
+    const params = new URLSearchParams();
+    if (desde) params.append('desde', desde);
+    if (hasta) params.append('hasta', hasta);
+    if (metodo) params.append('metodo', metodo);
+    if (search) params.append('search', search);
+    return params.toString();
+}
+
+function abrirReporteImprimir() {
+    const qs = getFiltrosUrl();
+    window.open('imprimir_pagos.php' + (qs ? '?' + qs : ''), '_blank');
+}
+
+function abrirReportePdf() {
+    const qs = getFiltrosUrl();
+    window.open('exportar_pagos_pdf.php' + (qs ? '?' + qs : ''), '_blank');
 }
 
 // Paginación y filtrado de Pendientes (lado cliente)
