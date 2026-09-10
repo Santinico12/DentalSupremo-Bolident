@@ -1,0 +1,12 @@
+# Definir index.php como archivo de inicio por defecto
+DirectoryIndex index.php
+# Proteger archivos sensibles (.env, composer, .sql)
+<FilesMatch "^(\.env|composer\.(json|lock)|.*\.(sql|bak|tmp))$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+# Evitar acceso web directo a carpetas internas de sistema
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^(src|templates|vendor)/ - [F,L]
+</IfModule>

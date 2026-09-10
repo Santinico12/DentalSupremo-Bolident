@@ -1,0 +1,20 @@
+# Bot de WhatsApp (tiene su propio repositorio y corre en Render)
+whatsapp-bot/
+
+# Archivos pesados y backups locales
+*.zip
+*.rar
+*.tar.gz
+
+# Archivos de entorno y credenciales locales
+.env
+.env.local
+
+# Archivos temporales y scripts de prueba
+scratch/
+
+# IDE y sistema operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

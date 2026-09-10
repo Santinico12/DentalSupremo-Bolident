@@ -1,0 +1,88 @@
+/* DataTables personalización */
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 6px 12px;
+    margin-left: 8px;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px 8px;
+}
+
+/* Logo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo-container img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+
+h1 {
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.btn-primary {
+    background-color: #6B1D49;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #C47D9F;
+}
+
+.btn-danger {
+    background-color: #F4C6C6;
+    border: none;
+    color: #6E6E6E;
+}
+
+.btn-danger:hover {
+    background-color: #E3B5B5;
+}
+
+.btn-dashboard {
+    background-color: #6B1D49;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    margin: 20px auto 0;
+    width: 200px;
+}
+
+.btn-dashboard:hover {
+    background-color: #C47D9F;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #6B1D49;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #C47D9F;
+}
+
+.table th {
+    background-color: #6B1D49;
+    color: #fff;
+}
+
+.table td {
+    color: #6E6E6E;
+}

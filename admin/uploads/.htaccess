@@ -1,0 +1,24 @@
+# Archivo .htaccess para la carpeta uploads
+# Proporciona seguridad básica para archivos subidos
+
+# Deshabilitar ejecución de scripts PHP
+<FilesMatch "\.php$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# También usando IfModule para máxima compatibilidad
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+
+# Permitir solo ciertos tipos de archivos
+<FilesMatch "\.(jpg|jpeg|png|gif|pdf|webp)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Cabeceras de seguridad para archivos servidos
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>

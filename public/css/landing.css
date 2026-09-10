@@ -1,0 +1,2279 @@
+/* ==========================================================================
+   BOLIDENT LANDING PAGE - MODERN & COMPACT DESIGN SYSTEM
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --bg-main: #060B11;
+    --bg-surface: #0B131D;
+    --bg-card: rgba(15, 25, 38, 0.75);
+    --bg-card-hover: rgba(22, 36, 54, 0.9);
+    
+    --primary: #0EA5E9;
+    --primary-light: #38BDF8;
+    --primary-glow: rgba(14, 165, 233, 0.25);
+    
+    --accent-teal: #10B981;
+    --accent-emerald: #059669;
+    --accent-mint: #34D399;
+    --teal-glow: rgba(16, 185, 129, 0.25);
+
+    --whatsapp-green: #25D366;
+    --whatsapp-dark: #128C7E;
+    
+    --text-heading: #FFFFFF;
+    --text-body: #E2E8F0;
+    --text-muted: #94A3B8;
+    --text-dim: #64748B;
+    
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --border-glow: rgba(14, 165, 233, 0.3);
+    
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    --shadow-soft: 0 8px 25px -8px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 30px -5px var(--primary-glow);
+    --shadow-teal: 0 0 30px -5px var(--teal-glow);
+
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
+    color: var(--text-body);
+    line-height: 1.55;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background Ambient Glows */
+.ambient-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(130px);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.2;
+}
+.glow-1 { top: -80px; left: -80px; background: radial-gradient(circle, var(--primary) 0%, transparent 70%); }
+.glow-2 { top: 350px; right: -80px; background: radial-gradient(circle, var(--accent-teal) 0%, transparent 70%); }
+.glow-3 { top: 1400px; left: 5%; background: radial-gradient(circle, #6366F1 0%, transparent 70%); }
+.glow-4 { top: 2500px; right: 5%; background: radial-gradient(circle, var(--accent-mint) 0%, transparent 70%); }
+
+/* Typography & Utilities */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-heading);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #FFFFFF 25%, var(--primary-light) 65%, var(--accent-mint) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.text-gradient-teal {
+    background: linear-gradient(135deg, var(--accent-mint) 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.container-custom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==========================================================================
+   NAVIGATION BAR
+   ========================================================================== */
+.navbar-custom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 12px 0;
+    transition: all 0.25s ease;
+    backdrop-filter: blur(18px);
+    background: rgba(6, 11, 17, 0.85);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.navbar-custom.scrolled {
+    padding: 8px 0;
+    background: rgba(6, 11, 17, 0.95);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.brand-logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 6px rgba(16, 185, 129, 0.25));
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-heading);
+    letter-spacing: -0.4px;
+}
+.brand-title span { color: var(--accent-mint); }
+
+.brand-subtitle {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 26px;
+}
+
+.nav-link-item {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+.nav-link-item:hover { color: var(--text-heading); }
+
+.nav-mobile-actions {
+    display: none;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mobile-nav-toggle {
+    display: none;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-subtle);
+    color: white;
+    font-size: 1.25rem;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.mobile-nav-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   BUTTONS & BADGES
+   ========================================================================== */
+.btn-custom {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+}
+
+.btn-primary-gradient {
+    background: linear-gradient(135deg, var(--accent-teal) 0%, var(--primary) 100%);
+    color: white;
+    box-shadow: 0 4px 16px var(--teal-glow);
+}
+.btn-primary-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(16, 185, 129, 0.45);
+    color: white;
+}
+
+.btn-secondary-glass {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-heading);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(8px);
+}
+.btn-secondary-glass:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.18);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-whatsapp-cta {
+    background: var(--whatsapp-green);
+    color: #05210D;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+}
+.btn-whatsapp-cta:hover {
+    background: #20BA5A;
+    color: #05210D;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(37, 211, 102, 0.45);
+}
+
+.badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 14px;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: rgba(14, 165, 233, 0.1);
+    border: 1px solid rgba(14, 165, 233, 0.25);
+    color: var(--primary-light);
+}
+.badge-pill.teal {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.25);
+    color: var(--accent-mint);
+}
+
+.live-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--accent-mint);
+    animation: pulse 1.8s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+}
+
+/* ==========================================================================
+   HERO SECTION & DUAL SHOWCASE (WHATSAPP + CALENDAR)
+   ========================================================================== */
+.hero-section {
+    padding: 110px 0 50px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-header-box {
+    text-align: center;
+    max-width: 820px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+.hero-title {
+    font-size: 2.7rem;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    line-height: 1.15;
+}
+
+.hero-description {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 650px;
+    line-height: 1.6;
+}
+
+.hero-cta-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+/* Dual Showcase Grid */
+.hero-dual-showcase {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 22px;
+    align-items: stretch;
+    margin-top: 20px;
+}
+
+/* ==========================================================================
+   FULL BOLIDENT SYSTEM MOCKUP (SIDEBAR + MONTHLY CALENDAR)
+   ========================================================================== */
+.system-window-mockup {
+    background: #060B11;
+    border: 2px solid #1A2838;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(14, 165, 233, 0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 540px;
+}
+
+.system-window-topbar {
+    background: #121E2C;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.window-dots { display: flex; gap: 5px; }
+.window-dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot-red { background: #EF4444; }
+.dot-yellow { background: #F59E0B; }
+.dot-green { background: #10B981; }
+.window-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94A3B8;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* System Body: Sidebar + Main */
+.system-body-layout {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* BoliDent Sidebar */
+.sys-sidebar {
+    background: linear-gradient(180deg, #0D6B5E 0%, #0B5D52 40%, #094C44 100%);
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    overflow-y: auto;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+.sys-sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    margin-bottom: 4px;
+}
+.sys-sidebar-section-label {
+    font-size: 0.55rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.6px;
+    padding: 8px 12px 2px 12px;
+    text-transform: uppercase;
+}
+.sys-sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 12px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    border-left: 3px solid transparent;
+}
+.sys-sidebar-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+.sys-sidebar-item.active {
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    border-left-color: white;
+}
+.sys-sidebar-item i {
+    width: 14px;
+    font-size: 0.7rem;
+    text-align: center;
+}
+.sys-ia-badge {
+    background: linear-gradient(135deg, #0EA5E9, #10B981);
+    color: white;
+    font-size: 0.5rem;
+    font-weight: 800;
+    padding: 1px 5px;
+    border-radius: 6px;
+    margin-left: auto;
+}
+
+/* Calendar Main Area */
+.sys-calendar-main {
+    background: #0A1119;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sys-cal-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 14px;
+    background: #0F1A25;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.sys-cal-toolbar-left, .sys-cal-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.sys-btn-mini {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #162434;
+    color: #94A3B8;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.sys-btn-mini:hover { color: white; border-color: rgba(255, 255, 255, 0.2); }
+.sys-btn-mini.sys-btn-primary {
+    background: var(--accent-teal);
+    color: white;
+    border-color: var(--accent-teal);
+}
+
+.sys-month-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 6px 14px;
+}
+.sys-month-arrows {
+    display: flex;
+    gap: 4px;
+}
+.sys-arrow-btn {
+    padding: 3px 8px;
+    border-radius: 5px;
+    background: #162434;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #94A3B8;
+    font-size: 0.65rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.sys-month-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: white;
+}
+
+/* Weekday Header Row */
+.sys-cal-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 0 6px;
+}
+.sys-weekday {
+    text-align: center;
+    font-size: 0.62rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--primary-light);
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.sys-weekday.sat { color: #FBBF24; }
+.sys-weekday.dom { color: #EF4444; }
+
+/* Monthly Calendar Grid */
+.sys-cal-month-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    flex: 1;
+    padding: 0 6px 6px 6px;
+    gap: 1px;
+    overflow-y: auto;
+}
+.sys-cal-day {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 3px 4px;
+    min-height: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+    transition: background 0.2s ease;
+}
+.sys-cal-day:hover { background: rgba(20, 32, 46, 0.8); }
+.sys-cal-day.dim { opacity: 0.35; }
+.sys-cal-day.today {
+    background: rgba(14, 165, 233, 0.08);
+    border-color: rgba(14, 165, 233, 0.25);
+}
+.sys-cal-day.holiday {
+    background: rgba(16, 185, 129, 0.06);
+}
+.sys-cal-day.sat, .sys-cal-day.dom {
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.sys-day-num {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: #64748B;
+    margin-bottom: 1px;
+}
+.sys-day-num.today-num {
+    background: var(--primary);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 0.6rem;
+}
+
+/* Appointment Chips */
+.sys-appt {
+    font-size: 0.55rem;
+    font-weight: 600;
+    color: #CBD5E1;
+    padding: 2px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    line-height: 1.2;
+}
+.sys-appt small {
+    color: #64748B;
+    font-weight: 700;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+.sys-appt-marker {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.sys-appt.doc-blue { background: rgba(14, 165, 233, 0.12); }
+.sys-appt.doc-blue .sys-appt-marker { background: #0EA5E9; }
+.sys-appt.doc-green { background: rgba(16, 185, 129, 0.12); }
+.sys-appt.doc-green .sys-appt-marker { background: #10B981; }
+.sys-appt.doc-purple { background: rgba(139, 92, 246, 0.12); }
+.sys-appt.doc-purple .sys-appt-marker { background: #8B5CF6; }
+.sys-appt.doc-orange { background: rgba(245, 158, 11, 0.15); }
+.sys-appt.doc-orange .sys-appt-marker { background: #F59E0B; }
+
+.sys-appt.sys-holiday-tag {
+    background: rgba(16, 185, 129, 0.15);
+    color: #34D399;
+    font-weight: 700;
+    font-size: 0.58rem;
+}
+
+/* Bot-booked special glow appointment */
+.sys-appt.bot-booked-appt {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.25) 0%, rgba(16, 185, 129, 0.25) 100%);
+    color: #38BDF8;
+    font-weight: 800;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    animation: calApptGlow 1.8s ease-in-out infinite;
+}
+@keyframes calApptGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.3); }
+    50% { box-shadow: 0 0 6px 1px rgba(56, 189, 248, 0.5); }
+}
+
+.sys-more-link {
+    font-size: 0.54rem;
+    font-weight: 700;
+    color: var(--primary-light);
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   INTERACTIVE WHATSAPP BOT SIMULATOR
+   ========================================================================== */
+.simulator-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.phone-mockup {
+    width: 350px;
+    height: 560px;
+    background: #0B141B;
+    border-radius: 32px;
+    border: 3px solid #1E293B;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px rgba(16, 185, 129, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.phone-notch {
+    height: 18px;
+    background: #0B141B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.phone-speaker {
+    width: 44px;
+    height: 3px;
+    background: #334155;
+    border-radius: 3px;
+}
+
+/* WhatsApp Phone Header */
+.wa-header {
+    background: #1F2C34;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.wa-avatar-box {
+    position: relative;
+    width: 34px;
+    height: 34px;
+}
+.wa-avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: white;
+    object-fit: contain;
+    padding: 2px;
+}
+.wa-online-dot {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 9px;
+    height: 9px;
+    background: var(--whatsapp-green);
+    border-radius: 50%;
+    border: 2px solid #1F2C34;
+}
+.wa-contact-info h4 {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+.wa-contact-status {
+    font-size: 0.68rem;
+    color: var(--accent-mint);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* WhatsApp Chat Area */
+.wa-chat-body {
+    flex: 1;
+    background: #0B141B url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23132029' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+    padding: 12px 10px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.wa-bubble {
+    max-width: 88%;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    position: relative;
+    animation: bubbleIn 0.25s ease;
+}
+@keyframes bubbleIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.wa-bubble.incoming {
+    align-self: flex-start;
+    background: #1F2C34;
+    color: #E9EDEF;
+    border-top-left-radius: 2px;
+}
+.wa-bubble.outgoing {
+    align-self: flex-end;
+    background: #005C4B;
+    color: #E9EDEF;
+    border-top-right-radius: 2px;
+}
+.wa-time {
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.45);
+    float: right;
+    margin-left: 8px;
+    margin-top: 3px;
+}
+
+.wa-typing-indicator {
+    align-self: flex-start;
+    background: #1F2C34;
+    padding: 6px 12px;
+    border-radius: 12px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+.wa-typing-dot {
+    width: 5px;
+    height: 5px;
+    background: #8696A0;
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out;
+}
+.wa-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.wa-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingBounce {
+    0%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-4px); }
+}
+
+.wa-actions-tray {
+    background: #1F2C34;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.wa-action-label {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.wa-chips-row {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+}
+.wa-chip-btn {
+    background: #2A3942;
+    color: #E9EDEF;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 5px 10px;
+    border-radius: 14px;
+    font-size: 0.72rem;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.wa-chip-btn:hover {
+    background: var(--accent-teal);
+    color: white;
+    border-color: var(--accent-teal);
+}
+
+/* ==========================================================================
+   SECTION SPACING (COMPACT & FLOWING)
+   ========================================================================== */
+.section-compact {
+    padding: 60px 0;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 36px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.section-subtitle {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    color: var(--accent-mint);
+}
+
+.section-title {
+    font-size: 2.1rem;
+    letter-spacing: -0.4px;
+}
+
+.section-lead {
+    font-size: 0.98rem;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   MODULES EXPLORER (COMPACT TABS)
+   ========================================================================== */
+.modules-tabs-nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+}
+
+.module-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.module-tab-btn:hover {
+    color: var(--text-heading);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+.module-tab-btn.active {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.18) 0%, rgba(16, 185, 129, 0.18) 100%);
+    border-color: var(--accent-mint);
+    color: white;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.2);
+}
+
+.module-tab-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    backdrop-filter: blur(16px);
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 30px;
+    align-items: center;
+    box-shadow: var(--shadow-soft);
+}
+
+.module-info h3 {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+.module-info p {
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+}
+
+.module-features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.module-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--text-body);
+}
+.module-feature-item i {
+    color: var(--accent-mint);
+    margin-top: 3px;
+}
+
+.module-preview-card {
+    background: #09111A;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   ODONTOGRAMA DIGITAL ANATÓMICO (BASADO EN ODONTOGRAMA.PHP)
+   ========================================================================== */
+.odonto-system-window {
+    background: #0B131D;
+    border: 2px solid #1E2D3D;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 168, 150, 0.12);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 1. Header Banner */
+.odonto-header-banner {
+    background: linear-gradient(135deg, #0D4E70 0%, #086B60 100%);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.odonto-banner-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.odonto-banner-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+}
+.odonto-banner-title h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+}
+.odonto-banner-sub {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+}
+
+.odonto-patient-badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 6px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.odonto-patient-avatar {
+    width: 32px;
+    height: 32px;
+    background: white;
+    color: #0D4E70;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+}
+.odonto-patient-name {
+    font-size: 0.85rem;
+    color: white;
+    display: block;
+    line-height: 1.2;
+}
+.odonto-patient-phone {
+    font-size: 0.68rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 2. KPI Grid */
+.odonto-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 16px 20px;
+    background: #0D1722;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.odonto-kpi-chip {
+    background: #142130;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.odonto-kpi-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+.odonto-kpi-icon.icon-eval { background: rgba(14, 165, 233, 0.15); color: #38BDF8; }
+.odonto-kpi-icon.icon-caries { background: rgba(239, 68, 68, 0.15); color: #F87171; }
+.odonto-kpi-icon.icon-obturacion { background: rgba(37, 99, 235, 0.15); color: #60A5FA; }
+.odonto-kpi-icon.icon-corona { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+
+.odonto-kpi-val {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+}
+.odonto-kpi-lbl {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #94A3B8;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* 3. Toolbar & Conditions Palette */
+.odonto-toolbar-card {
+    padding: 16px 20px;
+    background: #09121B;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.odonto-toolbar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.odonto-dentition-tabs {
+    display: flex;
+    background: #142130;
+    padding: 4px;
+    border-radius: 10px;
+    gap: 4px;
+}
+.odonto-tab-btn {
+    padding: 6px 14px;
+    border-radius: 7px;
+    border: none;
+    background: transparent;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #94A3B8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.odonto-tab-btn:hover { color: white; }
+.odonto-tab-btn.active {
+    background: var(--accent-teal);
+    color: white;
+    box-shadow: 0 0 12px rgba(0, 168, 150, 0.35);
+}
+
+.odonto-mode-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.odonto-mode-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #64748B;
+    letter-spacing: 0.5px;
+}
+.odonto-mode-btn {
+    padding: 5px 12px;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #142130;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #94A3B8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.odonto-mode-btn:hover { color: white; border-color: rgba(255, 255, 255, 0.2); }
+.odonto-mode-btn.active {
+    background: rgba(14, 165, 233, 0.15);
+    border-color: #0EA5E9;
+    color: #38BDF8;
+}
+
+.odonto-palette-header {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #CBD5E1;
+    display: flex;
+    align-items: center;
+}
+
+/* Conditions Grid Buttons */
+.odonto-condiciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    gap: 8px;
+}
+.odonto-cond-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px;
+    border: 1.5px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    background: #131F2D;
+    color: #E2E8F0;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.odonto-cond-btn:hover {
+    background: #1A2B3C;
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+.odonto-cond-btn.active {
+    background: rgba(0, 168, 150, 0.15);
+    border-color: var(--accent-teal);
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 168, 150, 0.25);
+}
+.cond-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+/* 4. Dental Diagram Viewport */
+.odonto-diagram-viewport {
+    background: #070D14;
+    padding: 20px 16px;
+    overflow-x: auto;
+}
+.odonto-diagram-title {
+    text-align: center;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.odonto-jaw-section {
+    background: #0B131C;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+}
+.odonto-jaw-label {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--accent-teal);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.odonto-teeth-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 4px 0;
+}
+.odonto-quadrant-divider {
+    width: 3px;
+    height: 68px;
+    background: linear-gradient(180deg, #6B1D49 0%, #C47D9F 100%);
+    border-radius: 3px;
+    margin: 0 8px;
+    flex-shrink: 0;
+}
+
+/* Anatomical Tooth FDI Component */
+.tooth-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.15s ease;
+}
+.tooth-wrapper:hover {
+    transform: translateY(-3px);
+}
+
+.tooth-number-badge {
+    font-size: 0.66rem;
+    font-weight: 800;
+    color: #94A3B8;
+    background: #142130;
+    padding: 1px 6px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tooth-anatomical-container {
+    position: relative;
+    width: 48px;
+    height: 64px;
+    background: #121E2C;
+    border-radius: 8px;
+    border: 1.5px solid #233549;
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+}
+.tooth-wrapper:hover .tooth-anatomical-container {
+    border-color: var(--accent-teal);
+    box-shadow: 0 4px 12px rgba(0, 168, 150, 0.25);
+}
+
+.tooth-silhouette {
+    width: 20px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.75;
+}
+
+/* FDI 5-Surface SVG Box */
+.fdi-svg-box {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+}
+.fdi-surface {
+    fill: #FFFFFF;
+    stroke: #334155;
+    stroke-width: 1.5;
+    transition: fill 0.2s ease, stroke 0.2s ease;
+}
+.fdi-surface:hover {
+    fill: rgba(0, 168, 150, 0.4) !important;
+    stroke: var(--accent-teal);
+}
+
+/* Condition Overlays */
+.tooth-overlay-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+}
+.tooth-overlay-icon.extraccion {
+    color: #EF4444;
+    font-size: 1.6rem;
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+}
+.tooth-overlay-icon.ausente {
+    color: #94A3B8;
+    font-size: 1.4rem;
+    opacity: 0.75;
+}
+.tooth-overlay-icon.implante {
+    color: #0284C7;
+    font-size: 1.2rem;
+}
+
+/* 5. Footer Status Bar */
+.odonto-system-footer {
+    background: #0A121A;
+    padding: 10px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.odonto-footer-status {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.status-dot-live {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 6px #10B981;
+}
+.odonto-live-feedback {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: #38BDF8;
+    background: rgba(14, 165, 233, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+@media (max-width: 991px) {
+    .odonto-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .odonto-condiciones-grid { grid-template-columns: repeat(3, 1fr); }
+    .odonto-teeth-row { justify-content: flex-start; }
+}
+@media (max-width: 576px) {
+    .odonto-condiciones-grid { grid-template-columns: repeat(2, 1fr); }
+    .odonto-toolbar-top { flex-direction: column; align-items: flex-start; }
+    .odonto-kpi-grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   SIMULADOR DE BENEFICIOS (NUEVO & MÁS VISUAL)
+   ========================================================================== */
+.benefits-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.benefit-card-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 22px 18px;
+    text-align: center;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.benefit-card-box:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: var(--shadow-soft);
+}
+
+.benefit-card-box .icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+}
+
+.benefit-stat {
+    font-size: 1.7rem;
+    font-weight: 800;
+    font-family: var(--font-heading);
+    color: var(--text-heading);
+    line-height: 1;
+}
+
+.benefit-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.35;
+}
+
+/* Dynamic Interactive Sliders Bar */
+.benefits-interactive-bar {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: var(--radius-lg);
+    padding: 24px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.slider-group-clean {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.slider-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 0.88rem;
+}
+.slider-value-display {
+    color: var(--accent-mint);
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.custom-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: #1E293B;
+    outline: none;
+    cursor: pointer;
+}
+.custom-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent-mint);
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--teal-glow);
+}
+
+/* ==========================================================================
+   COMPARISON TABLE (CLEAN & SIMPLE)
+   ========================================================================== */
+.table-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.comparison-table th, .comparison-table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.9rem;
+}
+
+.comparison-table th {
+    background: rgba(11, 19, 29, 0.95);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.comparison-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+.col-highlight {
+    background: rgba(16, 185, 129, 0.05);
+    color: white;
+    font-weight: 600;
+    border-left: 1px solid rgba(16, 185, 129, 0.15);
+    border-right: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.badge-check { color: var(--accent-mint); font-size: 1.05rem; }
+.badge-cross { color: #EF4444; font-size: 1rem; opacity: 0.6; }
+
+/* ==========================================================================
+   PRICING PLANS (CLEAN & COMPACT WITH PAGO ÚNICO)
+   ========================================================================== */
+.pricing-switcher-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 36px;
+}
+
+.pricing-segmented-tabs {
+    display: inline-flex;
+    background: #0F1B27;
+    border: 1.5px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 5px;
+    gap: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pricing-seg-btn {
+    padding: 8px 18px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #94A3B8;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+}
+
+.pricing-seg-btn:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.pricing-seg-btn.active {
+    background: linear-gradient(135deg, #0EA5E9 0%, #10B981 100%);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 14px rgba(14, 165, 233, 0.35);
+}
+
+.seg-badge-discount {
+    background: rgba(245, 158, 11, 0.25);
+    color: #FBBF24;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    padding: 1px 6px;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 800;
+}
+.pricing-seg-btn.active .seg-badge-discount {
+    background: rgba(0, 0, 0, 0.25);
+    color: #FEF08A;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.seg-badge-lifetime {
+    background: rgba(139, 92, 246, 0.25);
+    color: #C084FC;
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    padding: 1px 6px;
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 800;
+}
+.pricing-seg-btn.active .seg-badge-lifetime {
+    background: rgba(0, 0, 0, 0.25);
+    color: #EDE9FE;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    align-items: stretch;
+}
+
+.pricing-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.25s ease;
+    position: relative;
+}
+.pricing-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+}
+
+.pricing-card.featured {
+    background: linear-gradient(180deg, rgba(14, 165, 233, 0.1) 0%, rgba(15, 25, 38, 0.9) 100%);
+    border: 2px solid var(--accent-mint);
+    box-shadow: 0 0 28px rgba(16, 185, 129, 0.2);
+    transform: scale(1.02);
+}
+.pricing-card.featured:hover { transform: scale(1.02) translateY(-4px); }
+
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--accent-mint) 0%, var(--primary) 100%);
+    color: #05210D;
+    font-weight: 800;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    padding: 3px 12px;
+    border-radius: 10px;
+    letter-spacing: 0.4px;
+}
+
+.plan-header { margin-bottom: 18px; }
+.plan-name { font-size: 1.2rem; font-weight: 800; margin-bottom: 4px; }
+.plan-desc { font-size: 0.82rem; color: var(--text-muted); }
+
+.plan-price-box {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 22px;
+}
+.plan-currency { font-size: 1.2rem; font-weight: 700; color: var(--text-heading); }
+.plan-amount {
+    font-size: 2.7rem;
+    font-weight: 900;
+    font-family: var(--font-heading);
+    color: var(--text-heading);
+    line-height: 1;
+}
+.plan-period { color: var(--text-muted); font-size: 0.82rem; }
+
+.plan-features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+.plan-feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-body);
+}
+.plan-feature i { color: var(--accent-mint); font-size: 0.8rem; }
+
+/* ==========================================================================
+   FAQ ACCORDION
+   ========================================================================== */
+.faq-grid {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.faq-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+.faq-card:hover { border-color: rgba(255, 255, 255, 0.15); }
+
+.faq-question {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text-heading);
+}
+.faq-icon {
+    font-size: 0.85rem;
+    color: var(--accent-mint);
+    transition: transform 0.25s ease;
+}
+
+.faq-answer {
+    padding: 0 20px 16px 20px;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    display: none;
+    line-height: 1.55;
+}
+.faq-card.open .faq-answer { display: block; }
+.faq-card.open .faq-icon { transform: rotate(180deg); }
+
+/* ==========================================================================
+   FOOTER & FLOATING CTA
+   ========================================================================== */
+.footer-custom {
+    background: #03070B;
+    border-top: 1px solid var(--border-subtle);
+    padding: 50px 0 24px 0;
+    margin-top: 60px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 36px;
+    margin-bottom: 40px;
+}
+
+.footer-col h5 {
+    font-size: 0.92rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--text-heading);
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.footer-link {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.84rem;
+    transition: color 0.2s ease;
+}
+.footer-link:hover { color: var(--accent-mint); }
+
+.footer-bottom {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
+/* Floating WhatsApp Badge */
+.floating-wa-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    background: var(--whatsapp-green);
+    color: white;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.45);
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+.floating-wa-btn:hover {
+    transform: scale(1.1) rotate(8deg);
+    color: white;
+}
+
+/* Lead Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+.modal-overlay.active { display: flex; }
+
+.modal-box {
+    background: #0B131D;
+    border: 1px solid var(--border-glow);
+    border-radius: var(--radius-lg);
+    max-width: 480px;
+    width: 100%;
+    padding: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    position: relative;
+    animation: modalIn 0.25s ease;
+}
+@keyframes modalIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.form-group-custom {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+.form-label-custom {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-heading);
+}
+.form-input-custom {
+    background: #14202D;
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    color: white;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+.form-input-custom:focus {
+    border-color: var(--accent-mint);
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.25);
+}
+
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE DESIGN SYSTEM (100% MOBILE & TABLET FLUID)
+   ========================================================================== */
+
+/* 1. Large Tablets & Small Laptops (<= 1024px) */
+@media (max-width: 1024px) {
+    .hero-dual-showcase, 
+    .module-tab-content, 
+    .odontograma-interactive-box, 
+    .benefits-interactive-bar {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .system-body-layout { grid-template-columns: 130px 1fr; }
+    .benefits-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-title { font-size: 2.3rem; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; gap: 20px; }
+    .pricing-card.featured { transform: none; }
+    .pricing-card.featured:hover { transform: translateY(-4px); }
+    .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; gap: 28px; }
+    .system-window-mockup { min-height: 400px; }
+    .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .comparison-table { min-width: 600px; }
+}
+
+/* 2. Tablets & Mobile Navigation Breakpoint (<= 991px) */
+@media (max-width: 991px) {
+    .mobile-nav-toggle {
+        display: inline-flex;
+    }
+    .nav-desktop-btn {
+        display: none !important;
+    }
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: rgba(6, 11, 17, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 24px 20px 40px 20px;
+        gap: 10px;
+        transform: translateY(-110%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+        overflow-y: auto;
+        z-index: 999;
+        border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .nav-link-item {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-heading);
+        padding: 12px 16px;
+        border-radius: var(--radius-md);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .nav-link-item:hover, .nav-link-item:active {
+        background: rgba(14, 165, 233, 0.12);
+        color: var(--primary-light);
+        border-color: rgba(14, 165, 233, 0.25);
+    }
+    .nav-mobile-actions {
+        display: block;
+        margin-top: 14px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .modules-tabs-nav {
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        padding: 4px 4px 12px 4px;
+        scrollbar-width: none;
+    }
+    .modules-tabs-nav::-webkit-scrollbar { display: none; }
+    .module-tab-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+        font-size: 0.82rem;
+        padding: 8px 16px;
+    }
+    .odonto-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .odonto-condiciones-grid { grid-template-columns: repeat(auto-fill, minmax(115px, 1fr)); }
+}
+
+/* 3. Phablets & Smartphones (<= 768px) */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 85px 0 30px 0;
+    }
+    .hero-title {
+        font-size: clamp(1.75rem, 5.5vw, 2.5rem);
+    }
+    .hero-description {
+        font-size: 0.95rem;
+    }
+    .section-compact {
+        padding: 45px 0;
+    }
+    .section-title {
+        font-size: clamp(1.5rem, 4.5vw, 2rem);
+    }
+    .section-lead {
+        font-size: 0.88rem;
+    }
+    .section-header {
+        margin-bottom: 24px;
+    }
+
+    /* Dual Showcase: Phone Simulator & Calendar */
+    .phone-mockup {
+        width: 100%;
+        max-width: 330px;
+        height: auto;
+        min-height: 480px;
+        max-height: 520px;
+        border-radius: 26px;
+    }
+    .wa-bubble {
+        max-width: 90%;
+        font-size: 0.74rem;
+    }
+    .wa-chips-row {
+        gap: 4px;
+    }
+    .wa-chip-btn {
+        padding: 4px 9px;
+        font-size: 0.68rem;
+    }
+
+    /* System Calendar Mockup on Mobile */
+    .sys-sidebar {
+        display: none;
+    }
+    .system-body-layout {
+        grid-template-columns: 1fr;
+    }
+    .sys-cal-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 10px 12px;
+    }
+    .sys-cal-toolbar-right {
+        width: 100%;
+        display: flex;
+        gap: 6px;
+    }
+    .sys-cal-toolbar-right .sys-btn-mini {
+        flex: 1;
+        justify-content: center;
+        text-align: center;
+    }
+    .sys-month-nav {
+        padding: 6px 12px;
+    }
+    .sys-cal-day {
+        min-height: 52px;
+        padding: 2px 3px;
+    }
+    .sys-day-num {
+        font-size: 0.58rem;
+    }
+    .sys-appt {
+        font-size: 0.48rem;
+        padding: 1px 3px;
+        gap: 2px;
+    }
+    .sys-appt small {
+        display: none;
+    }
+
+    /* Module Tab Content */
+    .module-tab-content {
+        padding: 22px 18px;
+        border-radius: var(--radius-md);
+    }
+    .module-info h3 {
+        font-size: 1.35rem;
+    }
+    .module-info p {
+        font-size: 0.88rem;
+    }
+    .module-preview-card {
+        padding: 14px;
+    }
+
+    /* Odontogram Interactive Diagram */
+    .odonto-header-banner {
+        padding: 14px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .odonto-patient-badge {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .odonto-toolbar-card {
+        padding: 12px 14px;
+    }
+    .odonto-toolbar-top {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    .odonto-dentition-tabs {
+        width: 100%;
+    }
+    .odonto-tab-btn {
+        flex: 1;
+        text-align: center;
+    }
+    .odonto-mode-selector {
+        justify-content: space-between;
+    }
+    .odonto-diagram-viewport {
+        padding: 12px 6px;
+    }
+    .odonto-teeth-row {
+        justify-content: flex-start;
+        padding: 4px 2px;
+        gap: 3px;
+    }
+    .odonto-quadrant-divider {
+        height: 58px;
+        margin: 0 4px;
+    }
+
+    /* Benefits & Interactive Sliders */
+    .benefits-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .benefit-card-box {
+        padding: 16px 12px;
+    }
+    .benefit-stat {
+        font-size: 1.4rem;
+    }
+    .benefits-interactive-bar {
+        padding: 18px 16px;
+        gap: 18px;
+    }
+
+    /* Pricing Switcher & Cards */
+    .pricing-segmented-tabs {
+        width: 100%;
+        border-radius: 12px;
+    }
+    .pricing-seg-btn {
+        flex: 1 1 45%;
+        justify-content: center;
+        padding: 7px 10px;
+        font-size: 0.74rem;
+    }
+    .pricing-card {
+        padding: 24px 18px;
+    }
+    .plan-amount {
+        font-size: 2.3rem;
+    }
+
+    /* Footer & Floating CTA */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    .floating-wa-btn {
+        bottom: 16px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+        font-size: 1.45rem;
+    }
+
+    /* Modal Form Box */
+    .modal-box {
+        padding: 22px 18px;
+        max-width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+
+/* 4. Compact Smartphones (<= 480px) */
+@media (max-width: 480px) {
+    .container-custom {
+        padding: 0 14px;
+    }
+    .brand-title {
+        font-size: 1.1rem;
+    }
+    .brand-subtitle {
+        font-size: 0.58rem;
+    }
+    .brand-logo-img {
+        height: 34px;
+    }
+    .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    .hero-cta-group .btn-custom {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 18px;
+    }
+    .badge-pill {
+        font-size: 0.72rem;
+        padding: 4px 12px;
+    }
+    .phone-mockup {
+        max-width: 100%;
+        min-height: 450px;
+        max-height: 490px;
+    }
+    .odonto-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        padding: 10px 8px;
+    }
+    .odonto-kpi-chip {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+    .odonto-kpi-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
+    }
+    .odonto-kpi-val {
+        font-size: 1.05rem;
+    }
+    .odonto-condiciones-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+    .odonto-cond-btn {
+        padding: 6px 8px;
+        font-size: 0.68rem;
+    }
+    .benefits-cards-grid {
+        grid-template-columns: 1fr;
+    }
+    .faq-question {
+        padding: 14px 16px;
+        font-size: 0.88rem;
+    }
+    .faq-answer {
+        padding: 0 16px 14px 16px;
+        font-size: 0.82rem;
+    }
+}

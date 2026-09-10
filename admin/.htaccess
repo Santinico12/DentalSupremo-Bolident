@@ -1,0 +1,42 @@
+# ==== Seguridad y comportamiento base ====
+RewriteEngine On
+RewriteBase /admin/
+
+# 1) Fuerza HTTPS (compatible con el Proxy SSL de InfinityFree)
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2) Sirve primero archivos reales (css, js, imágenes, manifest, sw, etc.)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# 3) (Opcional) Front controller, solo si usas URLs amigables por index.php
+#RewriteRule ^ index.php [L]
+
+# 4) Cabeceras útiles
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "no-referrer-when-downgrade"
+
+  # Prevenir caché de páginas PHP dinámicas (crítico para iOS Safari)
+  <FilesMatch "\.php$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
+
+# 5) (Opcional) Cache estáticos de /assets para mejor performance
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType application/json "access plus 1 hour"
+</IfModule>
+
+

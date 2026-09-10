@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #555;
+}
+
+.btn-primary {
+    background-color: #6B1D49;
+    border: none;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #C47D9F;
+    color: #fff;
+}
+
+.btn-success {
+    background-color: #6CC070;
+    border: none;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: #5AA65C;
+    color: #fff;
+}
+
+.btn-dashboard {
+    background-color: #6B1D49;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    margin: 20px auto 0;
+    width: 200px;
+}
+
+.btn-dashboard:hover {
+    background-color: #C47D9F;
+    color: #fff;
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #6B1D49;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #C47D9F;
+}
+
+.table th {
+    background-color: #6B1D49;
+    color: #fff;
+}
+
+.table td {
+    color: #6E6E6E;
+}
+
+.alert-warning {
+    background-color: #FFF3CD;
+    color: #856404;
+}

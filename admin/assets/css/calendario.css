@@ -1,0 +1,303 @@
+:root {
+    --primary-color: #6B1D49;
+    --secondary-color: #C47D9F;
+    --light-color: #FDF8FA;
+    --dark-color: #333333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-color);
+}
+
+/* IMPORTANTE: Especificar que estos estilos solo aplican dentro del calendario */
+#calendar-container .container {
+    margin-top: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
+.logo { 
+    text-align: center; 
+    margin-bottom: 20px; 
+}
+
+.logo img { 
+    width: 150px; 
+    height: auto; 
+}
+
+/* NO afectar TODOS los h1, solo los del contenido del calendario */
+#calendar-container h1 {
+    color: #6E6E6E;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Tarjetas de consultorio */
+.consultorio {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+    height: 100%;
+}
+
+.consultorio h2 {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 1.5rem;
+}
+
+#cronogramas { 
+    margin-top: 20px; 
+}
+
+/* Altura de cada calendario por consultorio */
+.consultorio div[id^="calendar-"] {
+    height: 500px;
+}
+
+/* Botones */
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* ========= FullCalendar: estilos que NO rompen la altura por duración ========= */
+
+/* Evento genérico */
+.fc-event {
+    color: #000000 !important;
+    text-align: left;
+    border-radius: 5px;
+    padding: 1px 3px;
+    font-size: 0.75rem;
+    line-height: 1;
+    height: auto;
+}
+
+/* Vista timeGrid (cronograma) */
+.fc-timegrid-event {
+    min-height: auto !important;
+    margin: 1px 0 !important;
+}
+
+.fc-timegrid-event .fc-event-main {
+    padding: 1px 3px !important;
+}
+
+.fc-timegrid-event .fc-event-time { 
+    display: none !important; 
+}
+
+.fc-timegrid-event b { 
+    display: block; 
+    margin-bottom: 2px; 
+    font-weight: bold; 
+}
+
+/* ⚠️ FIX: nunca forzar altura mínima del contenedor del evento */
+.fc-timegrid-event-harness {
+    min-height: unset !important;
+}
+
+.fc-timegrid-event-harness .fc-event-main-frame {
+    padding: 1px 3px;
+}
+
+/* Título dentro del evento de timeGrid */
+.fc-timegrid-event .fc-event-title {
+    font-size: 0.9rem;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* Vista mensual (dayGrid) */
+.fc-daygrid-event {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.75rem;
+    line-height: 1;
+    padding: 1px 3px;
+    height: 30px;
+}
+
+.fc-daygrid-event .fc-event-title { 
+    font-weight: bold; 
+}
+
+.fc-daygrid-event > .fc-event-main {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Modal ancho */
+.modal-xl { 
+    max-width: 90%; 
+}
+
+/* Barra superior del calendario */
+.fc-toolbar-title {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    color: var(--dark-color);
+}
+
+.fc-header-toolbar { 
+    padding: 1rem 0; 
+}
+
+.fc-button-primary {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    transition: all 0.3s ease !important;
+}
+
+.fc-button-primary:hover {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.fc-day-today { 
+    background-color: rgba(107, 29, 73, 0.08) !important; 
+}
+
+.fc-theme-bootstrap5 { 
+    font-family: 'Poppins', sans-serif; 
+}
+
+/* Modal */
+.modal-content { 
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+
+.modal-header .btn-close { 
+    color: white; 
+}
+
+#modal-description {
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.5;
+    color: var(--dark-color);
+}
+
+/* Hovers */
+.fc-daygrid-event:hover { 
+    filter: brightness(0.9); 
+}
+
+.fc-timegrid-event:hover { 
+    transform: none; 
+    box-shadow: none; 
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .fc-header-toolbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .fc-toolbar-chunk {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .fc-button-group {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .fc-button {
+        font-size: 0.8em;
+        padding: 0.3em 0.6em;
+    }
+    
+    .fc-today-button {
+        margin-top: 5px;
+    }
+    
+    .fc-event {
+        font-size: 0.7em;
+        padding: 2px 4px;
+    }
+    
+    .consultorio div[id^="calendar-"] {
+        height: 400px;
+    }
+    /* Asegurar que el popup de "+X más" se vea correctamente */
+    .fc-popover {
+        background: #ffffff !important;
+        border: 1px solid #ccc !important;
+        border-radius: 6px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        z-index: 9999 !important;
+    }
+    
+    /* Cuerpo interno del popover */
+    .fc-popover .fc-popover-body {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+    
+    /* Título del popover */
+    .fc-popover .fc-popover-header {
+        background: var(--primary-color, #6B1D49) !important;
+        color: #fff !important;
+        font-weight: 600;
+        padding: 6px 10px;
+        border-bottom: 1px solid #ddd;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+    
+    /* Asegurar que los eventos dentro del popover se lean bien */
+    .fc-popover .fc-event {
+        color: #000 !important;
+    }
+    
+    /* Evitar conflicto con modal backdrop */
+    .fc-popover.fc-more-popover {
+        position: absolute !important;
+        z-index: 2000 !important;
+    }
+}
+
+/* Encabezados de días del calendario (evitar color azul por defecto de enlaces) */
+.fc .fc-col-header-cell-cushion,
+.fc .fc-col-header-cell a,
+.fc th a,
+.fc-col-header-cell-cushion,
+.fc-col-header-cell a {
+    color: var(--primary-color, #6B1D49) !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    text-transform: capitalize !important;
+}
+
+.fc-theme-bootstrap5 a {
+    color: var(--primary-color, #6B1D49) !important;
+    text-decoration: none !important;
+}

@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF; /* Fondo blanco */
+}
+
+.container {
+    margin-top: 20px;
+    background-color: #FFFFFF; /* Fondo blanco */
+    border: 1px solid #D9D9D9; /* Borde gris suave */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+}
+
+h1, h2 {
+    color: #6E6E6E; /* Gris oscuro */
+    text-align: center;
+}
+
+.actions a {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    background-color: #6B1D49;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.actions a:hover {
+    background-color: #C47D9F;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #F4C6C6;
+    margin: 10px 0;
+    padding: 15px;
+    border-left: 5px solid #6B1D49;
+    border-radius: 5px;
+    color: #6E6E6E;
+}
+
+li strong {
+    display: block;
+    font-size: 1.2em;
+    color: #000000;
+}
+
+.btn-primary {
+    background-color: #6B1D49;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #C47D9F;
+}
+
+
+/* Cambiar el color del botón "Eliminar" y alinear los cuadros a la derecha */
+.btn-danger {
+    background-color: red; /* Rojo*/
+    border: none !important;
+    color: #FFFFFF !important; /* Blanco */
+}
+
+.btn-danger:hover {
+    background-color: red; /* Rojo */
+}

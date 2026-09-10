@@ -1,0 +1,21 @@
+# Protección para comprobantes de pago
+# Denegar acceso directo a archivos sensibles
+
+# Deshabilitar ejecución de scripts PHP
+<FilesMatch "\.php$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+
+# Solo permitir imágenes y PDFs
+<FilesMatch "\.(jpg|jpeg|png|gif|pdf|webp)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Deshabilitar listado de directorios
+Options -Indexes
