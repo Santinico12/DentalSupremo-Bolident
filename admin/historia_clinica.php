@@ -106,7 +106,7 @@ require_once '../templates/header_general.php';
     .patient-avatar { width: 70px; height: 70px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; }
     .patient-name { font-size: 1.5rem; font-weight: 700; margin: 0; }
     .patient-phone { opacity: 0.9; font-size: 0.95rem; }
-    .header-actions { display: flex; gap: 10px; }
+    .header-actions { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn-header { padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.2); color: white; border: none; cursor: pointer; }
     .btn-header:hover { background: rgba(255,255,255,0.3); color: white; }
 
@@ -180,28 +180,228 @@ require_once '../templates/header_general.php';
     .modal-footer { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
 
     @media (max-width: 768px) {
-        .page-container { padding: 10px; }
-        .patient-header { padding: 12px 15px; flex-direction: row; text-align: left; gap: 10px; align-items: center; flex-wrap: wrap; }
-        .patient-info { flex-direction: row; gap: 10px; flex: 1; }
-        .patient-avatar { width: 40px; height: 40px; min-width: 40px; font-size: 1.1rem; }
-        .patient-name { font-size: 1rem; }
-        .patient-phone { font-size: 0.8rem; }
-        .header-actions { gap: 6px; }
-        .btn-header { padding: 6px 10px; font-size: 0.78rem; }
+        html, body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        .page-container {
+            padding: 10px 8px;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
 
-        .tabs-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; }
-        .tab-btn { padding: 10px 8px; font-size: 0.78rem; justify-content: center; text-align: center; min-width: 0; white-space: nowrap; }
-        .tab-btn i { font-size: 0.85rem; }
-        .tab-btn .badge { font-size: 0.7rem; padding: 1px 6px; }
+        /* Header del paciente en móvil */
+        .patient-header {
+            padding: 16px 14px;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 14px;
+            border-radius: 14px;
+        }
+        .patient-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+        }
+        .patient-avatar {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            font-size: 1.25rem;
+        }
+        .patient-name {
+            font-size: 1.15rem;
+            line-height: 1.25;
+            word-break: break-word;
+        }
+        .patient-phone {
+            font-size: 0.85rem;
+            margin-top: 3px;
+        }
 
-        .card { padding: 15px; border-radius: 12px; }
-        .card-header { flex-direction: column; gap: 10px; align-items: flex-start; }
-        .card-title { font-size: 1rem; }
+        /* Botones de acción del header: cuadrícula responsive de 2 columnas */
+        .header-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            width: 100%;
+        }
+        .header-actions .btn-header {
+            padding: 9px 8px;
+            font-size: 0.78rem;
+            justify-content: center;
+            text-align: center;
+            border-radius: 8px;
+            width: 100%;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+        /* Botón 'Firmar en Pantalla' ocupa 2 columnas */
+        .header-actions .btn-header:nth-child(3) {
+            grid-column: span 2;
+        }
 
-        .form-grid { grid-template-columns: 1fr; gap: 12px; }
-        .form-grid .form-group[style*="grid-column: span 2"] { grid-column: span 1 !important; }
+        /* Tabs de navegación */
+        .tabs-nav {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            padding: 6px;
+            width: 100%;
+            border-radius: 10px;
+        }
+        .tab-btn {
+            padding: 10px 6px;
+            font-size: 0.82rem;
+            justify-content: center;
+            text-align: center;
+            min-width: 0;
+            border-radius: 8px;
+        }
+        .tab-btn i {
+            font-size: 0.85rem;
+        }
+        .tab-btn .badge {
+            font-size: 0.7rem;
+            padding: 1px 6px;
+        }
 
-        .modal-box { padding: 15px; border-radius: 12px; }
+        /* Tarjetas de contenido */
+        .card {
+            padding: 16px 14px;
+            border-radius: 12px;
+            margin-bottom: 14px;
+            box-sizing: border-box;
+            overflow: hidden;
+            word-break: break-word;
+        }
+        .card-header {
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .card-title {
+            font-size: 1.02rem;
+            line-height: 1.3;
+        }
+
+        /* Formularios y cuadrícula */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr !important;
+            gap: 12px;
+            width: 100%;
+        }
+        .form-grid .form-group {
+            width: 100% !important;
+            margin-bottom: 0;
+            grid-column: 1 / -1 !important;
+        }
+        .form-control {
+            width: 100% !important;
+            font-size: 0.95rem;
+            padding: 10px 12px;
+            box-sizing: border-box;
+        }
+
+        /* Catálogo de Patologías en móvil */
+        .patologias-grid {
+            grid-template-columns: 1fr !important;
+            gap: 8px;
+            width: 100%;
+        }
+        .patologia-item {
+            padding: 10px 12px;
+            font-size: 0.88rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Examen estomatognático en móvil */
+        .exam-columns {
+            grid-template-columns: 1fr !important;
+            gap: 14px;
+            width: 100%;
+        }
+        .exam-box {
+            padding: 14px 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Opciones inline de hábitos e higiene */
+        .inline-checks {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px 12px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .inline-checks label {
+            width: 100%;
+        }
+
+        /* Sección de firma en móvil */
+        .firma-card-body {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 16px;
+            width: 100%;
+        }
+        .firma-preview-container {
+            width: 100%;
+            min-width: 0;
+            padding: 15px 10px;
+            box-sizing: border-box;
+        }
+        .firma-preview-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 100px;
+        }
+        .firma-card-body .btn {
+            width: 100%;
+            justify-content: center;
+            text-align: center;
+            padding: 12px 14px;
+            font-size: 0.88rem;
+            box-sizing: border-box;
+        }
+
+        /* Botón guardar ficha médica */
+        #formHistoriaClinica button[type="submit"] {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 14px 20px !important;
+            font-size: 1rem !important;
+            box-sizing: border-box;
+        }
+
+        /* Modales */
+        .modal-box {
+            width: 95% !important;
+            max-width: 95% !important;
+            padding: 16px 14px !important;
+            margin: 10px auto;
+            border-radius: 12px;
+        }
+        .signature-pad-canvas {
+            height: 180px !important;
+            width: 100% !important;
+        }
+        .modal-footer {
+            flex-direction: column;
+            width: 100%;
+            gap: 8px;
+        }
+        .modal-footer .btn {
+            width: 100%;
+            justify-content: center;
+        }
 
         /* Presupuestos: hide table, show cards */
         .presupuestos-table { display: none; }

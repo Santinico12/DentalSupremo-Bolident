@@ -239,15 +239,17 @@ if (count($partesNombre) >= 3) {
 
         /* Declaración Jurada y Firma */
         .declaration-box {
-            margin-top: 6px;
-            font-size: 9px;
-            line-height: 1.3;
+            margin-top: 8px;
+            font-size: 9.5px;
+            line-height: 1.35;
         }
 
         .legal-stmt {
             text-align: justify;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 9px;
+            line-height: 1.3;
         }
 
         .signature-table {
@@ -258,22 +260,46 @@ if (count($partesNombre) >= 3) {
 
         .signature-table td {
             border: none;
-            padding: 2px 4px;
+            padding: 2px 6px;
             vertical-align: bottom;
             font-size: 9.5px;
         }
 
-        .signature-space {
+        .signature-container {
+            display: inline-block;
+            width: 240px;
             text-align: center;
-            height: 55px;
-            vertical-align: bottom;
+        }
+
+        .signature-canvas-box {
+            height: 65px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-bottom: 2px;
         }
 
         .signature-img {
-            max-height: 48px;
-            max-width: 180px;
+            max-height: 65px;
+            max-width: 220px;
+            width: auto;
             display: block;
             margin: 0 auto;
+            object-fit: contain;
+        }
+
+        .signature-line {
+            border-bottom: 1.5px solid #000;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .signature-label {
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+            color: #000;
         }
 
         @media print {
@@ -309,23 +335,14 @@ if (count($partesNombre) >= 3) {
 
 <div class="sheet-container">
 
-    <!-- 1. Encabezado con Escudo y Emblema -->
+    <!-- 1. Encabezado Oficial -->
     <table class="header-table">
         <tr>
-            <td style="width: 60px; text-align: left;">
-                <!-- Escudo de Bolivia (SVG vectorial para máxima nitidez en impresión) -->
-                <svg width="50" height="42" viewBox="0 0 100 80">
-                    <circle cx="50" cy="40" r="32" fill="#d4af37" stroke="#8c6d1f" stroke-width="2"/>
-                    <rect x="25" y="22" width="50" height="7" fill="#dc2626"/>
-                    <rect x="25" y="29" width="50" height="7" fill="#facc15"/>
-                    <rect x="25" y="36" width="50" height="7" fill="#16a34a"/>
-                    <text x="50" y="58" font-size="10" font-weight="bold" text-anchor="middle" fill="#000">BOLIVIA</text>
-                </svg>
-            </td>
-            <td>
+            <td style="width: 50px;"></td>
+            <td style="text-align: center;">
                 <h1 class="title-main">HISTORIA CLÍNICA ODONTOLÓGICA</h1>
             </td>
-            <td style="width: 60px; text-align: right;">
+            <td style="width: 50px; text-align: right;">
                 <!-- Emblema Odontológico -->
                 <svg width="45" height="45" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="44" fill="none" stroke="#6B1D49" stroke-width="4"/>
@@ -642,24 +659,23 @@ if (count($partesNombre) >= 3) {
 
         <table class="signature-table">
             <tr>
-                <td style="width: 55%;">
-                    Nombre del paciente: <strong class="data-val"><?php echo htmlspecialchars($cliente['nombre']); ?></strong>
+                <td style="width: 52%; vertical-align: bottom; padding-bottom: 5px;">
+                    <div style="margin-bottom: 6px;">Nombre del paciente: <strong class="data-val"><?php echo htmlspecialchars($cliente['nombre']); ?></strong></div>
+                    <div style="margin-bottom: 6px;">CI: <strong class="data-val"><?php echo htmlspecialchars($historia['ci'] ?: '—'); ?></strong></div>
+                    <div>Fecha: <strong class="data-val"><?php echo !empty($historia['fecha_firma']) ? date('d/m/Y', strtotime($historia['fecha_firma'])) : date('d/m/Y'); ?></strong></div>
                 </td>
-                <td style="width: 45%; text-align: right;">
-                    CI: <strong class="data-val"><?php echo htmlspecialchars($historia['ci'] ?: '—'); ?></strong>
-                </td>
-            </tr>
-            <tr>
-                <td class="signature-space">
-                    <div style="font-size: 9px; color: #555; margin-bottom: 2px;">Firma del Paciente:</div>
-                    <?php if (!empty($historia['firma_paciente'])): ?>
-                        <img src="<?php echo $historia['firma_paciente']; ?>" class="signature-img" alt="Firma">
-                    <?php else: ?>
-                        <div style="height: 35px; border-bottom: 1px dotted #000; width: 220px; margin: 0 auto;"></div>
-                    <?php endif; ?>
-                </td>
-                <td style="text-align: right; vertical-align: bottom;">
-                    Fecha: <strong class="data-val"><?php echo !empty($historia['fecha_firma']) ? date('d/m/Y', strtotime($historia['fecha_firma'])) : date('d/m/Y'); ?></strong>
+                <td style="width: 48%; text-align: center; vertical-align: bottom;">
+                    <div class="signature-container">
+                        <div class="signature-canvas-box">
+                            <?php if (!empty($historia['firma_paciente'])): ?>
+                                <img src="<?php echo $historia['firma_paciente']; ?>" class="signature-img" alt="Firma del Paciente">
+                            <?php else: ?>
+                                <div style="height: 55px;"></div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="signature-line"></div>
+                        <div class="signature-label">Firma del Paciente</div>
+                    </div>
                 </td>
             </tr>
         </table>
