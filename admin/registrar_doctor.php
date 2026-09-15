@@ -250,7 +250,7 @@ require_once '../templates/header_general.php';
         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
             <div>
                 <h1><i class="fas fa-user-md"></i> Gestión de Doctores & Especialidades</h1>
-                <p>Administra el equipo odontológico, especialidades médicas y números de contacto de la Clínica Dentality</p>
+                <p>Administra el equipo odontológico, especialidades médicas y números de contacto de la Clínica Dental Supremo</p>
             </div>
             <a href="dashboard.php" class="btn btn-light btn-sm fw-bold">
                 <i class="fas fa-arrow-left me-1"></i> Volver al Panel

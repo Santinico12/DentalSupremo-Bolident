@@ -376,7 +376,7 @@ require_once '../templates/header_general.php';
             </div>
             <div class="info-item">
                 <span class="info-title">Doctor / Especialista</span>
-                <span class="info-val"><?php echo htmlspecialchars($presupuesto['doctor_nombre'] ?? 'Dentality'); ?></span>
+                <span class="info-val"><?php echo htmlspecialchars($presupuesto['doctor_nombre'] ?? 'Dental Supremo'); ?></span>
             </div>
             <div class="info-item">
                 <span class="info-title">Tratamientos Contratados</span>

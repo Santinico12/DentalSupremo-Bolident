@@ -1313,7 +1313,7 @@ function enhanceModalForEvent(event) {
                 var consultorioNombre = event.extendedProps.consultorio_nombre || 'nuestro consultorio';
                 
                 var mensaje = 'Hola *' + nombreCliente + '* \n\n';
-                mensaje += 'Te hablamos de la clínica *Dentality*. Te recordamos que tienes una cita programada:\n\n';
+                mensaje += 'Te hablamos de la clínica *Dental Supremo*. Te recordamos que tienes una cita programada:\n\n';
                 // Si la cita es hoy, usar "hoy" y si la cita es mañana, usar "mañana"
                 if (event.start.toDateString() === new Date().toDateString()) {
                     mensaje += 'Fecha: Hoy\n';

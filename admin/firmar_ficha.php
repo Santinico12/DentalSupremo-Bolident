@@ -1,7 +1,7 @@
 <?php
 /**
  * Portal del Paciente: Verificación y Firma Digital de Historia Clínica Odontológica
- * Dentality - Cochabamba, Bolivia
+ * Dental Supremo - Cochabamba, Bolivia
  */
 date_default_timezone_set('America/La_Paz');
 session_start();
@@ -451,7 +451,7 @@ $nombresPatologias = [
         <div class="clinic-icon">
             <i class="fas fa-tooth"></i>
         </div>
-        <h1 class="clinic-title">Clínica Dentality</h1>
+        <h1 class="clinic-title">Clínica Dental Supremo</h1>
         <p class="clinic-sub">Historia Clínica Odontológica & Verificación de Datos</p>
     </div>
 
@@ -694,7 +694,7 @@ $nombresPatologias = [
     </div>
 
     <div class="footer-note">
-        Clínica Dentality &copy; <?php echo date('Y'); ?> — Cochabamba, Bolivia
+        Clínica Dental Supremo &copy; <?php echo date('Y'); ?> — Cochabamba, Bolivia
     </div>
 
 </div>

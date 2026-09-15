@@ -29,12 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Enviar mensaje SOLO cuando se modifique el número de teléfono
         if ($telefonoCambio) {
             try {
-                $updateMsg = "🦷 *Dentality - Actualización de Contacto* ✨\n\n"
+                $updateMsg = "🦷 *Dental Supremo - Actualización de Contacto* ✨\n\n"
                            . "¡Hola *{$nombre}*! 👋\n"
-                           . "Hemos actualizado con éxito tu número de contacto para tus atenciones y citas odontológicas en *Dentality*.\n\n"
+                           . "Hemos actualizado con éxito tu número de contacto para tus atenciones y citas odontológicas en *Dental Supremo*.\n\n"
                            . "Recuerda que desde este número dispones de nuestro Asistente Virtual 24/7 para consultar y confirmar tus citas en cualquier momento. ¡Cuidamos de tu sonrisa! 😊✨";
 
-                $botApiUrl = getenv('BOT_API_URL') ? rtrim(getenv('BOT_API_URL'), '/') . '/send-welcome' : 'https://dentality-bot.onrender.com/api/send-welcome';
+                $botApiUrl = getenv('BOT_API_URL') ? rtrim(getenv('BOT_API_URL'), '/') . '/send-welcome' : 'https://dentalsupremo-bot.onrender.com/api/send-welcome';
                 $postData = json_encode([
                     'clienteId' => $id,
                     'telefono' => $telefono,

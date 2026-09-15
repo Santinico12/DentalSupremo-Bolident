@@ -27,10 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $clienteId = $clientModel->create($nombre, $telefono_completo);
 
-    // Enviar mensaje de bienvenida Dentality vía Bot si hay teléfono
+    // Enviar mensaje de bienvenida Dental Supremo vía Bot si hay teléfono
     if (!empty($telefono_completo) && $clienteId) {
         try {
-            $welcomeMsg = "🦷 *¡Bienvenido/a a la Clínica Dentality!* ✨\n\n"
+            $welcomeMsg = "🦷 *¡Bienvenido/a a la Clínica Dental Supremo!* ✨\n\n"
                         . "¡Hola *{$nombre}*! 👋 Te saludamos cordialmente.\n\n"
                         . "Queremos darte la bienvenida y recordarte que en esta línea de WhatsApp dispones de nuestro *Asistente Virtual Inteligente 24/7* para:\n"
                         . "📅 *Consultar y confirmar tus citas odontológicas.*\n"
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         . "🩺 *Informarte sobre tratamientos de Odontología por Especialidades.*\n\n"
                         . "¡Estamos a tu servicio para cuidar de tu sonrisa! Si necesitas algo, sólo responde a este mensaje. 😊🦷✨";
 
-            $botApiUrl = getenv('BOT_API_URL') ? rtrim(getenv('BOT_API_URL'), '/') . '/send-welcome' : 'https://dentality-bot.onrender.com/api/send-welcome';
+            $botApiUrl = getenv('BOT_API_URL') ? rtrim(getenv('BOT_API_URL'), '/') . '/send-welcome' : 'https://dentalsupremo-bot.onrender.com/api/send-welcome';
             $postData = json_encode([
                 'clienteId' => $clienteId,
                 'telefono' => $telefono_completo,

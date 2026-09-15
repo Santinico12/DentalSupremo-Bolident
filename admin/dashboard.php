@@ -1275,7 +1275,7 @@ require_once '../templates/header_general.php';
                 $fecha_cita = date('d/m/Y', strtotime($cita['fecha']));
                 
                 $mensaje_whatsapp = "Hola *" . $cita['cliente_nombre'] . "*,\n\n";
-                $mensaje_whatsapp .= "Te hablamos de la clínica *Dentality*. Te recordamos que tienes una cita programada:\n\n";
+                $mensaje_whatsapp .= "Te hablamos de la clínica *Dental Supremo*. Te recordamos que tienes una cita programada:\n\n";
                 if ($fecha_cita === date('d/m/Y')) {
                     $mensaje_whatsapp .= "Fecha: hoy\n";
                 } elseif ($fecha_cita === date('d/m/Y', strtotime('+1 day'))) {
@@ -1502,7 +1502,7 @@ require_once '../templates/header_general.php';
             $fechaEnvioStr = !empty($rec['fecha_recordatorio']) ? date('d/m/Y H:i', strtotime($rec['fecha_recordatorio'])) : '';
             
             $msg_rec = "Hola *" . $rec['cliente_nombre'] . "*,\n\n";
-            $msg_rec .= "Te hablamos de la clínica *Dentality*. Te recordamos que tienes una cita programada para *mañana*:\n\n";
+            $msg_rec .= "Te hablamos de la clínica *Dental Supremo*. Te recordamos que tienes una cita programada para *mañana*:\n\n";
             $msg_rec .= "Hora: {$hora_rec}\n";
             $msg_rec .= "Consultorio: {$cons_rec}\n";
             $msg_rec .= "¿Me confirmas tu asistencia por favor?\n\n";
@@ -1580,7 +1580,7 @@ require_once '../templates/header_general.php';
             $fechaEnvioStr = !empty($rec['fecha_recordatorio']) ? date('d/m/Y H:i', strtotime($rec['fecha_recordatorio'])) : '';
             
             $msg_rec = "Hola *" . $rec['cliente_nombre'] . "*,\n\n";
-            $msg_rec .= "Te hablamos de la clínica *Dentality*. Te recordamos que tienes una cita programada para *HOY*:\n\n";
+            $msg_rec .= "Te hablamos de la clínica *Dental Supremo*. Te recordamos que tienes una cita programada para *HOY*:\n\n";
             $msg_rec .= "Hora: {$hora_rec}\n";
             $msg_rec .= "Consultorio: {$cons_rec}\n";
             $msg_rec .= "¿Me confirmas tu asistencia por favor?\n\n";
@@ -1738,10 +1738,10 @@ require_once '../templates/header_general.php';
 // Recordatorios Drawer & Bot Functions
 // ============================================
 function getBotApiUrl() {
-    var custom = localStorage.getItem('dentality_bot_url') || localStorage.getItem('tatianaruiz_bot_url');
+    var custom = localStorage.getItem('dentalsupremo_bot_url') || localStorage.getItem('dentality_bot_url') || localStorage.getItem('tatianaruiz_bot_url');
     if (custom && custom.trim() !== '') return custom.trim().replace(/\/$/, '') + '/api';
     if (window.location.protocol === 'https:') {
-        return 'https://dentality-bot.onrender.com/api';
+        return 'https://dentalsupremo-bot.onrender.com/api';
     }
     return 'http://localhost:3001/api';
 }
@@ -1905,14 +1905,14 @@ async function enviarRecordatorioIndividualBot(citaId, telefono, pacienteNombre,
     btnElement.disabled = true;
     btnElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Enviando...</span>';
     
-    var mensaje = '🦷 *RECORDATORIO DE CITA ODONTOLÓGICA - Dentality* ✨\n\n' +
+    var mensaje = '🦷 *RECORDATORIO DE CITA ODONTOLÓGICA - Dental Supremo* ✨\n\n' +
                   '¡Hola *' + pacienteNombre + '*! 👋\n' +
                   'Te recordamos cordialmente que tienes una cita programada para el día *' + fechaLabel.toUpperCase() + '*:\n\n' +
                   '⏰ *Hora:* ' + hora + '\n' +
                   '🏥 *Consultorio:* ' + consultorio + '\n' +
                   '🩺 *Doctor/a:* ' + doctor + '\n' +
                   '📝 *Motivo / Tratamiento:* ' + motivo + '\n' +
-                  '📍 *Ubicación:* Clínica Dentality, Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia.\n\n' +
+                  '📍 *Ubicación:* Clínica Dental Supremo, Sacaba, Cochabamba, Calle Bolivar.\n\n' +
                   'Por favor, ayúdanos respondiendo a este mensaje:\n' +
                   '👉 Escribe *"Confirmo"* para confirmar tu asistencia.\n' +
                   '👉 O avísanos si necesitas *"Reprogramar"* tu horario.\n\n' +

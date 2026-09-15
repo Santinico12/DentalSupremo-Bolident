@@ -1,6 +1,6 @@
 <?php
 /**
- * Odontograma Digital Anatómico Interactivo - Dentality
+ * Odontograma Digital Anatómico Interactivo - Dental Supremo
  */
 date_default_timezone_set('America/La_Paz');
 session_start();

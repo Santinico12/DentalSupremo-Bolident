@@ -533,7 +533,7 @@ require_once '../templates/header_general.php';
     <div class="page-header">
         <div class="header-text">
             <h1><i class="fas fa-chart-line"></i> Informes y Estadísticas Avanzadas</h1>
-            <p>Analiza el rendimiento operativo de tu clínica Dentality con métricas detalladas</p>
+            <p>Analiza el rendimiento operativo de tu clínica Dental Supremo con métricas detalladas</p>
         </div>
         <a href="dashboard.php" class="btn-back">
             <i class="fas fa-arrow-left"></i>
@@ -833,19 +833,19 @@ require_once '../templates/header_general.php';
                 buttons: [
                     { 
                         extend: 'excel', 
-                        title: 'Informes de Citas - Dentality - <?php echo date("d-m-Y"); ?>', 
+                        title: 'Informes de Citas - Dental Supremo - <?php echo date("d-m-Y"); ?>', 
                         exportOptions: { columns: [0,1,2,3,4,5,6,7] }, 
                         className: 'd-none' 
                     },
                     { 
                         extend: 'csv', 
-                        title: 'Informes de Citas - Dentality - <?php echo date("d-m-Y"); ?>', 
+                        title: 'Informes de Citas - Dental Supremo - <?php echo date("d-m-Y"); ?>', 
                         exportOptions: { columns: [0,1,2,3,4,5,6,7] }, 
                         className: 'd-none' 
                     },
                     { 
                         extend: 'print', 
-                        title: 'Informes de Citas - Dentality',
+                        title: 'Informes de Citas - Dental Supremo',
                         messageTop: '<h3>Período: <?php echo $fecha_inicio ? date("d/m/Y", strtotime($fecha_inicio)) . " al " . date("d/m/Y", strtotime($fecha_fin)) : ""; ?></h3>',
                         exportOptions: { columns: [0,1,2,3,4,5,6,7] }, 
                         className: 'd-none' 

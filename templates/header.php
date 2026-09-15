@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#003B73">
-    <meta name="description" content="Sistema de Gestión de Citas Odontológicas - Dentality">
-    <title>Dentality - Sistema de Citas</title>
+    <meta name="description" content="Sistema de Gestión de Citas Odontológicas - Dental Supremo">
+    <title>Dental Supremo - Sistema de Citas</title>
     
     <!-- PWA Meta Tags -->
     <link rel="manifest" href="/admin/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Dentality">
+    <meta name="apple-mobile-web-app-title" content="Dental Supremo">
     
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" href="/admin/assets/images/logo_Dentality.png">
@@ -79,8 +79,8 @@
     <header>
         <div class="logo">
             <a href="dashboard.php" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
-                <img src="assets/images/logo_Dentality.png" alt="Logo Dentality">
-                <h1>Dentality</h1>
+                <img src="assets/images/logo_Dentality.png" alt="Logo Dental Supremo">
+                <h1>Dental Supremo</h1>
             </a>
         </div>
         <nav>

@@ -1,6 +1,6 @@
 <?php
 /**
- * API Server-Side Pagination - Clientes Dentality
+ * API Server-Side Pagination - Clientes Dental Supremo
  * Procesa peticiones DataTables Server-Side con respuestas ultra-rápidas JSON
  */
 date_default_timezone_set('America/La_Paz');

@@ -1,7 +1,7 @@
 {
-  "name": "Dentality - Sistema de Gestión Odontológica",
-  "short_name": "Dentality",
-  "description": "Sistema de Gestión Dental Dentality - Odontología por Especialidades",
+  "name": "Dental Supremo - Sistema de Gestión Odontológica",
+  "short_name": "Dental Supremo",
+  "description": "Sistema de Gestión Dental Dental Supremo - Odontología por Especialidades",
   "start_url": "/admin/login.php",
   "scope": "/admin/",
   "display": "standalone",

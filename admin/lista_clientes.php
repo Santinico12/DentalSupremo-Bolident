@@ -1499,7 +1499,7 @@ $(document).ready(function() {
                 text: '<i class="fas fa-file-excel me-1"></i><span class="btn-text">Excel</span>',
                 className: 'btn-export excel',
                 exportOptions: { columns: [0, 1] },
-                title: 'Lista de Clientes - Dentality - <?php echo date("d-m-Y"); ?>'
+                title: 'Lista de Clientes - Dental Supremo - <?php echo date("d-m-Y"); ?>'
             },
             {
                 text: '<i class="fas fa-file-pdf me-1"></i><span class="btn-text">PDF</span>',
@@ -1515,13 +1515,13 @@ $(document).ready(function() {
                 text: '<i class="fas fa-file-csv me-1"></i><span class="btn-text">CSV</span>',
                 className: 'btn-export csv',
                 exportOptions: { columns: [0, 1] },
-                title: 'Lista de Clientes - Dentality'
+                title: 'Lista de Clientes - Dental Supremo'
             },
             {
                 text: '<i class="fas fa-print me-1"></i><span class="btn-text">Imprimir</span>',
                 className: 'btn-export print',
                 exportOptions: { columns: [0, 1] },
-                title: 'Lista de Clientes - Dentality',
+                title: 'Lista de Clientes - Dental Supremo',
                 messageTop: '<h3>Fecha: <?php echo date("d/m/Y"); ?></h3>'
             }
         ],

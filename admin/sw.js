@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dentality-v1';
+const CACHE_NAME = 'dentalsupremo-v1';
 const urlsToCache = [
     '/admin/login.php',
     '/admin/manifest.json',

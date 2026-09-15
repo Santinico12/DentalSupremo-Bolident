@@ -444,7 +444,7 @@ require_once '../templates/header_general.php';
         <div class="header-content">
             <div class="header-text">
                 <h1><i class="fas fa-clinic-medical"></i> Gestión de Consultorios</h1>
-                <p>Administra y personaliza las salas y consultorios de tu clínica Dentality</p>
+                <p>Administra y personaliza las salas y consultorios de tu clínica Dental Supremo</p>
             </div>
         </div>
         <a href="dashboard.php" class="btn-back">

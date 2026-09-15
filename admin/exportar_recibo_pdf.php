@@ -201,11 +201,11 @@ $html = '
     <table class="header-table">
         <tr>
             <td style="width: 65%;">
-                <div class="clinic-title">Dentality</div>
+                <div class="clinic-title">Dental Supremo</div>
                 <div class="clinic-sub">Odontología por Especialidades</div>
                 <div class="clinic-info">
-                    Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia<br>
-                    Teléfono / WhatsApp: 76969699
+                    Sacaba, Cochabamba, Calle Bolivar.<br>
+                    Teléfono / WhatsApp: 72752039
                 </div>
             </td>
             <td style="width: 35%; text-align: right; vertical-align: top;">
@@ -314,13 +314,13 @@ $html = '
             <td style="width: 50%; text-align: center; vertical-align: bottom;">
                 <div class="sig-line"></div>
                 <div class="sig-title">Recibí Conforme</div>
-                <div class="sig-sub">Clínica Dentality</div>
+                <div class="sig-sub">Clínica Dental Supremo</div>
             </td>
         </tr>
     </table>
 
     <div class="footer">
-        Dentality &bull; Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia &bull; Tel: 76969699
+        Dental Supremo &bull; Sacaba, Cochabamba, Calle Bolivar. &bull; Tel: 72752039
     </div>
 
 </body>

@@ -191,9 +191,9 @@ $html = '
     <table class="header-table">
         <tr>
             <td style="width: 65%;">
-                <div class="clinic-title">Dentality</div>
+                <div class="clinic-title">Dental Supremo</div>
                 <div class="clinic-sub">Odontología por Especialidades</div>
-                <div class="clinic-info">Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia &bull; Tel: 76969699</div>
+                <div class="clinic-info">Sacaba, Cochabamba, Calle Bolivar. &bull; Tel: 72752039</div>
             </td>
             <td style="width: 35%; text-align: right; vertical-align: middle;">
                 <div style="font-size: 12pt; font-weight: bold; color: #003B73; text-transform: uppercase;">Reporte de Pagos</div>
@@ -249,7 +249,7 @@ $html = '
     </table>
 
     <div class="footer">
-        Dentality &bull; Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia &bull; Documento de Reporte Contable Oficial
+        Dental Supremo &bull; Sacaba, Cochabamba, Calle Bolivar. &bull; Documento de Reporte Contable Oficial
     </div>
 
 </body>

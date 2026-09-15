@@ -102,8 +102,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#003B73">
-    <meta name="description" content="Iniciar sesión en Dentality - Odontología por Especialidades">
-    <title>Iniciar Sesión - Dentality</title>
+    <meta name="description" content="Iniciar sesión en Dental Supremo - Odontología por Especialidades">
+    <title>Iniciar Sesión - Dental Supremo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
@@ -493,11 +493,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
         <div class="login-card">
             <div class="logo-container">
                 <div class="logo-wrapper">
-                    <img src="assets/images/logo_Dentality.png" alt="Dentality Logo" class="logo">
+                    <img src="assets/images/logo_Dentality.png" alt="Dental Supremo Logo" class="logo">
                 </div>
             </div>
             
-            <h1>Dentality</h1>
+            <h1>Dental Supremo</h1>
             <p class="subtitle">Odontología por Especialidades</p>
             
             <?php if (isset($_GET['timeout'])): ?>
@@ -560,12 +560,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$timeLeft) {
 
                 <div class="security-badge">
                     <i class="fas fa-shield-alt"></i>
-                    <span>Sistema Monitoreado por <strong>Dentality</strong></span>
+                    <span>Sistema Monitoreado por <strong>Dental Supremo</strong></span>
                 </div>
             </form>
 
             <div class="footer-info">
-                <p>&copy; 2026 <span class="brand">Dentality</span></p>
+                <p>&copy; 2026 <span class="brand">Dental Supremo</span></p>
             </div>
         </div>
     </div>

@@ -387,11 +387,11 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
                     </svg>
                 </td>
                 <td class="header-clinic" style="vertical-align: middle; padding-left: 10px;">
-                    <h1>Dentality</h1>
+                    <h1>Dental Supremo</h1>
                     <div class="specialty">Odontología por Especialidades</div>
                     <div class="contact">
-                        Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia<br>
-                        Teléfono / WhatsApp: 76969699
+                        Sacaba, Cochabamba, Calle Bolivar.<br>
+                        Teléfono / WhatsApp: 72752039
                     </div>
                 </td>
                 <td class="header-receipt-box">
@@ -479,7 +479,7 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
         <div class="section-header">
             <span><i class="fas fa-file-invoice-dollar me-1"></i> Motivo del Pago: Presupuesto <?php echo htmlspecialchars($pago['presupuesto_numero']); ?></span>
             <span style="font-size: 10px; font-weight: normal; opacity: 0.9;">
-                Especialista: <?php echo htmlspecialchars($presupuesto['doctor_nombre'] ?? 'Dentality'); ?>
+                Especialista: <?php echo htmlspecialchars($presupuesto['doctor_nombre'] ?? 'Dental Supremo'); ?>
             </span>
         </div>
 
@@ -576,14 +576,14 @@ $montoEnLetras = numeroALetrasBolivianos($pago['monto']);
                 <div class="sig-line"></div>
                 <div class="sig-title">Recibí Conforme</div>
                 <div class="sig-subtitle">
-                    Clínica Dentality
+                    Clínica Dental Supremo
                 </div>
             </div>
         </div>
 
         <!-- Pie de Página -->
         <div class="receipt-footer">
-            Dentality &bull; Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia &bull; Tel: 76969699
+            Dental Supremo &bull; Sacaba, Cochabamba, Calle Bolivar. &bull; Tel: 72752039
         </div>
     </div>
 

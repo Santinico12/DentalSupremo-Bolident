@@ -9,20 +9,20 @@ require_once __DIR__ . '/../admin/check_auth.php';
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#003B73">
-    <meta name="description" content="Sistema de Gestión Dental - Dentality">
+    <meta name="description" content="Sistema de Gestión Dental - Dental Supremo">
     
     <!-- Anti-caché para iOS Safari (previene páginas estancadas) -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     
-    <title>Dentality - Panel Administrativo</title>
+    <title>Dental Supremo - Panel Administrativo</title>
     
     <!-- PWA Meta Tags -->
     <link rel="manifest" href="/admin/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Dentality">
+    <meta name="apple-mobile-web-app-title" content="Dental Supremo">
     
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" href="/admin/assets/images/logo_Dentality.png">
@@ -474,8 +474,8 @@ require_once __DIR__ . '/../admin/check_auth.php';
                 <i class="fas fa-bars"></i>
             </button>
             <a href="dashboard.php" class="mobile-brand">
-                <img src="assets/images/logo_Dentality.png" alt="Dentality Logo" class="mobile-logo">
-                <span class="mobile-brand-name">Dentality</span>
+                <img src="assets/images/logo_Dentality.png" alt="Dental Supremo Logo" class="mobile-logo">
+                <span class="mobile-brand-name">Dental Supremo</span>
             </a>
         </div>
         <?php if (isset($_SESSION['user'])): ?>
@@ -494,10 +494,10 @@ require_once __DIR__ . '/../admin/check_auth.php';
         <div class="sidebar-header">
             <a href="dashboard.php" class="sidebar-brand">
                 <div class="brand-logo-container">
-                    <img src="assets/images/logo_Dentality.png" alt="Dentality Logo" class="brand-logo">
+                    <img src="assets/images/logo_Dentality.png" alt="Dental Supremo Logo" class="brand-logo">
                 </div>
                 <div class="brand-text">
-                    <h1 class="brand-name">Dentality</h1>
+                    <h1 class="brand-name">Dental Supremo</h1>
                     <p class="brand-tagline">Odontología por Especialidades</p>
                 </div>
             </a>

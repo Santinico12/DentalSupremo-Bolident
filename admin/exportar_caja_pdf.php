@@ -121,11 +121,11 @@ $html = '<!DOCTYPE html>
 <body>
     <div class="header">
         <div class="header-logo">
-            <img src="assets/images/logo_Dentality.png" alt="Dentality" style="width: 100%; height: 100%; object-fit: contain;">
+            <img src="assets/images/logo_Dentality.png" alt="Dental Supremo" style="width: 100%; height: 100%; object-fit: contain;">
         </div>
         <div class="header-text">
             <h1>REPORTE DE CAJA Y FINANZAS</h1>
-            <p>Dentality - ' . date('d/m/Y H:i') . '</p>
+            <p>Dental Supremo - ' . date('d/m/Y H:i') . '</p>
         </div>
         <div style="clear: both;"></div>
     </div>
@@ -173,7 +173,7 @@ if (!empty($movimientos)) {
     $html .= '<div class="empty-state">No se registraron movimientos en el período seleccionado.</div>';
 }
 
-$html .= '<div class="footer-line">Reporte financiero generado automáticamente - Dentality</div>
+$html .= '<div class="footer-line">Reporte financiero generado automáticamente - Dental Supremo</div>
 </body>
 </html>';
 

@@ -2,7 +2,7 @@
 /**
  * Impresión / PDF Oficial de Historia Clínica Odontológica
  * Reproducción de alta fidelidad del formulario oficial de Bolivia
- * Dentality - Cochabamba, Bolivia
+ * Dental Supremo - Cochabamba, Bolivia
  */
 date_default_timezone_set('America/La_Paz');
 session_start();

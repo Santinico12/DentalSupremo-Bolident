@@ -1,6 +1,6 @@
 <?php
 /**
- * Dentality - API Bridge para Agente WhatsApp (Render.com / InfinityFree / VPS)
+ * Dental Supremo - API Bridge para Agente WhatsApp (Render.com / InfinityFree / VPS)
  * Permite que el bot de Node.js interactúe de forma segura con la base de datos PHP/MySQL
  */
 
@@ -60,7 +60,7 @@ try {
 
     switch ($action) {
         case 'ping':
-            echo json_encode(['ok' => true, 'mensaje' => 'API Bridge Dentality Activo y Conectado']);
+            echo json_encode(['ok' => true, 'mensaje' => 'API Bridge Dental Supremo Activo y Conectado']);
             break;
 
         case 'obtener_clientes':
@@ -929,9 +929,9 @@ try {
 
             echo json_encode([
                 'ok' => true,
-                'nombre_clinica' => 'Dentality',
-                'direccion' => 'Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia',
-                'telefono' => '76969699',
+                'nombre_clinica' => 'Dental Supremo',
+                'direccion' => 'Sacaba, Cochabamba, Calle Bolivar.',
+                'telefono' => '72752039',
                 'horarios' => '08:30 a 19:30 (Lunes a Sábado)',
                 'consultorios' => array_column($consultorios, 'nombre'),
                 'doctores' => array_map(function($d) {

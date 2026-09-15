@@ -101,7 +101,7 @@ $queryParams = http_build_query([
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Pagos - Dentality</title>
+    <title>Reporte de Pagos - Dental Supremo</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         @page {
@@ -333,9 +333,9 @@ $queryParams = http_build_query([
                     </svg>
                 </td>
                 <td style="padding-left: 10px; vertical-align: middle;">
-                    <div class="clinic-title">Dentality</div>
+                    <div class="clinic-title">Dental Supremo</div>
                     <div class="clinic-sub">Odontología por Especialidades</div>
-                    <div class="clinic-contact">Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia &bull; Tel: 76969699</div>
+                    <div class="clinic-contact">Sacaba, Cochabamba, Calle Bolivar. &bull; Tel: 72752039</div>
                 </td>
                 <td class="report-title-box">
                     <h2>Reporte de Pagos</h2>
@@ -442,7 +442,7 @@ $queryParams = http_build_query([
         </table>
 
         <div class="report-footer">
-            <span>Dentality &bull; Odontología por Especialidades</span>
+            <span>Dental Supremo &bull; Odontología por Especialidades</span>
             <span>Documento Oficial de Reporte Contable de Ingresos</span>
         </div>
     </div>

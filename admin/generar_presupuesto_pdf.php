@@ -22,9 +22,9 @@ if (!$presupuesto) {
 
 // Configuración de la clínica
 $clinica = [
-    'nombre' => 'Dentality',
-    'direccion' => 'Av. Antezana 847 Edificio Torre Atlanta piso 6 oficina 4 , Cochabamba, Bolivia',
-    'telefono' => '76969699',
+    'nombre' => 'Dental Supremo',
+    'direccion' => 'Sacaba, Cochabamba, Calle Bolivar.',
+    'telefono' => '72752039',
     'email' => '',
     'nit' => ''
 ];
@@ -278,7 +278,7 @@ $clinica = [
         <!-- Header -->
         <div class="header">
             <div class="logo-section">
-                <img src="assets/images/logo_Dentality.png" alt="Dentality" style="height: 55px; margin-bottom: 8px; border-radius: 5px;" onerror="this.style.display='none'">
+                <img src="assets/images/logo_Dentality.png" alt="Dental Supremo" style="height: 55px; margin-bottom: 8px; border-radius: 5px;" onerror="this.style.display='none'">
                 <h1><?php echo $clinica['nombre']; ?></h1>
                 <p><?php echo $clinica['direccion']; ?></p>
                 <p>Tel: <?php echo $clinica['telefono']; ?><?php echo !empty($clinica['email']) ? ' | '.$clinica['email'] : ''; ?></p>

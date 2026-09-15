@@ -1668,7 +1668,7 @@ function copiarEnlaceFirma() {
             if (strlen($telefonoLimpio) === 8 && !str_starts_with($telefonoLimpio, '591')) {
                 $telefonoLimpio = '591' . $telefonoLimpio;
             }
-            $mensajeWs = "Hola " . $cliente['nombre'] . ", le saludamos de la Clínica Dentality. Por favor ingrese al siguiente enlace para verificar sus datos y registrar su firma en su Ficha Odontológica Oficial: " . $linkFirma;
+            $mensajeWs = "Hola " . $cliente['nombre'] . ", le saludamos de la Clínica Dental Supremo. Por favor ingrese al siguiente enlace para verificar sus datos y registrar su firma en su Ficha Odontológica Oficial: " . $linkFirma;
             $urlWhatsapp = "https://api.whatsapp.com/send?phone=" . $telefonoLimpio . "&text=" . urlencode($mensajeWs);
             ?>
 
