@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 require_once __DIR__ . '/../src/config/db.php';
 
 // Obtener clave secreta del puente desde variable de entorno o clave por defecto
-$bridgeSecret = getenv('API_BRIDGE_KEY') ?: 'bolident_secret_bridge_key_2026';
+$bridgeSecret = getenv('API_BRIDGE_KEY') ?: 'dentalsupremo_secret_bridge_key_2026';
 
 // Validar Token de autorización
 $headers = function_exists('apache_request_headers') ? apache_request_headers() : [];
@@ -37,7 +37,7 @@ if (preg_match('/Bearer\s(\S+)/', $authHeader, $matches)) {
     $token = $_GET['key'];
 }
 
-if ($token !== $bridgeSecret && $token !== 'bolident_secret_bridge_key_2026' && $token !== 'dentality_secret_bridge_key_2026' && $token !== 'tatianaruiz_secret_bridge_key_2026') {
+if ($token !== $bridgeSecret && $token !== 'dentalsupremo_secret_bridge_key_2026' && $token !== 'dentality_secret_bridge_key_2026' && $token !== 'tatianaruiz_secret_bridge_key_2026') {
     http_response_code(401);
     echo json_encode(['ok' => false, 'error' => 'No autorizado. Token de API Bridge inválido.']);
     exit;
