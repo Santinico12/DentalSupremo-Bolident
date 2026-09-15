@@ -14,10 +14,10 @@ if (file_exists(__DIR__ . '/../../.env')) {
     }
 }
 
-$host = getenv('DB_HOST') ?: 'sql103.infinityfree.com';
-$db   = getenv('DB_NAME') ?: 'if0_42860572_dentality';
-$user = getenv('DB_USER') ?: 'if0_42860572';
-$pass = (getenv('DB_PASS') !== false) ? getenv('DB_PASS') : 'dentalitybol';
+$host = getenv('DB_HOST') ?: 'sql102.infinityfree.com';
+$db   = getenv('DB_NAME') ?: 'if0_42919963_dentalsupremo';
+$user = getenv('DB_USER') ?: 'if0_42919963';
+$pass = (getenv('DB_PASS') !== false) ? getenv('DB_PASS') : 'dentalsupremo';
 $charset = getenv('DB_CHARSET') ?: 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
